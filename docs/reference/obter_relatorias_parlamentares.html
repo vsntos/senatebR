@@ -68,7 +68,7 @@
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Exemplo de uso</span></span></span>
 <span class="r-in"><span><span class="va">df_relatorias</span> <span class="op">&lt;-</span> <span class="fu">obter_relatorias_parlamentares</span><span class="op">(</span>codigos_parlamentares <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">6331</span>, <span class="fl">1234</span><span class="op">)</span>, anos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2022</span>, <span class="fl">2023</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in GET(url_api, add_headers(accept = "application/json")):</span> could not find function "GET"</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in add_headers(accept = "application/json"):</span> could not find function "add_headers"</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">df_relatorias</span><span class="op">)</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in print(df_relatorias):</span> object 'df_relatorias' not found</span>
 <span class="r-in"><span></span></span>
