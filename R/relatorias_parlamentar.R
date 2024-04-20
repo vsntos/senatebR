@@ -33,12 +33,12 @@ obter_relatorias_parlamentares <- function(codigos_parlamentares, anos) {
                         codigo_parlamentar, "/relatorias?ano=", ano)
 
       # Fazer a requisição GET
-      response <- GET(url_api, add_headers(accept = "application/json"))
+      response <- httr::GET(url_api, add_headers(accept = "application/json"))
 
       # Verificar se a requisição foi bem-sucedida (código de status na faixa 2xx)
-      if (status_code(response) >= 200 && status_code(response) < 300) {
+      if (httr::status_code(response) >= 200 && httr::status_code(response) < 300) {
         # Ler os dados JSON da resposta
-        json_data <- fromJSON(content(response, "text"))
+        json_data <- jsonlite::fromJSON(httr::content(response, "text"))
 
         # Extrair dados relevantes e criar um dataframe
         parlamentar <- json_data$MateriasRelatoriaParlamentar$Parlamentar
@@ -52,14 +52,12 @@ obter_relatorias_parlamentares <- function(codigos_parlamentares, anos) {
         lista_dataframes[[length(lista_dataframes) + 1]] <- relatorias
       } else {
         # Se a requisição falhar, imprimir uma mensagem de erro
-        stop("Falha na requisição. Código de status: ", status_code(response))
+        stop("Falha na requisição. Código de status: ", httr::status_code(response))
       }
     }
   }
 
   # Retornar um único dataframe consolidado
-  df_final <- bind_rows(lista_dataframes)
+  df_final <- dplyr::bind_rows(lista_dataframes)
   return(df_final)
 }
-
-
