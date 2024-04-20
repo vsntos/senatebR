@@ -35,5 +35,4 @@ df_conteudos <- extrair_notas_taquigraficas(codigos)
 \dontrun{
 conteudo <- extrair_notas_taquigraficas(12071)
 }
-
 }
