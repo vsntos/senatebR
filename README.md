@@ -42,7 +42,6 @@ Below is a quick-start guide to using the `{senatebR}` package.
 ### Downloading veto details 
 
 ```{r, eval=FALSE}
-
 # This function scraps a page containing information about vetoes.
 
 vetos = extrair_detalhes_vetos(3)
