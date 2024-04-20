@@ -1,0 +1,31 @@
+Package: senatebR
+Type: Package
+Title: Functions to collect data from the Brazilian Senate
+Version: 0.1.0
+Author: Vinicius Santos
+Maintainer: Vinicius Santos <santos.vinicius18@gmail.com>
+Description: The senatebR package is a comprehensive tool designed to provide access to information related to the functioning and activities of the Brazilian Federal Senate.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports:
+    pacman,
+    curl,
+    httr,
+    rvest,
+    readr,
+    dplyr,
+    tidyverse,
+    purrr,
+    stringr,
+    spacyr,
+    quanteda,
+    quanteda.textstats,
+    readtext,
+    patchwork,
+    tidytext,
+    formattable,
+    stm,
+    ggrepel,
+    ggridges
+RoxygenNote: 7.2.3
