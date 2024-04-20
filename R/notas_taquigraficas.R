@@ -11,7 +11,7 @@
 #' \dontrun{
 #' conteudo <- extrair_notas_taquigraficas(12071)
 #' }
-#'
+#'@import rvest
 #' @export
 extrair_notas_taquigraficas <- function(codigo_reuniao) {
   # Criação da URL
