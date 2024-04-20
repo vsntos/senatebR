@@ -42,7 +42,6 @@ Below is a quick-start guide to using the `{senatebR}` package.
 ### Downloading veto details 
 
 ```{r, eval=FALSE}
-library(rvest)
 
 vetos = extrair_detalhes_vetos(3)
 
