@@ -29,8 +29,10 @@ The `{senatebR}` package is a comprehensive tool designed to provide access info
 You can install the current version of senatebR from GitHub:
 
 ```{r, eval = FALSE}
-        # install.packages("remotes")
-        remotes::install_github("vsntos/senatebR")
+
+install.packages("remotes")
+remotes::install_github("vsntos/senatebR")
+
 ```
 # [Usage](#usage)
 
