@@ -43,6 +43,7 @@ Below is a quick-start guide to using the `{senatebR}` package.
 
 ```{r, eval=FALSE}
 # This function scraps a page containing information about vetoes.
+# The parameter is the number of pages to be processed
 
 vetos = extrair_detalhes_vetos(3)
 
