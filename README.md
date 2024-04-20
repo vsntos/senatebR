@@ -53,9 +53,6 @@ Below is a quick-start guide to using the `{senatebR}` package.
 
 vetos = extrair_detalhes_vetos(3)
 
-fwrite(vetos, file = "data/vetos.txt")
-
-save(vetos, file = "data/vetos.rda")
 ```
 
 ### Downloading party details 
