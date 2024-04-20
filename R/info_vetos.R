@@ -68,3 +68,4 @@ extrair_detalhes_vetos <- function(pages = 1) {
   return(dados_vetos)
 }
 
+
