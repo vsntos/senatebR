@@ -14,8 +14,9 @@ The `{senatebR}` package is a comprehensive tool designed to access information 
 
 1.  Projects and Matters: This component allows you to identify and monitor bills, legislative proposals and other matters in progress in the Federal Senate. It provides access to details such as title, amendment, author, current status and processing history.
 2.  Parliamentarian Information: Here, users can explore comprehensive profiles of current and former parliamentarians of the Federal Senate, including biographies, party affiliations, legislative history, committee positions, among other relevant information.
-3.  Composition Information: This module offers an overview of the current composition of the Federal Senate, including the party distribution of senators, their federative units of origin, length of mandate, as well as demographic data and relevant statistics. Information about the Committees: Here, users can access details about the different committees of the Federal Senate, including their functions, current members, work agendas, reports produced and other related activities.
-4.  Information on the Plenary: This last component provides insights into the activities of the plenary of the Federal Senate, including voting agendas, transcripts of debates, minutes of sessions, decisions taken and other relevant information.
+3.  Composition Information: This module offers an overview of the current composition of the Federal Senate, including the party distribution of senators, their federative units of origin, length of mandate, as well as demographic data and relevant statistics.
+4.  Information about the Committees: Here, users can access details about the different committees of the Federal Senate, including their functions, current members, work agendas, reports produced and other related activities.
+5.  Information on the Plenary: This last component provides insights into the activities of the plenary of the Federal Senate, including voting agendas, transcripts of debates, minutes of sessions, decisions taken and other relevant information.
 
 ## Table of Contents
 
