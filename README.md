@@ -58,4 +58,6 @@ df_partidos <- obter_dados_partidos()
 
 # [About](#about)
 
+The `{senatebR}` is an initiative dedicated to making the public data of the Brazilian Federal Senate more accessible and understandable to interested citizens. We firmly believe in government transparency and in strengthening civic participation through easy and efficient access to legislative information.
+
 # [References](#references)
