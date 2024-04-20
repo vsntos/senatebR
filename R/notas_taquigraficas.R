@@ -11,8 +11,14 @@
 #' \dontrun{
 #' conteudo <- extrair_notas_taquigraficas(12071)
 #' }
-#'@import rvest
-#' @export
+#' @import httr
+#' @import jsonlite
+#' @import dplyr
+#' @import rvest
+#' @import dplyr
+#' @importFrom rvest read_html html_nodes html_text html_attr
+#' @importFrom dplyr %>%
+#'
 extrair_notas_taquigraficas <- function(codigo_reuniao) {
   # Criação da URL
   url_nota_taquigrafica <- paste0("https://www25.senado.leg.br/web/atividade/notas-taquigraficas/-/notas/r/", codigo_reuniao)

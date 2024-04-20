@@ -15,6 +15,10 @@
 #' @import httr
 #' @import jsonlite
 #' @import dplyr
+#' @import rvest
+#' @import dplyr
+#' @importFrom rvest read_html html_nodes html_text html_attr
+#' @importFrom dplyr %>%
 #'
 #' @export
 obter_relatorias_parlamentares <- function(codigos_parlamentares, anos) {
