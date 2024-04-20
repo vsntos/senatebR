@@ -101,3 +101,6 @@ extrair_dados_senador <- function(codigo_senador) {
   # Retornar o dataframe completo
   return(dados_completos)
 }
+
+
+

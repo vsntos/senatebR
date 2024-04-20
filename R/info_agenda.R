@@ -51,7 +51,8 @@ info_agenda <- function(anos, meses, dias) {
                                       Orgao = orgaos,
                                       Evento = eventos,
                                       Local = locais,
-                                      Status = status)
+                                      Status = status,
+                                      stringsAsFactors = FALSE)
         }, error = function(e) {
           cat("Erro ao raspar dados para", data, ":", conditionMessage(e), "\n")
         })
@@ -61,5 +62,6 @@ info_agenda <- function(anos, meses, dias) {
   df_agenda <- do.call(rbind, dados)
   df_agenda
 }
+
 
 

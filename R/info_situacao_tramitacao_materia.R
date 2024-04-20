@@ -4,14 +4,16 @@
 #'
 #' @param url A URL do XML contendo as situações da tramitação. Por padrão, é utilizada a URL "https://legis.senado.leg.br/dadosabertos/dados/ListaSituacoes.xml".
 #' @return Um dataframe contendo as situações da tramitação.
-#' @importFrom xml2 read_xml xml_find_all xml_text xml_find_first
-#' @export
+#'
 #' @examples
 #' # Extrair as situações da tramitação a partir da URL padrão
 #' extrair_situacoes_tramitacao()
 #'
 #' # Extrair as situações da tramitação a partir de uma URL específica
 #' extrair_situacoes_tramitacao("https://legis.senado.leg.br/dadosabertos/dados/OutraListaSituacoes.xml")
+#'
+#' @importFrom xml2 read_xml xml_find_all xml_text xml_find_first
+#' @export
 extrair_situacoes_tramitacao <- function(url = "https://legis.senado.leg.br/dadosabertos/dados/ListaSituacoes.xml") {
   # Faça o download e analise o XML
   doc <- xml2::read_xml(url)

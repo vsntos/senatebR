@@ -31,7 +31,7 @@ coletar_orientacao_votacao <- function(data_sessao) {
     xml_data <- read_xml(url)
 
     # Verificar se o XML foi carregado corretamente
-    if (inherits(xml_data, "xml_missing")) {
+    if (xml_missing(xml_data)) {
       cat("Erro ao carregar XML:", url, "\n")
       next
     }
@@ -86,6 +86,7 @@ coletar_orientacao_votacao <- function(data_sessao) {
 
   return(dados_votacao)
 }
+
 
 
 

@@ -21,6 +21,6 @@ descrição da matéria, indicador de tramitação, identificação do processo,
 classificações da matéria (se disponível), e informações sobre atualizações recentes da matéria.
 }
 \examples{
-df_materias_atualizacao = info_atualizacao_materias()
+df_materias_atualizacao <- info_atualizacao_materias()
 
 }

@@ -13,7 +13,7 @@
 #' \dontrun{
 #' # Exemplo de uso com vetores
 #' ano <- c(2022, 2023)
-#' mes <- c(08, 09, 10, 11, 12)
+#' mes <- c(8, 9, 10, 11, 12)
 #' df_reunioes <- get_reunioes(ano = rep(ano, each = length(mes)), mes = rep(mes, length(ano)))
 #' }
 get_reunioes <- function(ano, mes) {
@@ -36,11 +36,17 @@ get_reunioes <- function(ano, mes) {
       # Leia os dados JSON da resposta
       json_data <- jsonlite::fromJSON(httr::content(response, "text"), flatten = TRUE)
 
-      # Extraia a coluna 'reuniao' como um dataframe, tratando diferentes estruturas
-      df_reuniao <- json_data$AgendaReuniao$reunioes$reuniao
+      # Verifique se há reuniões disponíveis
+      if (length(json_data$AgendaReuniao$reunioes) > 0) {
+        # Extraia a coluna 'reuniao' como um dataframe, tratando diferentes estruturas
+        df_reuniao <- json_data$AgendaReuniao$reunioes$reuniao
 
-      # Adicione o dataframe à lista de resultados
-      df_total <- dplyr::bind_rows(df_total, df_reuniao)
+        # Adicione o dataframe à lista de resultados
+        df_total <- dplyr::bind_rows(df_total, df_reuniao)
+      } else {
+        # Se não há reuniões, imprima uma mensagem de aviso
+        warning(paste("Não há reuniões disponíveis para", url_reunioes))
+      }
     } else {
       # Se a requisição falhar, imprima uma mensagem de erro
       warning(paste("Falha na requisição para", url_reunioes, ". Código de status:", httr::status_code(response)))

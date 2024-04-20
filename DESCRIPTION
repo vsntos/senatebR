@@ -4,7 +4,7 @@ Title: Functions to collect data from the Brazilian Senate
 Version: 0.1.0
 Author: Vinicius Santos
 Maintainer: Vinicius Santos <santos.vinicius18@gmail.com>
-Description: The senatebR package is a comprehensive tool designed to provide access to information related to the functioning and activities of the Brazilian Federal Senate.
+Description: The senatebR package provides access to information related to the functioning and activities of the Brazilian Federal Senate. It includes functions for data collection, analysis, and visualization.
 License: MIT
 Encoding: UTF-8
 LazyData: true
@@ -12,10 +12,9 @@ Imports:
     pacman,
     curl,
     httr,
-    rvest,
-    readr,
+    rvest (>= 1.0.0),
     dplyr,
-    tidyverse,
+    tidyr,
     purrr,
     stringr,
     spacyr,
@@ -35,3 +34,4 @@ Suggests:
     testthat (>= 3.0.0)
 VignetteBuilder: knitr
 Config/testthat/edition: 3
+

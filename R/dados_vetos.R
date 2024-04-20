@@ -27,8 +27,8 @@ extrair_dados_varias_urls <- function(urls) {
     tabela <- pagina %>% html_node(".cn-detalhe-veto--partes-vetadas") %>% html_table()
 
     # Se houver tabela, converter para dataframe e adicionar o código do veto
-    if (!is.null(tabela)) {
-      dados <- as.data.frame(tabela)
+    if (length(tabela) > 0) {
+      dados <- data.frame(tabela)
       codigo_veto <- gsub(".*\\/([0-9]+)$", "\\1", url)
       dados$Codigo_Veto <- codigo_veto
 
@@ -42,4 +42,5 @@ extrair_dados_varias_urls <- function(urls) {
 
   return(dados_finais)
 }
+
 

@@ -19,4 +19,5 @@ Esta função extrai as informações de votações do plenário do Senado Feder
 anos <- c(2018, 2019, 2020)
 dados_votacoes <- extrair_votacoes_por_ano(anos)
 head(dados_votacoes)
+
 }

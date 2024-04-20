@@ -33,7 +33,7 @@ extrair_detalhes_vetos <- function(urls) {
       dados$Codigo_Veto <- codigo_veto
 
       # Adicionar os dados ao dataframe final
-      dados_finais <- rbind(dados_finais, dados)
+      dados_finais <- dplyr::bind_rows(dados_finais, dados)
     } else {
       # Se não houver tabela, imprimir mensagem de aviso
       cat("Nenhuma tabela encontrada para a URL:", url, "\n")
@@ -42,4 +42,3 @@ extrair_detalhes_vetos <- function(urls) {
 
   return(dados_finais)
 }
-

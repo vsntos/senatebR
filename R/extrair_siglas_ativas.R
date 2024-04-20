@@ -44,4 +44,3 @@ extrair_siglas_ativas <- function(url = "https://legis.senado.leg.br/dadosaberto
 
   return(dados)
 }
-

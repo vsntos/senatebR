@@ -10,25 +10,28 @@
 #' Executa a função para extrair as votações nominais
 #' df_votacoes_nominais <- extrair_votacoes_nominais_por_ano(c(2018, 2019))
 #'
-#' @export
 #' @import xml2
 #' @import dplyr
 #' @import tidyr
+#' @importFrom dplyr bind_rows
+#' @importFrom xml2 read_xml xml_find_all xml_text xml_name xml_find_first
+#'
+#' @export
 extrair_votacoes_nominais_por_ano <- function(anos) {
-  require(xml2)
-  require(dplyr)
-  require(tidyr)
+  requireNamespace("xml2", quietly = TRUE)
+  requireNamespace("dplyr", quietly = TRUE)
+  requireNamespace("tidyr", quietly = TRUE)
 
   # Função interna para extrair informações de uma votação nominal
   extrair_info_votacao_nominal <- function(votacao_node) {
     # Extrai os nós filhos da votação
-    filhos <- xml_children(votacao_node)
+    filhos <- xml2::xml_children(votacao_node)
 
     # Extrai as informações da votação
-    info_votacao <- sapply(filhos, function(x) xml_text(x, trim = TRUE))
+    info_votacao <- sapply(filhos, function(x) xml2::xml_text(x, trim = TRUE))
 
     # Define os nomes das colunas
-    nomes_colunas <- sapply(filhos, xml_name)
+    nomes_colunas <- sapply(filhos, xml2::xml_name)
 
     # Define os nomes das colunas únicos
     nomes_colunas <- make.unique(nomes_colunas)
@@ -39,7 +42,7 @@ extrair_votacoes_nominais_por_ano <- function(anos) {
     # Se a variável 'Votos' estiver presente, processa-a
     if ("Votos" %in% nomes_colunas) {
       # Extrai informações aninhadas da variável 'Votos'
-      votos <- xml_find_all(votacao_node, ".//VotoParlamentar")
+      votos <- xml2::xml_find_all(votacao_node, ".//VotoParlamentar")
 
       # Lista para armazenar os data frames de votos
       lista_votos <- list()
@@ -47,11 +50,11 @@ extrair_votacoes_nominais_por_ano <- function(anos) {
       # Loop pelos nós de votos
       for (voto_node in votos) {
         # Extrai informações do voto
-        info_voto <- xml_children(voto_node) %>%
-          xml_text(trim = TRUE)
+        info_voto <- xml2::xml_children(voto_node) %>%
+          xml2::xml_text(trim = TRUE)
 
         # Define os nomes das colunas
-        nomes_colunas_voto <- xml_name(xml_children(voto_node))
+        nomes_colunas_voto <- xml2::xml_name(xml2::xml_children(voto_node))
 
         # Define os nomes das colunas únicos
         nomes_colunas_voto <- make.unique(nomes_colunas_voto)
@@ -60,14 +63,14 @@ extrair_votacoes_nominais_por_ano <- function(anos) {
         names(info_voto) <- nomes_colunas_voto
 
         # Adiciona o código da sessão ao dataframe de votos
-        info_voto$CodigoSessao <- xml_text(xml_find_first(votacao_node, ".//CodigoSessao"), trim = TRUE)
+        info_voto$CodigoSessao <- xml2::xml_text(xml2::xml_find_first(votacao_node, ".//CodigoSessao"), trim = TRUE)
 
         # Adiciona o data frame do voto à lista
         lista_votos[[length(lista_votos) + 1]] <- info_voto
       }
 
       # Combina todos os data frames de votos em um único data frame
-      df_votos <- bind_rows(lista_votos)
+      df_votos <- dplyr::bind_rows(lista_votos)
 
       # Adiciona o data frame de votos à lista de informações da votação
       info_votacao$Votos <- df_votos
@@ -88,7 +91,7 @@ extrair_votacoes_nominais_por_ano <- function(anos) {
     doc <- xml2::read_xml(url)
 
     # Extrai os nós de votações
-    votacoes <- xml_find_all(doc, ".//Votacao")
+    votacoes <- xml2::xml_find_all(doc, ".//Votacao")
 
     # Lista para armazenar os data frames de cada votação
     lista_votacoes <- list()
@@ -103,7 +106,7 @@ extrair_votacoes_nominais_por_ano <- function(anos) {
     }
 
     # Combina todos os data frames das votações em um único data frame
-    df_votacoes <- bind_rows(lista_votacoes)
+    df_votacoes <- dplyr::bind_rows(lista_votacoes)
 
     # Adiciona o ano como uma coluna
     df_votacoes$Ano <- ano
@@ -113,16 +116,10 @@ extrair_votacoes_nominais_por_ano <- function(anos) {
   }
 
   # Combina todos os data frames dos anos em um único data frame
-  df_votacoes_nominais <- bind_rows(lista_df, .id = "Ano")
-
-  # Extrai os dados de votos com a inclusão da variável CodigoSessao
-  df_votos_nominais <- df_votacoes_nominais$Votos
-
-  # Adiciona a variável CodigoSessao como a primeira coluna
-  df_votos_nominais <- cbind(df_votos_nominais$CodigoSessao, df_votos_nominais)
+  df_votacoes_nominais <- dplyr::bind_rows(lista_df, .id = "Ano")
 
   # Retorna o data frame final
-  return(df_votos_nominais)
+  return(df_votacoes_nominais)
 }
 
 

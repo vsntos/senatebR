@@ -7,16 +7,16 @@
 medidas_provisorias(inicio_pagina, fim_pagina)
 }
 \arguments{
-\item{inicio_pagina}{Number of the first page to scrape}
+\item{inicio_pagina}{Número da primeira página a ser coletada}
 
-\item{fim_pagina}{Number of the last page to scrape}
+\item{fim_pagina}{Número da última página a ser coletada}
 }
 \value{
-A dataframe with data from provisional measures in progress and closed
+Um dataframe com dados sobre medidas provisórias em andamento e encerradas
 }
 \description{
-This function scrapes data from provisional measures in progress and closed
-from the Brazilian National Congress website.
+Esta função coleta dados sobre medidas provisórias em andamento e encerradas
+do site do Congresso Nacional do Brasil.
 }
 \examples{
 mpv_data <- medidas_provisorias(1, 3)

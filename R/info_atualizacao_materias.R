@@ -10,7 +10,7 @@
 #' @return Um dataframe contendo os detalhes das matérias legislativas atualizadas recentemente.
 #'
 #' @examples
-#' df_materias_atualizacao = info_atualizacao_materias()
+#' df_materias_atualizacao <- info_atualizacao_materias()
 #'
 #' @importFrom xml2 read_xml xml_find_all xml_text
 #' @export
@@ -61,30 +61,7 @@ info_atualizacao_materias <- function(url = "https://legis.senado.leg.br/dadosab
     data_ultima_atualizacao <- c(data_ultima_atualizacao, xml2::xml_text(xml2::xml_find_first(materia, ".//DataUltimaAtualizacao")))
   }
 
-  # Determinar o comprimento máximo dos vetores
-  max_length <- max(length(codigo), length(sigla_casa), length(nome_casa), length(tipo_subtipo), length(numero), length(ano), length(objetivo_processo),
-                    length(descricao_materia), length(indicador_tramitando), length(processo), length(ementa), length(indexacao),
-                    length(indicador_complementar), length(data_apresentacao), length(data_leitura), length(data_ultima_atualizacao))
-
-  # Preencher vetores com valores NA para ter o mesmo comprimento
-  codigo <- rep_len(codigo, max_length)
-  sigla_casa <- rep_len(sigla_casa, max_length)
-  nome_casa <- rep_len(nome_casa, max_length)
-  tipo_subtipo <- rep_len(tipo_subtipo, max_length)
-  numero <- rep_len(numero, max_length)
-  ano <- rep_len(ano, max_length)
-  objetivo_processo <- rep_len(objetivo_processo, max_length)
-  descricao_materia <- rep_len(descricao_materia, max_length)
-  indicador_tramitando <- rep_len(indicador_tramitando, max_length)
-  processo <- rep_len(processo, max_length)
-  ementa <- rep_len(ementa, max_length)
-  indexacao <- rep_len(indexacao, max_length)
-  indicador_complementar <- rep_len(indicador_complementar, max_length)
-  data_apresentacao <- rep_len(data_apresentacao, max_length)
-  data_leitura <- rep_len(data_leitura, max_length)
-  data_ultima_atualizacao <- rep_len(data_ultima_atualizacao, max_length)
-
-  # Crie um dataframe com os dados
+  # Criar um dataframe com os dados
   dados <- data.frame(
     CodigoMateria = codigo,
     SiglaCasaIdentificacaoMateria = sigla_casa,
@@ -107,7 +84,6 @@ info_atualizacao_materias <- function(url = "https://legis.senado.leg.br/dadosab
 
   return(dados)
 }
-
 
 
 

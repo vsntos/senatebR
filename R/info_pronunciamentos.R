@@ -74,23 +74,23 @@ extrair_pronunciamentos_multi <- function(codigos_parlamentares, anos) {
                             stringsAsFactors = FALSE)
 
         # Adiciona o dataframe de pronunciamentos do ano atual à lista
-        dados_parlamentar[[ano]] <- dados
+        dados_parlamentar[[as.character(ano)]] <- dados
       }
     }
 
     # Combinar os dataframes de pronunciamentos de diferentes anos em um único dataframe para o parlamentar atual
     if (length(dados_parlamentar) > 0) {
-      dados_completos_parlamentar <- do.call(rbind, dados_parlamentar)
+      dados_completos_parlamentar <- bind_rows(dados_parlamentar)
 
       # Adiciona o dataframe completo do parlamentar à lista
-      lista_dados[[codigo]] <- dados_completos_parlamentar
+      lista_dados[[as.character(codigo)]] <- dados_completos_parlamentar
     }
   }
 
   # Verifica se há dados disponíveis antes de combinar os dataframes
   if (length(lista_dados) > 0) {
     # Combinar os dataframes de todos os parlamentares em um único dataframe
-    dados_completos <- do.call(rbind, lista_dados)
+    dados_completos <- bind_rows(lista_dados)
 
     # Retorna o dataframe completo
     return(dados_completos)
@@ -99,5 +99,4 @@ extrair_pronunciamentos_multi <- function(codigos_parlamentares, anos) {
     return(NULL)
   }
 }
-
 

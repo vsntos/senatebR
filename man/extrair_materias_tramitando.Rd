@@ -21,6 +21,4 @@ Esta função realiza o scraping de uma página XML contendo informações sobre
 # Extrair informações das matérias em tramitação a partir da URL padrão
 extrair_materias_tramitando()
 
-
-
 }

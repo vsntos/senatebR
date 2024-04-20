@@ -82,7 +82,7 @@ extract_meeting_data <- function(codigo_reuniao) {
           })
 
         # Mesclando os dataframes
-        df_final <- dplyr::bind_cols(dados_reuniao_df, dados_xml)
+        df_final <- dplyr::bind_rows(df_final, dados_reuniao_df, dados_xml)
       }
     } else {
       # Se a requisição falhar, imprima uma mensagem de erro

@@ -24,12 +24,10 @@ obter_dados_partidos <- function() {
     json_data <- jsonlite::fromJSON(httr::content(response, "text"))
 
     # Agora você pode trabalhar com os dados como quiser
-    df_partidos <- json_data[["ListaPartidos"]][["Partidos"]][["Partido"]]
+    df_partidos <- json_data$ListaPartidos$Partidos$Partido
     return(df_partidos)
   } else {
     # Se a requisição falhar, imprima uma mensagem de erro
     stop("Falha na requisição. Código de status: ", httr::status_code(response))
   }
 }
-
-

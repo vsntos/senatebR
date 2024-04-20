@@ -25,11 +25,6 @@ com base nas legislaturas fornecidas.
   print(df_senadores_legislatura)
 }
 
-\dontrun{
-  # Exemplo de uso
-  df_senadores_legislatura <- obter_dados_senadores_legislatura(47, 56)
-  print(df_senadores_legislatura)
-}
 }
 \references{
 Informações sobre os senadores são obtidas da API de dados abertos do Senado Brasileiro.

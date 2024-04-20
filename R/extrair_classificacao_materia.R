@@ -8,7 +8,7 @@
 #' @export
 #' @examples
 #' # Extrair as classificações de matéria a partir da URL padrão
-#' df_classificacao_materias = extrair_classificacoes_materia()
+#' df_classificacao_materias <- extrair_classificacoes_materia()
 #'
 #' # Extrair as classificações de matéria a partir de uma URL específica
 #' extrair_classificacoes_materia("https://legis.senado.leg.br/dadosabertos/dados/OutraListaClassificacoesMateria.xml")
@@ -50,4 +50,5 @@ extrair_classificacoes_materia <- function(url = "https://legis.senado.leg.br/da
 
   return(dados)
 }
+
 

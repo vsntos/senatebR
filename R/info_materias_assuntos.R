@@ -41,7 +41,8 @@ info_materia_assuntos <- function(url = "https://legis.senado.leg.br/dadosaberto
     AssuntoGeral = assunto_geral,
     AssuntoEspecifico = assunto_especifico,
     DataInicio = data_inicio,
-    DataFim = data_fim
+    DataFim = data_fim,
+    stringsAsFactors = FALSE
   )
 
   return(dados)

@@ -1,12 +1,12 @@
 #' Coletar Medidas Provisórias
 #'
-#' This function scrapes data from provisional measures in progress and closed
-#' from the Brazilian National Congress website.
+#' Esta função coleta dados sobre medidas provisórias em andamento e encerradas
+#' do site do Congresso Nacional do Brasil.
 #'
-#' @param inicio_pagina Number of the first page to scrape
-#' @param fim_pagina Number of the last page to scrape
+#' @param inicio_pagina Número da primeira página a ser coletada
+#' @param fim_pagina Número da última página a ser coletada
 #'
-#' @return A dataframe with data from provisional measures in progress and closed
+#' @return Um dataframe com dados sobre medidas provisórias em andamento e encerradas
 #' @export
 #'
 #' @import rvest
@@ -25,7 +25,7 @@ medidas_provisorias <- function(inicio_pagina, fim_pagina) {
     pagina <- read_html(url)
 
     # Selecionar os elementos desejados
-    resumos <- pagina %>% html_nodes(".sf-lista-resumos__resumo")
+    resumos <- html_nodes(pagina, ".sf-lista-resumos__resumo")
 
     # Inicializar listas para armazenar os dados
     links <- c()
@@ -40,18 +40,18 @@ medidas_provisorias <- function(inicio_pagina, fim_pagina) {
       links <- c(links, link)
 
       # Matéria
-      materia <- resumo %>% html_node("dt:contains('Matéria') + dd a") %>% html_text() %>% trimws()
+      materia <- resumo %>% html_node("dt:contains('Matéria') + dd a") %>% html_text() %>% str_trim()
       materias <- c(materias, materia)
 
       # Ementa
-      ementa <- resumo %>% html_node("dt:contains('Ementa') + dd") %>% html_text() %>% trimws()
+      ementa <- resumo %>% html_node("dt:contains('Ementa') + dd") %>% html_text() %>% str_trim()
       ementas <- c(ementas, ementa)
 
       # Prazo de 60 dias
-      prazo_60 <- resumo %>% html_node("dt:contains('Prazo de 60 dias') + dd") %>% html_text() %>% trimws()
+      prazo_60 <- resumo %>% html_node("dt:contains('Prazo de 60 dias') + dd") %>% html_text() %>% str_trim()
 
       # Prazo de 120 dias
-      prazo_120 <- resumo %>% html_node("dt:contains('Prazo de 120 dias') + dd") %>% html_text() %>% trimws()
+      prazo_120 <- resumo %>% html_node("dt:contains('Prazo de 120 dias') + dd") %>% html_text() %>% str_trim()
 
       prazos <- c(prazos, paste(prazo_60, prazo_120, sep = " - "))
     }
@@ -83,7 +83,7 @@ medidas_provisorias <- function(inicio_pagina, fim_pagina) {
       pagina <- read_html(url_pagina)
 
       # Selecionar os elementos desejados
-      resumos <- pagina %>% html_nodes(".sf-lista-resumos__resumo")
+      resumos <- html_nodes(pagina, ".sf-lista-resumos__resumo")
 
       # Iterar sobre os resumos para extrair os dados
       for (resumo in resumos) {
@@ -92,18 +92,18 @@ medidas_provisorias <- function(inicio_pagina, fim_pagina) {
         links <- c(links, link)
 
         # Matéria
-        materia <- resumo %>% html_node("dt:contains('Matéria') + dd a") %>% html_text() %>% trimws()
+        materia <- resumo %>% html_node("dt:contains('Matéria') + dd a") %>% html_text() %>% str_trim()
         materias <- c(materias, materia)
 
         # Ementa
-        ementa <- resumo %>% html_node("dt:contains('Ementa') + dd") %>% html_text() %>% trimws()
+        ementa <- resumo %>% html_node("dt:contains('Ementa') + dd") %>% html_text() %>% str_trim()
         ementas <- c(ementas, ementa)
 
         # Prazo de 60 dias
-        prazo_60 <- resumo %>% html_node("dt:contains('Prazo de 60 dias') + dd") %>% html_text() %>% trimws()
+        prazo_60 <- resumo %>% html_node("dt:contains('Prazo de 60 dias') + dd") %>% html_text() %>% str_trim()
 
         # Prazo de 120 dias
-        prazo_120 <- resumo %>% html_node("dt:contains('Prazo de 120 dias') + dd") %>% html_text() %>% trimws()
+        prazo_120 <- resumo %>% html_node("dt:contains('Prazo de 120 dias') + dd") %>% html_text() %>% str_trim()
 
         prazos <- c(prazos, paste(prazo_60, prazo_120, sep = " - "))
       }
@@ -136,3 +136,4 @@ medidas_provisorias <- function(inicio_pagina, fim_pagina) {
 
   return(dados_mpv)
 }
+

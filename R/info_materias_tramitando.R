@@ -10,8 +10,7 @@
 #' # Extrair informações das matérias em tramitação a partir da URL padrão
 #' extrair_materias_tramitando()
 #'
-#'
-#'
+
 extrair_materias_tramitando <- function(url = "https://legis.senado.leg.br/dadosabertos/materia/tramitando") {
   # Faça o download e analise o XML
   doc <- xml2::read_xml(url)
@@ -41,7 +40,7 @@ extrair_materias_tramitando <- function(url = "https://legis.senado.leg.br/dados
     sigla_subtipo <- c(sigla_subtipo, xml2::xml_text(xml2::xml_find_first(materia_node, ".//SiglaSubtipoMateria")))
     numero <- c(numero, xml2::xml_text(xml2::xml_find_first(materia_node, ".//NumeroMateria")))
     ano <- c(ano, xml2::xml_text(xml2::xml_find_first(materia_node, ".//AnoMateria")))
-    descricao_processo <- c(descricao_processo, xml2::xml_text(xml2::xml_find_first(materia_node, ".//IdentificacaoProcesso")))
+    descricao_processo <- c(descricao_processo, xml2::xml_text(xml2::xml_find_first(materia_node, ".//DescricaoObjetivoProcesso")))
     descricao_materia <- c(descricao_materia, xml2::xml_text(xml2::xml_find_first(materia_node, ".//DescricaoIdentificacaoMateria")))
     indicador_tramitando <- c(indicador_tramitando, xml2::xml_text(xml2::xml_find_first(materia_node, ".//IndicadorTramitando")))
     ementa <- c(ementa, xml2::xml_text(xml2::xml_find_first(materia_node, ".//Ementa")))
@@ -68,3 +67,4 @@ extrair_materias_tramitando <- function(url = "https://legis.senado.leg.br/dados
 
   return(dados)
 }
+

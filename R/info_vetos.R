@@ -3,14 +3,19 @@
 #' Esta função realiza scraping de uma página contendo informações sobre vetos e extrai detalhes como número do veto, link associado, ementa, data de sobresta, matéria vetada e norma gerada.
 #'
 #' @param pages O número de páginas a serem processadas.
+#'
 #' @return Um dataframe contendo os detalhes dos vetos.
+#'
+#' @examples
+#' dados_vetos <- extrair_detalhes_vetos(pages = 3)
+#' head(dados_vetos)
+#'
 #' @import rvest
 #' @import dplyr
 #' @importFrom rvest read_html html_nodes html_text html_attr
 #' @importFrom dplyr %>%
 #' @export
 extrair_detalhes_vetos <- function(pages = 1) {
-
   # Verificação e instalação dos pacotes, se necessário
   if (!requireNamespace("rvest", quietly = TRUE)) {
     install.packages("rvest")
@@ -51,8 +56,8 @@ extrair_detalhes_vetos <- function(pages = 1) {
       links <- c(links, resumo %>% html_node("dt:contains('Veto') + dd a") %>% html_attr("href") %>% trimws())
       ementas <- c(ementas, resumo %>% html_node("dt:contains('Ementa') + dd") %>% html_text() %>% trimws())
       sobrestas <- c(sobrestas, resumo %>% html_node("dt:contains('Sobresta em') + dd") %>% html_text() %>% trimws())
-      materias_vetadas <- c(materias_vetadas, resumo %>% html_node("dt:contains('Matéria vetada') + dd a") %>% html_text() %>% trimws())
-      normas_geradas <- c(normas_geradas, resumo %>% html_node("dt:contains('Norma gerada') + dd a") %>% html_text() %>% trimws())
+      materias_vetadas <- c(materias_vetadas, resumo %>% html_node("dt:contains('Matéria vetada') + dd") %>% html_text() %>% trimws())
+      normas_geradas <- c(normas_geradas, resumo %>% html_node("dt:contains('Norma gerada') + dd") %>% html_text() %>% trimws())
     }
   }
 

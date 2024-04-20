@@ -22,7 +22,7 @@ reuniões de acordo com os anos e meses especificados.
 \dontrun{
 # Exemplo de uso com vetores
 ano <- c(2022, 2023)
-mes <- c(08, 09, 10, 11, 12)
+mes <- c(8, 9, 10, 11, 12)
 df_reunioes <- get_reunioes(ano = rep(ano, each = length(mes)), mes = rep(mes, length(ano)))
 }
 }

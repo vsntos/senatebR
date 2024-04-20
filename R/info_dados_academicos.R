@@ -32,9 +32,9 @@ obter_dados_academicos <- function(codigos) {
     if (httr::status_code(response) >= 200 && httr::status_code(response) < 300) {
       json_data <- jsonlite::fromJSON(httr::content(response, "text"), flatten = TRUE)
 
-      codigo <- json_data$HistoricoAcademicoParlamentar$Parlamentar$Codigo
-      nome <- json_data$HistoricoAcademicoParlamentar$Parlamentar$Nome
-      historico_academico <- json_data$HistoricoAcademicoParlamentar$Parlamentar$HistoricoAcademico
+      codigo <- json_data$Parlamentar$Codigo
+      nome <- json_data$Parlamentar$Nome
+      historico_academico <- json_data$Parlamentar$HistoricoAcademico
 
       if (length(historico_academico) > 0) {
         dados <- as.data.frame(historico_academico, stringsAsFactors = FALSE)
@@ -55,4 +55,3 @@ obter_dados_academicos <- function(codigos) {
 
   return(dados_academicos)
 }
-

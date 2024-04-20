@@ -15,6 +15,7 @@
 #'
 #' @export
 extrair_notas_taquigraficas <- function(codigos_reuniao) {
+  # Inicializa o dataframe vazio para armazenar os resultados
   df_conteudos <- data.frame(Codigo_Reuniao = numeric(0), Conteudo = character(0), stringsAsFactors = FALSE)
 
   for (codigo_reuniao in codigos_reuniao) {
@@ -27,10 +28,10 @@ extrair_notas_taquigraficas <- function(codigos_reuniao) {
       pagina <- read_html(url_nota_taquigrafica)
 
       # Encontrar todas as tags <div> com class="principalStyle"
-      divs <- pagina %>% html_elements(".principalStyle")
+      divs <- html_elements(pagina, ".principalStyle")
 
       # Extrair o texto de cada tag <div> com class="principalStyle"
-      textos <- divs %>% html_text()
+      textos <- html_text(divs)
 
       # Combinar os textos em um único texto
       texto_completo <- paste(textos, collapse = " ")

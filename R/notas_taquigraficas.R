@@ -11,16 +11,17 @@
 #' \dontrun{
 #' conteudo <- extrair_notas_taquigraficas(12071)
 #' }
+#'
 #' @import httr
 #' @import jsonlite
-#' @import dplyr
 #' @import rvest
 #' @import dplyr
-#' @importFrom rvest read_html html_nodes html_text html_attr
+#' @importFrom rvest read_html html_elements html_text
 #' @importFrom dplyr %>%
 #' @import xml2
 #' @import tidyr
 #'
+#' @export
 extrair_notas_taquigraficas <- function(codigo_reuniao) {
   # Criação da URL
   url_nota_taquigrafica <- paste0("https://www25.senado.leg.br/web/atividade/notas-taquigraficas/-/notas/r/", codigo_reuniao)
@@ -28,13 +29,13 @@ extrair_notas_taquigraficas <- function(codigo_reuniao) {
   # Tenta acessar a página
   tryCatch({
     # Leitura da página
-    pagina <- read_html(url_nota_taquigrafica)
+    pagina <- rvest::read_html(url_nota_taquigrafica)
 
     # Encontrar todas as tags <div> com class="principalStyle"
-    divs <- pagina %>% html_elements(".principalStyle")
+    divs <- rvest::html_elements(".principalStyle", page = pagina)
 
     # Extrair o texto de cada tag <div> com class="principalStyle"
-    textos <- divs %>% html_text()
+    textos <- rvest::html_text(divs)
 
     # Combinar os textos em um único texto
     texto_completo <- paste(textos, collapse = " ")

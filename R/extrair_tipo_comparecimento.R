@@ -10,8 +10,12 @@
 #' # Extrair os tipos de comparecimento em votação a partir da URL padrão
 #' extrair_tipos_comparecimento()
 #'
+#' @examples
+#' # Extrair os tipos de comparecimento em votação a partir da URL padrão
+#' df_tipos_comparecimento <- extrair_tipos_comparecimento()
 #'
-#'
+#' # Extrair os tipos de comparecimento em votação a partir de uma URL específica
+#' df_tipos_comparecimento <- extrair_tipos_comparecimento("https://legis.senado.leg.br/dadosabertos/dados/OutraListaTiposComparecimento.xml")
 extrair_tipos_comparecimento <- function(url = "https://legis.senado.leg.br/dadosabertos/dados/ListaTiposComparecimento.xml") {
   # Faça o download e analise o XML
   doc <- xml2::read_xml(url)

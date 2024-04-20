@@ -23,4 +23,5 @@ extrair_situacoes_tramitacao()
 
 # Extrair as situações da tramitação a partir de uma URL específica
 extrair_situacoes_tramitacao("https://legis.senado.leg.br/dadosabertos/dados/OutraListaSituacoes.xml")
+
 }

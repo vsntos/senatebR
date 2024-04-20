@@ -57,7 +57,8 @@ materias_legislatura_atual <- function() {
     AnoMateria = ano,
     DescricaoIdentificacaoMateria = descricao,
     IndicadorTramitando = tramitando,
-    IdentificacaoProcesso = processo
+    IdentificacaoProcesso = processo,
+    stringsAsFactors = FALSE
   )
 
   return(dados)

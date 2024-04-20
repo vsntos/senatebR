@@ -8,10 +8,10 @@
 #' @export
 #' @examples
 #' # Extrair os tipos de decisão a partir da URL padrão
-#' df_tipos_decisao = extrair_tipos_decisao()
+#' df_tipos_decisao <- extrair_tipos_decisao()
 #'
 #' # Extrair os tipos de decisão a partir de uma URL específica
-#' extrair_tipos_decisao("https://legis.senado.leg.br/dadosabertos/dados/OutraListaTiposDecisao.xml")
+#' df_tipos_decisao <- extrair_tipos_decisao("https://legis.senado.leg.br/dadosabertos/dados/OutraListaTiposDecisao.xml")
 extrair_tipos_decisao <- function(url = "https://legis.senado.leg.br/dadosabertos/dados/ListaTiposDecisao.xml") {
   # Faça o download e analise o XML
   doc <- xml2::read_xml(url)
