@@ -18,6 +18,8 @@
 #' @import dplyr
 #' @importFrom rvest read_html html_nodes html_text html_attr
 #' @importFrom dplyr %>%
+#' @import xml2
+#' @import tidyr
 #'
 extrair_notas_taquigraficas <- function(codigo_reuniao) {
   # Criação da URL

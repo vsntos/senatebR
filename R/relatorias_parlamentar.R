@@ -19,6 +19,8 @@
 #' @import dplyr
 #' @importFrom rvest read_html html_nodes html_text html_attr
 #' @importFrom dplyr %>%
+#' @import xml2
+#' @import tidyr
 #'
 #' @export
 obter_relatorias_parlamentares <- function(codigos_parlamentares, anos) {
