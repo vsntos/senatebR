@@ -19,7 +19,7 @@ You can install the current version of senatebR from GitHub:
         remotes::install_github("vsntos/senatebR")
 ```
 
-The senatebR package is a comprehensive tool designed to provide access to crucial information related to the functioning and activities of the Brazilian Federal Senate. This package offers detailed analysis in five main dimensions:
+The `{senatebR}` package is a comprehensive tool designed to provide access to crucial information related to the functioning and activities of the Brazilian Federal Senate. This package offers detailed analysis in five main dimensions:
 
 1.  Projects and Matters: This component allows you to identify and monitor bills, legislative proposals and other matters in progress in the Federal Senate. It provides access to details such as title, amendment, author, current status and processing history.
 2.  Parliamentarian Information: Here, users can explore comprehensive profiles of current and former parliamentarians of the Federal Senate, including biographies, party affiliations, legislative history, committee positions, among other relevant information.
