@@ -7,7 +7,7 @@
 
 Vinicius Santos <http://vsantos.rbind.io/>
 
-Phd. Political Science, Universidade Federal de Minas Gerais (UFMG)
+PhD. Political Science, Universidade Federal de Minas Gerais (UFMG)
 
 ## Code for collect data from the Brazilian Senate
 
