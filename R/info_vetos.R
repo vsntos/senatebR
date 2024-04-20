@@ -4,10 +4,30 @@
 #'
 #' @param pages O número de páginas a serem processadas.
 #' @return Um dataframe contendo os detalhes dos vetos.
+<<<<<<< HEAD
+=======
+#' @import rvest
+#' @import dplyr
+>>>>>>> c1af9d645a73d5dba1eab6a64e1347575a3b1459
 #' @importFrom rvest read_html html_nodes html_text html_attr
 #' @importFrom dplyr %>%
 #' @export
 extrair_detalhes_vetos <- function(pages = 1) {
+<<<<<<< HEAD
+=======
+  # Verificação e instalação dos pacotes, se necessário
+  if (!requireNamespace("rvest", quietly = TRUE)) {
+    install.packages("rvest")
+  }
+  if (!requireNamespace("dplyr", quietly = TRUE)) {
+    install.packages("dplyr")
+  }
+
+  # Carregamento das bibliotecas
+  library(rvest)
+  library(dplyr)
+
+>>>>>>> c1af9d645a73d5dba1eab6a64e1347575a3b1459
   # URL base contendo informações sobre vetos
   url_base <- "https://www.congressonacional.leg.br/materias/vetos/-/veto/encerradas/"
 
@@ -59,3 +79,7 @@ extrair_detalhes_vetos <- function(pages = 1) {
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c1af9d645a73d5dba1eab6a64e1347575a3b1459
