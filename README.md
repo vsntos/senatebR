@@ -34,6 +34,27 @@ You can install the current version of senatebR from GitHub:
 ```
 # [Usage](#usage)
 
+Below is a quick-start guide to using the `{senatebR}` package.
+
+### Downloading veto details 
+
+```{r, eval=FALSE}
+library(rvest)
+
+vetos = extrair_detalhes_vetos(3)
+
+fwrite(vetos, file = "data/vetos.txt")
+
+save(vetos, file = "data/vetos.rda")
+```
+
+### Downloading party details 
+
+```{r, eval=FALSE}
+
+df_partidos <- obter_dados_partidos()
+
+```
 
 # [About](#about)
 
