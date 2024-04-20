@@ -23,7 +23,6 @@ extrair_detalhes_vetos <- function(pages = 1) {
   library(rvest)
   library(dplyr)
 
->>>>>>> c1af9d645a73d5dba1eab6a64e1347575a3b1459
   # URL base contendo informações sobre vetos
   url_base <- "https://www.congressonacional.leg.br/materias/vetos/-/veto/encerradas/"
 
@@ -69,13 +68,3 @@ extrair_detalhes_vetos <- function(pages = 1) {
   return(dados_vetos)
 }
 
-
-
-
-
-
-
-<<<<<<< HEAD
-=======
-
->>>>>>> c1af9d645a73d5dba1eab6a64e1347575a3b1459
