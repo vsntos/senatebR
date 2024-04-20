@@ -43,7 +43,7 @@ Below is a quick-start guide to using the `{senatebR}` package.
 
 ```{r, eval=FALSE}
 
-# This function scraps a page containing information about vetoes and extracts details such as the veto number, associated link, amendment, override date, vetoed matter and generated rule.
+# This function scraps a page containing information about vetoes.
 
 vetos = extrair_detalhes_vetos(3)
 
