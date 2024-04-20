@@ -2,7 +2,6 @@
 # senatebR <img src="inst/figures/img.png" align="right" width="150"/> 
 
 ![License](https://img.shields.io/badge/license-MIT-blueviolet.svg?style=flat)
->>>>>>> c1af9d645a73d5dba1eab6a64e1347575a3b1459
 
 ## :writing_hand: Author
 
