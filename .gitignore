@@ -2,3 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
+inst/doc
+.Rdata
+.httr-oauth
+.DS_Store
+.quarto

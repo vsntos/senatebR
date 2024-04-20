@@ -29,3 +29,7 @@ Imports:
     ggrepel,
     ggridges
 RoxygenNote: 7.2.3
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
