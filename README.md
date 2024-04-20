@@ -1,4 +1,4 @@
-# senatebR <img src="inst/figures/img.png" width="240px" align="right"/>
+# senatebR <img src="inst/figures/img.png" align="right" width="150"/> 
 
 ![License](https://img.shields.io/badge/license-MIT-blueviolet.svg?style=flat)
 
