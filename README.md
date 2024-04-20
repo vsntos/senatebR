@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# senatebR <img src="inst/figures/img.png" width="240px" align="right"/>
 
-[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental) [![Build Status](https://travis-ci.org/danielmarcelino/CamaraBR.svg?branch=master)](https://travis-ci.org/danielmarcelino/CamaraBR) ![CRAN Version](https://www.r-pkg.org/badges/version/CamaraBR) ![License](https://img.shields.io/badge/license-MIT-blueviolet.svg?style=flat)
-=======
 # senatebR <img src="inst/figures/img.png" align="right" width="150"/> 
 
 ![License](https://img.shields.io/badge/license-MIT-blueviolet.svg?style=flat)
