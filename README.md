@@ -22,7 +22,7 @@ The `{senatebR}` package is a comprehensive tool designed to provide access info
 - [Installation](#installation)
 - [Usage](#usage)
 - [About](#about)
-- [References](#references)
+- [Citation](#Citation)
 
 # :arrow_double_down: [Installation](#installation)
 
@@ -62,4 +62,4 @@ df_partidos <- obter_dados_partidos()
 
 The `{senatebR}` is an initiative dedicated to making the public data of the Brazilian Federal Senate more accessible and understandable to interested citizens. We firmly believe in government transparency and in strengthening civic participation through easy and efficient access to legislative information. Our commitment to the accessibility and usefulness of public data is reflected in our continuous effort to improve and expand our project. We are constantly looking for ways to enhance the functionality of the system and the user experience, ensuring that our project meets the needs and expectations of researchers and individuals interested in parliamentary activities.
 
-# [References](#references)
+# [Citation](#Citation)
