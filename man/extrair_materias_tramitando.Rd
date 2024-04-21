@@ -13,6 +13,21 @@ extrair_materias_tramitando(
 }
 \value{
 Um dataframe contendo informações das matérias em tramitação.
+O dataframe possui as seguintes colunas:
+\describe{
+  \item{CodigoMateria}{Código da matéria.}
+  \item{SiglaCasaIdentificacaoMateria}{Sigla da casa legislativa à qual a matéria pertence.}
+  \item{NomeCasaIdentificacaoMateria}{Nome da casa legislativa à qual a matéria pertence.}
+  \item{SiglaSubtipoMateria}{Sigla do subtipo da matéria.}
+  \item{NumeroMateria}{Número da matéria.}
+  \item{AnoMateria}{Ano da matéria.}
+  \item{DescricaoObjetivoProcesso}{Descrição do objetivo do processo legislativo da matéria.}
+  \item{DescricaoIdentificacaoMateria}{Descrição da identificação da matéria.}
+  \item{IndicadorTramitando}{Indicador de se a matéria está tramitando ou não.}
+  \item{Ementa}{Ementa da matéria.}
+  \item{Autor}{Autor da matéria.}
+  \item{DataApresentacao}{Data de apresentação da matéria.}
+}
 }
 \description{
 Esta função realiza o scraping de uma página XML contendo informações sobre as matérias em tramitação e extrai os dados relevantes.

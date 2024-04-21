@@ -4,7 +4,6 @@
 #'
 #' @param codigo_senador O código do senador.
 #' @return Um data frame contendo os dados das comissões do senador.
-#' @export
 #'
 #' @examples
 #' \dontrun{
@@ -15,6 +14,8 @@
 #' @import rvest
 #' @import magrittr
 #' @importFrom stringr str_trim
+#'
+#' @export
 extrair_dados_comissao_senador <- function(codigo_senador) {
   # Função para extrair dados de uma página
   extrair_dados <- function(url, codigo_parlamentar) {
@@ -39,10 +40,10 @@ extrair_dados_comissao_senador <- function(codigo_senador) {
       html_text()
 
     # Limpar os dados
-    comissoes <- str_trim(comissoes)
-    data_inicio <- str_trim(data_inicio)
-    data_fim <- str_trim(data_fim)
-    tipo <- str_trim(tipo)
+    comissoes <- stringr::str_trim(comissoes)
+    data_inicio <- stringr::str_trim(data_inicio)
+    data_fim <- stringr::str_trim(data_fim)
+    tipo <- stringr::str_trim(tipo)
 
     # Verificar se os dados estão vazios
     if (length(comissoes) == 0 | length(data_inicio) == 0 | length(data_fim) == 0 | length(tipo) == 0) {

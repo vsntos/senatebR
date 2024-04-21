@@ -3,10 +3,19 @@
 #' Esta função coleta dados sobre medidas provisórias em andamento e encerradas
 #' do site do Congresso Nacional do Brasil.
 #'
-#' @param inicio_pagina Número da primeira página a ser coletada
-#' @param fim_pagina Número da última página a ser coletada
+#' @param inicio_pagina Número da primeira página a ser coletada.
+#' @param fim_pagina Número da última página a ser coletada.
 #'
-#' @return Um dataframe com dados sobre medidas provisórias em andamento e encerradas
+#' @return Um dataframe contendo informações sobre medidas provisórias em andamento e encerradas.
+#' O dataframe possui as seguintes colunas:
+#' \describe{
+#'   \item{Link}{Link para acessar mais informações sobre a medida provisória.}
+#'   \item{Matéria}{Título da medida provisória.}
+#'   \item{Ementa}{Resumo ou descrição da medida provisória.}
+#'   \item{Prazo}{Prazo de vigência da medida provisória, especificando os prazos de 60 e 120 dias.}
+#'   \item{Status}{Status da medida provisória, indicando se está em tramitação ou encerrada.}
+#' }
+#'
 #' @export
 #'
 #' @import rvest
@@ -22,48 +31,54 @@ medidas_provisorias <- function(inicio_pagina, fim_pagina) {
   # Função para raspar os dados das matérias
   raspar_dados <- function(url) {
     # Ler HTML
-    pagina <- read_html(url)
+    tryCatch({
+      pagina <- read_html(url)
 
-    # Selecionar os elementos desejados
-    resumos <- html_nodes(pagina, ".sf-lista-resumos__resumo")
+      # Selecionar os elementos desejados
+      resumos <- pagina %>% html_nodes(".sf-lista-resumos__resumo")
 
-    # Inicializar listas para armazenar os dados
-    links <- c()
-    materias <- c()
-    ementas <- c()
-    prazos <- c()
+      # Inicializar listas para armazenar os dados
+      links <- c()
+      materias <- c()
+      ementas <- c()
+      prazos <- c()
 
-    # Iterar sobre os resumos para extrair os dados
-    for (resumo in resumos) {
-      # Link da matéria
-      link <- resumo %>% html_node("dt:contains('Matéria') + dd a") %>% html_attr("href")
-      links <- c(links, link)
+      # Iterar sobre os resumos para extrair os dados
+      for (resumo in resumos) {
+        # Link da matéria
+        link <- resumo %>% html_node("dt:contains('Matéria') + dd a") %>% html_attr("href")
+        links <- c(links, link)
 
-      # Matéria
-      materia <- resumo %>% html_node("dt:contains('Matéria') + dd a") %>% html_text() %>% str_trim()
-      materias <- c(materias, materia)
+        # Matéria
+        materia <- resumo %>% html_node("dt:contains('Matéria') + dd a") %>% html_text() %>% trimws()
+        materias <- c(materias, materia)
 
-      # Ementa
-      ementa <- resumo %>% html_node("dt:contains('Ementa') + dd") %>% html_text() %>% str_trim()
-      ementas <- c(ementas, ementa)
+        # Ementa
+        ementa <- resumo %>% html_node("dt:contains('Ementa') + dd") %>% html_text() %>% trimws()
+        ementas <- c(ementas, ementa)
 
-      # Prazo de 60 dias
-      prazo_60 <- resumo %>% html_node("dt:contains('Prazo de 60 dias') + dd") %>% html_text() %>% str_trim()
+        # Prazo de 60 dias
+        prazo_60 <- resumo %>% html_node("dt:contains('Prazo de 60 dias') + dd") %>% html_text() %>% trimws()
 
-      # Prazo de 120 dias
-      prazo_120 <- resumo %>% html_node("dt:contains('Prazo de 120 dias') + dd") %>% html_text() %>% str_trim()
+        # Prazo de 120 dias
+        prazo_120 <- resumo %>% html_node("dt:contains('Prazo de 120 dias') + dd") %>% html_text() %>% trimws()
 
-      prazos <- c(prazos, paste(prazo_60, prazo_120, sep = " - "))
-    }
+        prazos <- c(prazos, paste(prazo_60, prazo_120, sep = " - "))
+      }
 
-    # Criar dataframe com os dados
-    dados <- data.frame(Link = links,
-                        Matéria = materias,
-                        Ementa = ementas,
-                        Prazo = prazos) %>%
-      mutate(status = "em tramitação")
+      # Criar dataframe com os dados
+      dados <- data.frame(Link = links,
+                          Matéria = materias,
+                          Ementa = ementas,
+                          Prazo = prazos) %>%
+        mutate(Status = "em tramitação")
 
-    return(dados)
+      return(dados)
+    }, error = function(e) {
+      cat("Erro ao acessar a URL:", url, "\n")
+      cat("Mensagem de erro:", conditionMessage(e), "\n")
+      return(NULL)
+    })
   }
 
   # Função para raspar os dados de várias páginas
@@ -80,33 +95,38 @@ medidas_provisorias <- function(inicio_pagina, fim_pagina) {
       url_pagina <- paste0("https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/", num_pagina)
 
       # Ler HTML
-      pagina <- read_html(url_pagina)
+      tryCatch({
+        pagina <- read_html(url_pagina)
 
-      # Selecionar os elementos desejados
-      resumos <- html_nodes(pagina, ".sf-lista-resumos__resumo")
+        # Selecionar os elementos desejados
+        resumos <- pagina %>% html_nodes(".sf-lista-resumos__resumo")
 
-      # Iterar sobre os resumos para extrair os dados
-      for (resumo in resumos) {
-        # Link da matéria
-        link <- resumo %>% html_node("dt:contains('Matéria') + dd a") %>% html_attr("href")
-        links <- c(links, link)
+        # Iterar sobre os resumos para extrair os dados
+        for (resumo in resumos) {
+          # Link da matéria
+          link <- resumo %>% html_node("dt:contains('Matéria') + dd a") %>% html_attr("href")
+          links <- c(links, link)
 
-        # Matéria
-        materia <- resumo %>% html_node("dt:contains('Matéria') + dd a") %>% html_text() %>% str_trim()
-        materias <- c(materias, materia)
+          # Matéria
+          materia <- resumo %>% html_node("dt:contains('Matéria') + dd a") %>% html_text() %>% trimws()
+          materias <- c(materias, materia)
 
-        # Ementa
-        ementa <- resumo %>% html_node("dt:contains('Ementa') + dd") %>% html_text() %>% str_trim()
-        ementas <- c(ementas, ementa)
+          # Ementa
+          ementa <- resumo %>% html_node("dt:contains('Ementa') + dd") %>% html_text() %>% trimws()
+          ementas <- c(ementas, ementa)
 
-        # Prazo de 60 dias
-        prazo_60 <- resumo %>% html_node("dt:contains('Prazo de 60 dias') + dd") %>% html_text() %>% str_trim()
+          # Prazo de 60 dias
+          prazo_60 <- resumo %>% html_node("dt:contains('Prazo de 60 dias') + dd") %>% html_text() %>% trimws()
 
-        # Prazo de 120 dias
-        prazo_120 <- resumo %>% html_node("dt:contains('Prazo de 120 dias') + dd") %>% html_text() %>% str_trim()
+          # Prazo de 120 dias
+          prazo_120 <- resumo %>% html_node("dt:contains('Prazo de 120 dias') + dd") %>% html_text() %>% trimws()
 
-        prazos <- c(prazos, paste(prazo_60, prazo_120, sep = " - "))
-      }
+          prazos <- c(prazos, paste(prazo_60, prazo_120, sep = " - "))
+        }
+      }, error = function(e) {
+        cat("Erro ao acessar a URL:", url_pagina, "\n")
+        cat("Mensagem de erro:", conditionMessage(e), "\n")
+      })
     }
 
     # Criar dataframe com os dados
@@ -114,7 +134,7 @@ medidas_provisorias <- function(inicio_pagina, fim_pagina) {
                         Matéria = materias,
                         Ementa = ementas,
                         Prazo = prazos) %>%
-      mutate(status = "encerradas")
+      mutate(Status = "encerradas")
 
     return(dados)
   }
@@ -136,4 +156,3 @@ medidas_provisorias <- function(inicio_pagina, fim_pagina) {
 
   return(dados_mpv)
 }
-

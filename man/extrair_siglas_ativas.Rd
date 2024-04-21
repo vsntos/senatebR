@@ -8,9 +8,6 @@ extrair_siglas_ativas(
   url = "https://legis.senado.leg.br/dadosabertos/dados/ListaSiglas.xml"
 )
 }
-\arguments{
-\item{url}{A URL do XML contendo as siglas ativas de matérias. Por padrão, é utilizada a URL "https://legis.senado.leg.br/dadosabertos/dados/ListaSiglas.xml".}
-}
 \value{
 Um dataframe contendo as siglas ativas de matérias.
 }
@@ -20,7 +17,4 @@ Esta função realiza o scraping de uma página XML contendo informações sobre
 \examples{
 # Extrair as siglas ativas de matérias a partir da URL padrão
 extrair_siglas_ativas()
-
-# Extrair as siglas ativas de matérias a partir de uma URL específica
-extrair_siglas_ativas("https://legis.senado.leg.br/dadosabertos/dados/OutraListaSiglas.xml")
 }

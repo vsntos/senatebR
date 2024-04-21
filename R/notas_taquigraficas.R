@@ -3,46 +3,67 @@
 #' Esta função acessa uma página de notas taquigráficas do Senado Federal
 #' e extrai o conteúdo da mesma.
 #'
-#' @param codigo_reuniao Código da reunião para acessar a página de notas.
+#' @param codigos_reuniao Vetor de códigos das reuniões para acessar as páginas de notas.
 #'
-#' @return Uma string contendo o conteúdo da página de notas ou NULL se ocorrer um erro.
+#' @return Um dataframe contendo os códigos de reunião e os respectivos conteúdos das páginas de notas, ou NULL se ocorrer um erro.
 #'
 #' @examples
 #' \dontrun{
-#' conteudo <- extrair_notas_taquigraficas(12071)
+#' codigos <- c(12071, 12072, 12073)
+#' df_conteudos <- extrair_notas_taquigraficas(codigos)
 #' }
 #'
-#' @import httr
-#' @import jsonlite
 #' @import rvest
-#' @import dplyr
-#' @importFrom rvest read_html html_elements html_text
-#' @importFrom dplyr %>%
-#' @import xml2
-#' @import tidyr
-#'
+#' @importFrom rvest read_html html_nodes html_text
 #' @export
-extrair_notas_taquigraficas <- function(codigo_reuniao) {
-  # Criação da URL
-  url_nota_taquigrafica <- paste0("https://www25.senado.leg.br/web/atividade/notas-taquigraficas/-/notas/r/", codigo_reuniao)
+extrair_notas_taquigraficas <- function(codigos_reuniao) {
+  # Verificar se o vetor de códigos de reunião está vazio
+  if (length(codigos_reuniao) == 0) {
+    stop("O vetor de códigos de reunião está vazio.")
+  }
 
-  # Tenta acessar a página
-  tryCatch({
-    # Leitura da página
-    pagina <- rvest::read_html(url_nota_taquigrafica)
+  # Inicializar um dataframe vazio para armazenar os resultados
+  df_conteudos <- data.frame(Codigo_Reuniao = numeric(0), Conteudo = character(0), stringsAsFactors = FALSE)
 
-    # Encontrar todas as tags <div> com class="principalStyle"
-    divs <- rvest::html_elements(".principalStyle", page = pagina)
+  # Iterar sobre os códigos de reunião
+  for (codigo_reuniao in codigos_reuniao) {
+    # Criação da URL
+    url_nota_taquigrafica <- paste0("https://www25.senado.leg.br/web/atividade/notas-taquigraficas/-/notas/r/", codigo_reuniao)
 
-    # Extrair o texto de cada tag <div> com class="principalStyle"
-    textos <- rvest::html_text(divs)
+    # Tenta acessar a página
+    tryCatch({
+      # Leitura da página
+      pagina <- rvest::read_html(url_nota_taquigrafica)
 
-    # Combinar os textos em um único texto
-    texto_completo <- paste(textos, collapse = " ")
+      # Encontrar todas as tags <div> com class="principalStyle"
+      divs <- pagina %>% rvest::html_nodes(".principalStyle")
 
-  }, error = function(e) {
-    cat("Erro ao acessar a URL:", url_nota_taquigrafica, "\n")
-    cat("Mensagem de erro:", conditionMessage(e), "\n")
+      # Extrair o texto de cada tag <div> com class="principalStyle"
+      textos <- divs %>% rvest::html_text()
+
+      # Combinar os textos em um único texto
+      texto_completo <- paste(textos, collapse = " ")
+
+      # Criar um dataframe com o código de reunião e o conteúdo da página de notas
+      df_conteudo <- data.frame(Codigo_Reuniao = codigo_reuniao, Conteudo = texto_completo, stringsAsFactors = FALSE)
+
+      # Adicionar o dataframe à lista de dataframes
+      df_conteudos <- rbind(df_conteudos, df_conteudo)
+
+    }, error = function(e) {
+      # Mensagem de erro detalhada em caso de falha
+      cat("Erro ao acessar a URL:", url_nota_taquigrafica, "\n")
+      cat("Mensagem de erro:", conditionMessage(e), "\n")
+      # Pular para a próxima iteração
+      next
+    })
+  }
+
+  # Verificar se foram encontradas notas taquigráficas
+  if (nrow(df_conteudos) == 0) {
+    cat("Nenhuma nota taquigráfica encontrada para os códigos de reunião fornecidos.\n")
     return(NULL)
-  })
+  }
+
+  return(df_conteudos)
 }

@@ -1,4 +1,4 @@
-#' Extração de Dados de Reunião com Base no Código
+#' Extração de Dados de Reunião
 #'
 #' Esta função extrai dados de uma reunião com base no código fornecido.
 #'

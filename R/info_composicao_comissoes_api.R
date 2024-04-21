@@ -5,7 +5,6 @@
 #' @param codigos_parlamentares Vetor contendo os códigos dos parlamentares.
 #'
 #' @return Um dataframe contendo os dados das comissões que parlamentares são ou foram membros.
-#' @export
 #'
 #' @examples
 #' codigos_senadores <- df_parlamentares$CodigoParlamentar
@@ -14,7 +13,7 @@
 #' @import httr
 #' @import jsonlite
 #'
-
+#' @export
 obter_dados_comissoes_parlamentares <- function(codigos_parlamentares) {
   # Lista para armazenar os resultados
   resultados <- list()

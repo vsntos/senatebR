@@ -4,13 +4,29 @@
 #'
 #' @param url A URL do XML contendo as matérias em tramitação. Por padrão, é utilizada a URL "https://legis.senado.leg.br/dadosabertos/materia/tramitando".
 #' @return Um dataframe contendo informações das matérias em tramitação.
+#' O dataframe possui as seguintes colunas:
+#' \describe{
+#'   \item{CodigoMateria}{Código da matéria.}
+#'   \item{SiglaCasaIdentificacaoMateria}{Sigla da casa legislativa à qual a matéria pertence.}
+#'   \item{NomeCasaIdentificacaoMateria}{Nome da casa legislativa à qual a matéria pertence.}
+#'   \item{SiglaSubtipoMateria}{Sigla do subtipo da matéria.}
+#'   \item{NumeroMateria}{Número da matéria.}
+#'   \item{AnoMateria}{Ano da matéria.}
+#'   \item{DescricaoObjetivoProcesso}{Descrição do objetivo do processo legislativo da matéria.}
+#'   \item{DescricaoIdentificacaoMateria}{Descrição da identificação da matéria.}
+#'   \item{IndicadorTramitando}{Indicador de se a matéria está tramitando ou não.}
+#'   \item{Ementa}{Ementa da matéria.}
+#'   \item{Autor}{Autor da matéria.}
+#'   \item{DataApresentacao}{Data de apresentação da matéria.}
+#' }
+#'
 #' @importFrom xml2 read_xml xml_find_all xml_text xml_find_first
 #' @export
+#'
 #' @examples
 #' # Extrair informações das matérias em tramitação a partir da URL padrão
 #' extrair_materias_tramitando()
 #'
-
 extrair_materias_tramitando <- function(url = "https://legis.senado.leg.br/dadosabertos/materia/tramitando") {
   # Faça o download e analise o XML
   doc <- xml2::read_xml(url)

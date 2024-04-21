@@ -5,6 +5,14 @@
 #'
 #' @param url URL do XML contendo os dados dos assuntos. Por padrão, é usado o URL fornecido pelo Senado Federal.
 #' @return Um dataframe contendo os detalhes dos assuntos legislativos.
+#' O dataframe possui as seguintes colunas:
+#' \describe{
+#'   \item{Codigo}{Código do assunto.}
+#'   \item{AssuntoGeral}{Assunto geral ao qual o assunto pertence.}
+#'   \item{AssuntoEspecifico}{Assunto específico.}
+#'   \item{DataInicio}{Data de início da validade do assunto.}
+#'   \item{DataFim}{Data de término da validade do assunto, se aplicável.}
+#' }
 #'
 #' @examples
 #' df_assuntos = info_materia_temas()
@@ -47,6 +55,7 @@ info_materia_temas <- function(url = "https://legis.senado.leg.br/dadosabertos/d
 
   return(dados)
 }
+
 
 
 

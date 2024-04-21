@@ -2,16 +2,12 @@
 #'
 #' Esta função realiza o scraping de uma página XML contendo informações sobre as siglas ativas de matérias e extrai os dados relevantes.
 #'
-#' @param url A URL do XML contendo as siglas ativas de matérias. Por padrão, é utilizada a URL "https://legis.senado.leg.br/dadosabertos/dados/ListaSiglas.xml".
 #' @return Um dataframe contendo as siglas ativas de matérias.
 #' @importFrom xml2 read_xml xml_find_all xml_text xml_find_first
 #' @export
 #' @examples
 #' # Extrair as siglas ativas de matérias a partir da URL padrão
 #' extrair_siglas_ativas()
-#'
-#' # Extrair as siglas ativas de matérias a partir de uma URL específica
-#' extrair_siglas_ativas("https://legis.senado.leg.br/dadosabertos/dados/OutraListaSiglas.xml")
 extrair_siglas_ativas <- function(url = "https://legis.senado.leg.br/dadosabertos/dados/ListaSiglas.xml") {
   # Faça o download e analise o XML
   doc <- xml2::read_xml(url)
@@ -44,3 +40,4 @@ extrair_siglas_ativas <- function(url = "https://legis.senado.leg.br/dadosaberto
 
   return(dados)
 }
+

@@ -70,3 +70,8 @@ extrair_votacoes_por_ano <- function(anos) {
 
   return(dados_total)
 }
+
+anos <- c(2022, 2023)
+dados_votacoes <- extrair_votacoes_por_ano(anos)
+
+

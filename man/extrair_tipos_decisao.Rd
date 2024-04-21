@@ -8,9 +8,6 @@ extrair_tipos_decisao(
   url = "https://legis.senado.leg.br/dadosabertos/dados/ListaTiposDecisao.xml"
 )
 }
-\arguments{
-\item{url}{A URL do XML contendo os tipos de decisão. Por padrão, é utilizada a URL "https://legis.senado.leg.br/dadosabertos/dados/ListaTiposDecisao.xml".}
-}
 \value{
 Um dataframe contendo os tipos de decisão.
 }
@@ -20,7 +17,4 @@ Esta função realiza o scraping de uma página XML contendo informações sobre
 \examples{
 # Extrair os tipos de decisão a partir da URL padrão
 df_tipos_decisao <- extrair_tipos_decisao()
-
-# Extrair os tipos de decisão a partir de uma URL específica
-df_tipos_decisao <- extrair_tipos_decisao("https://legis.senado.leg.br/dadosabertos/dados/OutraListaTiposDecisao.xml")
 }

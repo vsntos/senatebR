@@ -2,7 +2,7 @@
 % Please edit documentation in R/info_reunioes_notas.R
 \name{info_dados_reuniao}
 \alias{info_dados_reuniao}
-\title{Extração de Dados de Reunião com Base no Código}
+\title{Extração de Dados de Reunião}
 \usage{
 info_dados_reuniao(codigo_reuniao)
 }

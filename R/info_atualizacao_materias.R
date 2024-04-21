@@ -14,7 +14,6 @@
 #'
 #' @importFrom xml2 read_xml xml_find_all xml_text
 #' @export
-
 info_atualizacao_materias <- function(url = "https://legis.senado.leg.br/dadosabertos/materia/atualizadas") {
   # Faça o download e analise o XML
   doc <- xml2::read_xml(url)
@@ -84,6 +83,5 @@ info_atualizacao_materias <- function(url = "https://legis.senado.leg.br/dadosab
 
   return(dados)
 }
-
 
 

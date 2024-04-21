@@ -16,18 +16,6 @@
 #' @importFrom dplyr %>%
 #' @export
 extrair_detalhes_vetos <- function(pages = 1) {
-  # Verificação e instalação dos pacotes, se necessário
-  if (!requireNamespace("rvest", quietly = TRUE)) {
-    install.packages("rvest")
-  }
-  if (!requireNamespace("dplyr", quietly = TRUE)) {
-    install.packages("dplyr")
-  }
-
-  # Carregamento das bibliotecas
-  library(rvest)
-  library(dplyr)
-
   # URL base contendo informações sobre vetos
   url_base <- "https://www.congressonacional.leg.br/materias/vetos/-/veto/encerradas/"
 
@@ -72,5 +60,6 @@ extrair_detalhes_vetos <- function(pages = 1) {
 
   return(dados_vetos)
 }
+
 
 

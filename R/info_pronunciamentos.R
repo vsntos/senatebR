@@ -99,4 +99,3 @@ extrair_pronunciamentos_multi <- function(codigos_parlamentares, anos) {
     return(NULL)
   }
 }
-

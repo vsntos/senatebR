@@ -27,20 +27,20 @@ extrair_notas_taquigraficas <- function(codigos_reuniao) {
       # Leitura da página
       pagina <- read_html(url_nota_taquigrafica)
 
-      # Encontrar todas as tags <div> com class="principalStyle"
-      divs <- html_elements(pagina, ".principalStyle")
+      # Verificar se a página foi carregada corretamente
+      if (length(pagina) == 0) {
+        cat("Erro ao acessar a URL:", url_nota_taquigrafica, "\n")
+        next
+      }
 
-      # Extrair o texto de cada tag <div> com class="principalStyle"
-      textos <- html_text(divs)
-
-      # Combinar os textos em um único texto
-      texto_completo <- paste(textos, collapse = " ")
+      # Extrair o texto da tag <div> com class="principalStyle"
+      texto_completo <- html_text(html_node(pagina, ".principalStyle"))
 
       # Criar um dataframe com o código de reunião e o conteúdo da página de notas
       df_conteudo <- data.frame(Codigo_Reuniao = codigo_reuniao, Conteudo = texto_completo, stringsAsFactors = FALSE)
 
       # Adicionar o dataframe à lista de dataframes
-      df_conteudos <- rbind(df_conteudos, df_conteudo)
+      df_conteudos <- bind_rows(df_conteudos, df_conteudo)
 
     }, error = function(e) {
       cat("Erro ao acessar a URL:", url_nota_taquigrafica, "\n")

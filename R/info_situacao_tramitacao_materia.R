@@ -1,4 +1,4 @@
-#' Extrair as situações da tramitação de uma URL específica
+#' Extrair as situações da tramitação
 #'
 #' Esta função realiza o scraping de uma página XML contendo informações sobre as situações da tramitação das matérias e extrai os dados relevantes.
 #'

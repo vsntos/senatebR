@@ -2,7 +2,7 @@
 % Please edit documentation in R/info_situacao_tramitacao_materia.R
 \name{extrair_situacoes_tramitacao}
 \alias{extrair_situacoes_tramitacao}
-\title{Extrair as situações da tramitação de uma URL específica}
+\title{Extrair as situações da tramitação}
 \usage{
 extrair_situacoes_tramitacao(
   url = "https://legis.senado.leg.br/dadosabertos/dados/ListaSituacoes.xml"

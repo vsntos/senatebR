@@ -4,9 +4,20 @@
 #' Os dados extraídos incluem o código da matéria, sigla e nome da casa legislativa, subtipo da matéria, número e ano, descrição, indicação de tramitação e identificação do processo.
 #'
 #' @return Um dataframe contendo os detalhes das matérias legislativas.
+#' O dataframe possui as seguintes colunas:
+#' \describe{
+#'   \item{CodigoMateria}{Código da matéria.}
+#'   \item{SiglaCasaIdentificacaoMateria}{Sigla da casa legislativa identificadora da matéria.}
+#'   \item{NomeCasaIdentificacaoMateria}{Nome da casa legislativa identificadora da matéria.}
+#'   \item{SiglaSubtipoMateria}{Sigla do subtipo da matéria.}
+#'   \item{NumeroMateria}{Número da matéria.}
+#'   \item{AnoMateria}{Ano da matéria.}
+#'   \item{DescricaoIdentificacaoMateria}{Descrição da identificação da matéria.}
+#'   \item{IndicadorTramitando}{Indicador de tramitação da matéria.}
+#'   \item{IdentificacaoProcesso}{Identificação do processo da matéria.}
+#' }
 #'
 #' @examples
-#'
 #' df_materias <- materias_legislatura_atual()
 #'
 #' @importFrom xml2 read_xml xml_find_all xml_text xml_find_first

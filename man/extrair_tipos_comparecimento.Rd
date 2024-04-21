@@ -8,9 +8,6 @@ extrair_tipos_comparecimento(
   url = "https://legis.senado.leg.br/dadosabertos/dados/ListaTiposComparecimento.xml"
 )
 }
-\arguments{
-\item{url}{A URL do XML contendo os tipos de comparecimento em votação. Por padrão, é utilizada a URL "https://legis.senado.leg.br/dadosabertos/dados/ListaTiposComparecimento.xml".}
-}
 \value{
 Um dataframe contendo os tipos de comparecimento em votação.
 }
@@ -23,7 +20,4 @@ extrair_tipos_comparecimento()
 
 # Extrair os tipos de comparecimento em votação a partir da URL padrão
 df_tipos_comparecimento <- extrair_tipos_comparecimento()
-
-# Extrair os tipos de comparecimento em votação a partir de uma URL específica
-df_tipos_comparecimento <- extrair_tipos_comparecimento("https://legis.senado.leg.br/dadosabertos/dados/OutraListaTiposComparecimento.xml")
 }

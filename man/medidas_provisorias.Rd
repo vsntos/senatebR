@@ -7,12 +7,20 @@
 medidas_provisorias(inicio_pagina, fim_pagina)
 }
 \arguments{
-\item{inicio_pagina}{Número da primeira página a ser coletada}
+\item{inicio_pagina}{Número da primeira página a ser coletada.}
 
-\item{fim_pagina}{Número da última página a ser coletada}
+\item{fim_pagina}{Número da última página a ser coletada.}
 }
 \value{
-Um dataframe com dados sobre medidas provisórias em andamento e encerradas
+Um dataframe contendo informações sobre medidas provisórias em andamento e encerradas.
+O dataframe possui as seguintes colunas:
+\describe{
+  \item{Link}{Link para acessar mais informações sobre a medida provisória.}
+  \item{Matéria}{Título da medida provisória.}
+  \item{Ementa}{Resumo ou descrição da medida provisória.}
+  \item{Prazo}{Prazo de vigência da medida provisória, especificando os prazos de 60 e 120 dias.}
+  \item{Status}{Status da medida provisória, indicando se está em tramitação ou encerrada.}
+}
 }
 \description{
 Esta função coleta dados sobre medidas provisórias em andamento e encerradas

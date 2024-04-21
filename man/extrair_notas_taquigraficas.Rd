@@ -5,19 +5,17 @@
 \alias{extrair_notas_taquigraficas}
 \title{Extrai o conteúdo de uma página de notas taquigráficas.}
 \usage{
-extrair_notas_taquigraficas(codigo_reuniao)
+extrair_notas_taquigraficas(codigos_reuniao)
 
-extrair_notas_taquigraficas(codigo_reuniao)
+extrair_notas_taquigraficas(codigos_reuniao)
 }
 \arguments{
-\item{codigo_reuniao}{Código da reunião para acessar a página de notas.}
-
 \item{codigos_reuniao}{Vetor de códigos das reuniões para acessar as páginas de notas.}
 }
 \value{
 Um dataframe contendo os códigos de reunião e os respectivos conteúdos das páginas de notas, ou NULL se ocorrer um erro.
 
-Uma string contendo o conteúdo da página de notas ou NULL se ocorrer um erro.
+Um dataframe contendo os códigos de reunião e os respectivos conteúdos das páginas de notas, ou NULL se ocorrer um erro.
 }
 \description{
 Esta função acessa uma página de notas taquigráficas do Senado Federal
@@ -33,7 +31,8 @@ df_conteudos <- extrair_notas_taquigraficas(codigos)
 }
 
 \dontrun{
-conteudo <- extrair_notas_taquigraficas(12071)
+codigos <- c(12071, 12072, 12073)
+df_conteudos <- extrair_notas_taquigraficas(codigos)
 }
 
 }

@@ -42,3 +42,4 @@ extrair_detalhes_vetos <- function(urls) {
 
   return(dados_finais)
 }
+

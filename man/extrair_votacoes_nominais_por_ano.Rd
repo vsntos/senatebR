@@ -19,6 +19,6 @@ e retorna um data frame contendo essas informações.
 \examples{
 Executa a função para extrair as votações nominais
 anos = c(2022, 2023)
-dados_votacoes <- extrair_votacoes_por_ano(anos)
+dados_votacoes <- extrair_votacoes_nominais_por_ano(anos)
 
 }

@@ -4,12 +4,13 @@
 #' e retorna um data frame contendo essas informações.
 #'
 #' @param anos Vetor contendo os anos das votações a serem extraídas
+#'
 #' @return Um data frame com as informações das votações nominais
 #'
 #' @examples
 #' Executa a função para extrair as votações nominais
 #' anos = c(2022, 2023)
-#' dados_votacoes <- extrair_votacoes_por_ano(anos)
+#' dados_votacoes <- extrair_votacoes_nominais_por_ano(anos)
 #'
 #' @import xml2
 #' @import dplyr
@@ -122,6 +123,7 @@ extrair_votacoes_nominais_por_ano <- function(anos) {
   # Retorna o data frame final
   return(df_votacoes_nominais)
 }
+
 
 
 

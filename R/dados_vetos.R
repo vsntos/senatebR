@@ -12,9 +12,9 @@
 #' urls <- c("https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/16110",
 #'           "https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/16049",
 #'           "https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/16029")
-#' dados <- extrair_dados_vetos(urls)
+#' dados <- dados_vetos(urls)
 #'
-extrair_dados_vetos <- function(urls) {
+dados_vetos <- function(urls) {
   # Inicializar um dataframe vazio para armazenar os resultados
   dados_finais <- data.frame()
 
@@ -42,5 +42,7 @@ extrair_dados_vetos <- function(urls) {
 
   return(dados_finais)
 }
+
+
 
 

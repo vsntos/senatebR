@@ -5,7 +5,7 @@
 #'
 #' @param codigos Vetor de códigos parlamentares.
 #' @return Um dataframe com os dados acadêmicos.
-#' @export
+#'
 #' @examples
 #' codigos <- c(1234, 5678)
 #' dados <- info_dados_academicos(codigos)
@@ -55,3 +55,4 @@ info_dados_academicos <- function(codigos) {
 
   return(dados_academicos)
 }
+

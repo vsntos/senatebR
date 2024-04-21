@@ -42,7 +42,7 @@ obter_dados_senadores_legislatura <- function(legislatura_inicio, legislatura_fi
     # Verifique se há dados disponíveis
     if (length(df_parlamentares) > 0) {
       # Crie um dataframe com as informações dos senadores
-      df_senadores <- as.data.frame(df_parlamentares, stringsAsFactors = FALSE)
+      df_senadores <- dplyr::as.data.frame(df_parlamentares, stringsAsFactors = FALSE)
     } else {
       # Se não há dados, crie um dataframe vazio
       df_senadores <- data.frame()

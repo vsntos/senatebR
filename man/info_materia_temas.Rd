@@ -13,6 +13,14 @@ info_materia_temas(
 }
 \value{
 Um dataframe contendo os detalhes dos assuntos legislativos.
+O dataframe possui as seguintes colunas:
+\describe{
+  \item{Codigo}{Código do assunto.}
+  \item{AssuntoGeral}{Assunto geral ao qual o assunto pertence.}
+  \item{AssuntoEspecifico}{Assunto específico.}
+  \item{DataInicio}{Data de início da validade do assunto.}
+  \item{DataFim}{Data de término da validade do assunto, se aplicável.}
+}
 }
 \description{
 Esta função realiza o scraping de um XML contendo informações sobre assuntos legislativos do Senado Federal do Brasil.

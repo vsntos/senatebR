@@ -20,7 +20,4 @@ Esta função realiza o scraping de uma página XML contendo informações sobre
 \examples{
 # Extrair as classificações de matéria a partir da URL padrão
 df_classificacao_materias <- extrair_classificacoes_materia()
-
-# Extrair as classificações de matéria a partir de uma URL específica
-extrair_classificacoes_materia("https://legis.senado.leg.br/dadosabertos/dados/OutraListaClassificacoesMateria.xml")
 }
