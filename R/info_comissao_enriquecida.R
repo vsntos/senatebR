@@ -10,7 +10,7 @@
 #' @importFrom httr GET
 #' @importFrom rvest read_html html_text html_node html_attr
 #' @import dplyr
-enriquecer_dados_comissao <- function(urls, tipo) {
+info_comissao_enriquecida <- function(urls, tipo) {
   dominio_base <- "https://legis.senado.leg.br/comissoes/"
 
   extrair_informacoes <- function(url) {

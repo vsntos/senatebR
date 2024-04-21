@@ -9,7 +9,7 @@
 #' @examples
 #' # Exemplo de uso
 #' codigo_reuniao <- df_reunioes$codigo
-#' df_final <- extract_meeting_data(codigo_reuniao)
+#' df_final <- info_dados_reuniao(codigo_reuniao)
 #' print(df_final)
 #'
 #' @import httr
@@ -17,7 +17,7 @@
 #' @import dplyr
 #'
 #' @export
-extract_meeting_data <- function(codigo_reuniao) {
+info_dados_reuniao <- function(codigo_reuniao) {
   # Inicialize um dataframe vazio para armazenar os resultados
   df_final <- data.frame(stringsAsFactors = FALSE)
 
