@@ -9,13 +9,13 @@
 #' @examples
 #' \dontrun{
 #' codigo_senador <- "5008"
-#' extrair_dados_senador(codigo_senador)
+#' extrair_dados_comissao_senador(codigo_senador)
 #' }
 #'
 #' @import rvest
 #' @import magrittr
 #' @importFrom stringr str_trim
-extrair_dados_senador <- function(codigo_senador) {
+extrair_dados_comissao_senador <- function(codigo_senador) {
   # Função para extrair dados de uma página
   extrair_dados <- function(url, codigo_parlamentar) {
     # Leia o HTML da página

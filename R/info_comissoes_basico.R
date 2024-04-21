@@ -5,14 +5,14 @@
 #' @return Um dataframe contendo dados básicos das comissões permanentes.
 #'
 #' @examples
-#' dados_comissoes <- get_dados_comissoes()
+#' dados_comissoes <- dados_comissoes()
 #'
 #' @importFrom rvest read_html html_nodes html_text html_attr
 #' @importFrom tidyr separate
 #' @import dplyr
 #'
 #' @export
-get_dados_comissoes <- function() {
+dados_comissoes <- function() {
   url <- "https://legis.senado.leg.br/comissoes/"
   pagina <- rvest::read_html(url)
 

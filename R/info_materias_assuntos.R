@@ -7,12 +7,12 @@
 #' @return Um dataframe contendo os detalhes dos assuntos legislativos.
 #'
 #' @examples
-#' df_assuntos = info_materia_assuntos()
+#' df_assuntos = info_materia_temas()
 #'
 #' @importFrom xml2 read_xml xml_find_all xml_text
 #' @export
 
-info_materia_assuntos <- function(url = "https://legis.senado.leg.br/dadosabertos/dados/ListaAssuntos.xml") {
+info_materia_temas <- function(url = "https://legis.senado.leg.br/dadosabertos/dados/ListaAssuntos.xml") {
   # Faça o download e analise o XML
   doc <- xml2::read_xml(url)
 

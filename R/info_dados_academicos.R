@@ -8,7 +8,7 @@
 #' @export
 #' @examples
 #' codigos <- c(1234, 5678)
-#' dados <- obter_dados_academicos(codigos)
+#' dados <- info_dados_academicos(codigos)
 #'
 #' @import httr
 #' @importFrom jsonlite fromJSON
@@ -24,7 +24,7 @@
 #'
 #' @keywords senador dados acadêmicos API
 #' @export
-obter_dados_academicos <- function(codigos) {
+info_dados_academicos <- function(codigos) {
   dados_academicos <- purrr::map_df(codigos, ~ {
     url <- paste0("https://legis.senado.leg.br/dadosabertos/senador/", .x, "/historicoAcademico")
     response <- httr::GET(url, httr::add_headers(accept = "application/json"))
