@@ -9,7 +9,7 @@ Vinicius Santos <http://vsantos.rbind.io/>
 
 PhD. Political Science, Universidade Federal de Minas Gerais (UFMG)
 
-## Code for collect data from the Brazilian Senate
+## Overview: Code for collect data from the Brazilian Senate
 
 The `{senatebR}` package is a comprehensive tool designed to access information related to the functioning and activities of the Brazilian Federal Senate. This package offers detailed data in five main dimensions:
 
