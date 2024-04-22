@@ -8,7 +8,6 @@
 #'
 #' @examples
 #' dados_vetos <- extrair_detalhes_vetos(pages = 3)
-#' head(dados_vetos)
 #'
 #' @import rvest
 #' @import dplyr

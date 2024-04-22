@@ -7,7 +7,7 @@
 #'
 #' @examples
 #' # Extrair as situações da tramitação a partir da URL padrão
-#' extrair_situacoes_tramitacao()
+#' df_materias_tramitação = extrair_situacoes_tramitacao()
 #'
 #' @importFrom xml2 read_xml xml_find_all xml_text xml_find_first
 #' @export

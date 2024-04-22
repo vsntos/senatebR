@@ -32,6 +32,5 @@ urls <- c("https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/16
 dados <- extrair_detalhes_vetos(urls)
 
 dados_vetos <- extrair_detalhes_vetos(pages = 3)
-head(dados_vetos)
 
 }

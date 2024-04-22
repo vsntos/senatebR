@@ -2,7 +2,6 @@
 #'
 #' Esta função realiza o scraping de uma página XML contendo informações sobre as matérias em tramitação e extrai os dados relevantes.
 #'
-#' @param url A URL do XML contendo as matérias em tramitação. Por padrão, é utilizada a URL "https://legis.senado.leg.br/dadosabertos/materia/tramitando".
 #' @return Um dataframe contendo informações das matérias em tramitação.
 #' O dataframe possui as seguintes colunas:
 #' \describe{
@@ -82,3 +81,4 @@ extrair_materias_tramitando <- function(url = "https://legis.senado.leg.br/dados
   return(dados)
 }
 
+extrair_materias_tramitando()

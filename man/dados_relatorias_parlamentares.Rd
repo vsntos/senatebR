@@ -20,6 +20,5 @@ Esta função obtém as relatorias de parlamentares com base nos códigos e anos
 \examples{
 # Exemplo de uso
 df_relatorias <- relatorias_parlamentares(c(5386, 5012), anos = c(2022, 2023))
-print(df_relatorias)
 
 }

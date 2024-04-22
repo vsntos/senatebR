@@ -5,7 +5,7 @@
 #' @param data_sessao Um vetor contendo as datas das sessões no formato "AAAA-MM-DD".
 #' @return Um data frame contendo os dados de votação, incluindo código de votação, data e hora, partido e voto.
 #' @examples
-#' anos <- c(2018, 2019, 2020)
+#' anos <- c(2022, 2023)
 #' dados_votacoes <- extrair_votacoes_por_ano(anos)
 #' dados_votacao <- coletar_orientacao_votacao(head(dados_votacoes$data_sessao))
 #' @importFrom xml2 read_xml xml_text xml_find_all

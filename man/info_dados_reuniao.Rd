@@ -18,6 +18,5 @@ Esta função extrai dados de uma reunião com base no código fornecido.
 \examples{
 codigo_reuniao <- df_reunioes$codigo
 df_final <- info_dados_reuniao(codigo_reuniao)
-print(df_final)
 
 }

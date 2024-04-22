@@ -19,6 +19,6 @@ Esta função realiza o scraping de uma página XML contendo informações sobre
 }
 \examples{
 # Extrair as situações da tramitação a partir da URL padrão
-extrair_situacoes_tramitacao()
+df_materias_tramitação = extrair_situacoes_tramitacao()
 
 }

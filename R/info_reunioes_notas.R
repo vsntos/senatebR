@@ -9,7 +9,6 @@
 #' @examples
 #' codigo_reuniao <- df_reunioes$codigo
 #' df_final <- info_dados_reuniao(codigo_reuniao)
-#' print(df_final)
 #'
 #' @import httr
 #' @import xml2
