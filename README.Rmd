@@ -2,7 +2,7 @@
 output: github_document
 ---
 
-```{r, echo = FALSE}
+```{r echo=, message=FALSE, warning=FALSE, paged.print=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
