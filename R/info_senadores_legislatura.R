@@ -10,7 +10,6 @@
 #'
 #' @examples
 #'df_senadores_legislatura <- obter_dados_senadores_legislatura(47, 56)
-#'print(df_senadores_legislatura)
 #'
 #' @import httr
 #' @importFrom jsonlite fromJSON
