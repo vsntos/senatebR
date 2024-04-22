@@ -9,12 +9,22 @@
 #'
 #' @examples
 #' codigos <- c(12071, 12072, 12073)
-#' df_conteudos <- notas_taquigraficas(codigos)
+#' df_conteudos <- extrair_notas_taquigraficas(codigos)
+#'
+#'
+#' @import rvest
+#' @importFrom rvest read_html html_nodes html_text
 #' @export
-notas_taquigraficas <- function(codigos_reuniao) {
-  # Inicializa o dataframe vazio para armazenar os resultados
+extrair_notas_taquigraficas <- function(codigos_reuniao) {
+  # Verificar se o vetor de códigos de reunião está vazio
+  if (length(codigos_reuniao) == 0) {
+    stop("O vetor de códigos de reunião está vazio.")
+  }
+
+  # Inicializar um dataframe vazio para armazenar os resultados
   df_conteudos <- data.frame(Codigo_Reuniao = numeric(0), Conteudo = character(0), stringsAsFactors = FALSE)
 
+  # Iterar sobre os códigos de reunião
   for (codigo_reuniao in codigos_reuniao) {
     # Criação da URL
     url_nota_taquigrafica <- paste0("https://www25.senado.leg.br/web/atividade/notas-taquigraficas/-/notas/r/", codigo_reuniao)
@@ -22,29 +32,36 @@ notas_taquigraficas <- function(codigos_reuniao) {
     # Tenta acessar a página
     tryCatch({
       # Leitura da página
-      pagina <- read_html(url_nota_taquigrafica)
+      pagina <- rvest::read_html(url_nota_taquigrafica)
 
-      # Verificar se a página foi carregada corretamente
-      if (length(pagina) == 0) {
-        cat("Erro ao acessar a URL:", url_nota_taquigrafica, "\n")
-        next
-      }
+      # Encontrar todas as tags <div> com class="principalStyle"
+      divs <- pagina %>% rvest::html_nodes(".principalStyle")
 
-      # Extrair o texto da tag <div> com class="principalStyle"
-      texto_completo <- html_text(html_node(pagina, ".principalStyle"))
+      # Extrair o texto de cada tag <div> com class="principalStyle"
+      textos <- divs %>% rvest::html_text()
+
+      # Combinar os textos em um único texto
+      texto_completo <- paste(textos, collapse = " ")
 
       # Criar um dataframe com o código de reunião e o conteúdo da página de notas
       df_conteudo <- data.frame(Codigo_Reuniao = codigo_reuniao, Conteudo = texto_completo, stringsAsFactors = FALSE)
 
       # Adicionar o dataframe à lista de dataframes
-      df_conteudos <- bind_rows(df_conteudos, df_conteudo)
+      df_conteudos <- rbind(df_conteudos, df_conteudo)
 
     }, error = function(e) {
+      # Mensagem de erro detalhada em caso de falha
       cat("Erro ao acessar a URL:", url_nota_taquigrafica, "\n")
       cat("Mensagem de erro:", conditionMessage(e), "\n")
       # Pular para a próxima iteração
       next
     })
+  }
+
+  # Verificar se foram encontradas notas taquigráficas
+  if (nrow(df_conteudos) == 0) {
+    cat("Nenhuma nota taquigráfica encontrada para os códigos de reunião fornecidos.\n")
+    return(NULL)
   }
 
   return(df_conteudos)
