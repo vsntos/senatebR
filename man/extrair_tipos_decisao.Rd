@@ -12,9 +12,9 @@ extrair_tipos_decisao(
 Um dataframe contendo os tipos de decisão.
 }
 \description{
-Esta função realiza o scraping de uma página XML contendo informações sobre os tipos de decisão e extrai os dados relevantes.
+Esta função realiza o scraping sobre os tipos de decisão e extrai os dados relevantes.
 }
 \examples{
-# Extrair os tipos de decisão a partir da URL padrão
+# Extrair os tipos de decisão
 df_tipos_decisao <- extrair_tipos_decisao()
 }
