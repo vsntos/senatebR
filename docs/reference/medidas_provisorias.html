@@ -57,19 +57,35 @@ do site do Congresso Nacional do Brasil.</p>
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>inicio_pagina</dt>
-<dd><p>Número da primeira página a ser coletada</p></dd>
+<dd><p>Número da primeira página a ser coletada.</p></dd>
 
 
 <dt>fim_pagina</dt>
-<dd><p>Número da última página a ser coletada</p></dd>
+<dd><p>Número da última página a ser coletada.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>Um dataframe com dados sobre medidas provisórias em andamento e encerradas</p>
-    </div>
+<p>Um dataframe contendo informações sobre medidas provisórias em andamento e encerradas.
+O dataframe possui as seguintes colunas:</p><dl><dt>Link</dt>
+<dd><p>Link para acessar mais informações sobre a medida provisória.</p></dd>
+
+  <dt>Matéria</dt>
+<dd><p>Título da medida provisória.</p></dd>
+
+  <dt>Ementa</dt>
+<dd><p>Resumo ou descrição da medida provisória.</p></dd>
+
+  <dt>Prazo</dt>
+<dd><p>Prazo de vigência da medida provisória, especificando os prazos de 60 e 120 dias.</p></dd>
+
+  <dt>Status</dt>
+<dd><p>Status da medida provisória, indicando se está em tramitação ou encerrada.</p></dd>
+
+
+</dl></div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>

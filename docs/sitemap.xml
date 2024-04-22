@@ -25,6 +25,12 @@
     <loc>/reference/coletar_orientacao_votacao.html</loc>
   </url>
   <url>
+    <loc>/reference/dados_comissoes.html</loc>
+  </url>
+  <url>
+    <loc>/reference/dados_vetos.html</loc>
+  </url>
+  <url>
     <loc>/reference/enriquecer_dados_comissao.html</loc>
   </url>
   <url>
@@ -32,6 +38,9 @@
   </url>
   <url>
     <loc>/reference/extrair_classificacoes_materia.html</loc>
+  </url>
+  <url>
+    <loc>/reference/extrair_dados_comissao_senador.html</loc>
   </url>
   <url>
     <loc>/reference/extrair_dados_senador.html</loc>
@@ -88,13 +97,28 @@
     <loc>/reference/info_atualizacao_materias.html</loc>
   </url>
   <url>
+    <loc>/reference/info_comissao_enriquecida.html</loc>
+  </url>
+  <url>
+    <loc>/reference/info_dados_academicos.html</loc>
+  </url>
+  <url>
+    <loc>/reference/info_dados_reuniao.html</loc>
+  </url>
+  <url>
     <loc>/reference/info_materia_assuntos.html</loc>
+  </url>
+  <url>
+    <loc>/reference/info_materia_temas.html</loc>
   </url>
   <url>
     <loc>/reference/materias_legislatura_atual.html</loc>
   </url>
   <url>
     <loc>/reference/medidas_provisorias.html</loc>
+  </url>
+  <url>
+    <loc>/reference/notas_taquigraficas.html</loc>
   </url>
   <url>
     <loc>/reference/obter_dados_academicos.html</loc>
