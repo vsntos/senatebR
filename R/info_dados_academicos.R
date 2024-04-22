@@ -45,11 +45,11 @@ info_dados_academicos <- function(codigos) {
         dados <- data.frame(Codigo = NA, Nome = NA, NomeCurso = NA, GrauInstrucao = NA, Estabelecimento = NA)
         dados$Codigo <- codigo
         dados$Nome <- nome
-        warning(paste("Não há dados de histórico acadêmico disponíveis para o código:", .x))
+        warning(paste("Nao ha dados de historico academico disponiveis para o codigo:", .x))
         return(dados)
       }
     } else {
-      stop("Falha na requisição para o código ", .x, ". Código de status: ", httr::status_code(response))
+      stop("Falha na requisicao para o codigo ", .x, ". Codigo de status: ", httr::status_code(response))
     }
   })
 

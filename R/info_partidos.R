@@ -28,6 +28,6 @@ obter_dados_partidos <- function() {
     return(df_partidos)
   } else {
     # Se a requisição falhar, imprima uma mensagem de erro
-    stop("Falha na requisição. Código de status: ", httr::status_code(response))
+    stop("Falha na requisicao. Codigo de status: ", httr::status_code(response))
   }
 }

@@ -53,12 +53,12 @@ obter_dados_comissoes_parlamentares <- function(codigos_parlamentares) {
       } else {
         # Se não há dados, crie um dataframe vazio
         df_senadores_comissao <- data.frame(CodigoParlamentar = dados_id_senador$Codigo, NomeParlamentar = dados_id_senador$Nome)
-        warning(paste("Não há dados de comissões disponíveis para o código:", codigo))
+        warning(paste("Nao ha dados de comissoes disponiveis para o codigo:", codigo))
         resultados[[codigo]] <- df_senadores_comissao
       }
     } else {
       # Se a requisição falhar, imprima uma mensagem de erro e continue para o próximo código
-      warning(paste("Falha na requisição para o código:", codigo, ". Código de status:", httr::status_code(response)))
+      warning(paste("Falha na requisição para o codigo:", codigo, ". Codigo de status:", httr::status_code(response)))
       next
     }
   }
