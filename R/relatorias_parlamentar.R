@@ -9,7 +9,7 @@
 #'
 #' @examples
 #' # Exemplo de uso
-#' df_relatorias <- obter_relatorias_parlamentares(c(5386, 5012), anos = c(2022, 2023))
+#' df_relatorias <- relatorias_parlamentares(c(5386, 5012), anos = c(2022, 2023))
 #' print(df_relatorias)
 #'
 #' @import httr
@@ -17,7 +17,7 @@
 #' @import dplyr
 #'
 #' @export
-obter_relatorias_parlamentares <- function(codigos_parlamentares, anos) {
+relatorias_parlamentares <- function(codigos_parlamentares, anos) {
   # Inicializar uma lista para armazenar os dataframes individuais
   lista_dataframes <- list()
 
