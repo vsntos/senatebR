@@ -8,10 +8,9 @@
 #' @return Um dataframe contendo os códigos de reunião e os respectivos conteúdos das páginas de notas, ou NULL se ocorrer um erro.
 #'
 #' @examples
-#' \dontrun{
 #' codigos <- c(12071, 12072, 12073)
 #' df_conteudos <- extrair_notas_taquigraficas(codigos)
-#' }
+#'
 #'
 #' @import rvest
 #' @importFrom rvest read_html html_nodes html_text
