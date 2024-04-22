@@ -16,9 +16,7 @@ Um data frame contendo os dados das comissões do senador.
 Esta função extrai os dados das comissões de um senador com base no seu código parlamentar.
 }
 \examples{
-\dontrun{
 codigo_senador <- "5008"
 extrair_dados_comissao_senador(codigo_senador)
-}
 
 }

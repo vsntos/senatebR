@@ -2,8 +2,6 @@
 #'
 #' Esta função realiza o scraping de uma página XML contendo informações sobre as classificações de matéria e extrai os dados relevantes.
 #'
-#' @param url A URL do XML contendo as classificações de matéria. Por padrão, é utilizada a URL "https://legis.senado.leg.br/dadosabertos/dados/ListaClassificacoesMateria.xml".
-#' @return Um dataframe contendo as classificações de matéria.
 #' @importFrom xml2 read_xml xml_find_all xml_text xml_find_first
 #' @export
 #' @examples

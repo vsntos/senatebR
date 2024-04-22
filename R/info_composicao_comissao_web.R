@@ -6,10 +6,8 @@
 #' @return Um data frame contendo os dados das comissões do senador.
 #'
 #' @examples
-#' \dontrun{
 #' codigo_senador <- "5008"
 #' extrair_dados_comissao_senador(codigo_senador)
-#' }
 #'
 #' @import rvest
 #' @import magrittr

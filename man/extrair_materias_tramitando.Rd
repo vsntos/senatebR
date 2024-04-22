@@ -8,9 +8,6 @@ extrair_materias_tramitando(
   url = "https://legis.senado.leg.br/dadosabertos/materia/tramitando"
 )
 }
-\arguments{
-\item{url}{A URL do XML contendo as matérias em tramitação. Por padrão, é utilizada a URL "https://legis.senado.leg.br/dadosabertos/materia/tramitando".}
-}
 \value{
 Um dataframe contendo informações das matérias em tramitação.
 O dataframe possui as seguintes colunas:
