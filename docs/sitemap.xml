@@ -37,28 +37,13 @@
     <loc>/reference/dados_vetos.html</loc>
   </url>
   <url>
-    <loc>/reference/enriquecer_dados_comissao.html</loc>
-  </url>
-  <url>
-    <loc>/reference/extract_meeting_data.html</loc>
-  </url>
-  <url>
     <loc>/reference/extrair_classificacoes_materia.html</loc>
   </url>
   <url>
     <loc>/reference/extrair_dados_comissao_senador.html</loc>
   </url>
   <url>
-    <loc>/reference/extrair_dados_senador.html</loc>
-  </url>
-  <url>
-    <loc>/reference/extrair_dados_varias_urls.html</loc>
-  </url>
-  <url>
     <loc>/reference/extrair_detalhes_vetos.html</loc>
-  </url>
-  <url>
-    <loc>/reference/extrair_materias_tramitando.html</loc>
   </url>
   <url>
     <loc>/reference/extrair_notas_taquigraficas.html</loc>
@@ -85,15 +70,6 @@
     <loc>/reference/extrair_votacoes_por_ano.html</loc>
   </url>
   <url>
-    <loc>/reference/get_dados_comissoes.html</loc>
-  </url>
-  <url>
-    <loc>/reference/get_reunioes.html</loc>
-  </url>
-  <url>
-    <loc>/reference/hello.html</loc>
-  </url>
-  <url>
     <loc>/reference/index.html</loc>
   </url>
   <url>
@@ -106,13 +82,7 @@
     <loc>/reference/info_comissao_enriquecida.html</loc>
   </url>
   <url>
-    <loc>/reference/info_dados_academicos.html</loc>
-  </url>
-  <url>
     <loc>/reference/info_dados_reuniao.html</loc>
-  </url>
-  <url>
-    <loc>/reference/info_materia_assuntos.html</loc>
   </url>
   <url>
     <loc>/reference/info_materia_temas.html</loc>
@@ -127,12 +97,6 @@
     <loc>/reference/medidas_provisorias.html</loc>
   </url>
   <url>
-    <loc>/reference/notas_taquigraficas.html</loc>
-  </url>
-  <url>
-    <loc>/reference/obter_dados_academicos.html</loc>
-  </url>
-  <url>
     <loc>/reference/obter_dados_comissoes_parlamentares.html</loc>
   </url>
   <url>
@@ -140,11 +104,5 @@
   </url>
   <url>
     <loc>/reference/obter_dados_senadores_legislatura.html</loc>
-  </url>
-  <url>
-    <loc>/reference/obter_relatorias_parlamentares.html</loc>
-  </url>
-  <url>
-    <loc>/reference/relatorias_parlamentares.html</loc>
   </url>
 </urlset>
