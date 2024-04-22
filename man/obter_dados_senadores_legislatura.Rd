@@ -19,11 +19,8 @@ Esta função realiza requisições HTTP para obter informações dos senadores
 com base nas legislaturas fornecidas.
 }
 \examples{
-\dontrun{
-  # Exemplo de uso
-  df_senadores_legislatura <- obter_dados_senadores_legislatura(47, 56)
-  print(df_senadores_legislatura)
-}
+df_senadores_legislatura <- obter_dados_senadores_legislatura(47, 56)
+print(df_senadores_legislatura)
 
 }
 \references{

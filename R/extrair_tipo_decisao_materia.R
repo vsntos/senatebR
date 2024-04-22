@@ -6,7 +6,6 @@
 #' @importFrom xml2 read_xml xml_find_all xml_text xml_find_first
 #' @export
 #' @examples
-#' # Extrair os tipos de decisão
 #' df_tipos_decisao <- extrair_tipos_decisao()
 extrair_tipos_decisao <- function(url = "https://legis.senado.leg.br/dadosabertos/dados/ListaTiposDecisao.xml") {
   # Faça o download e analise o XML

@@ -18,6 +18,5 @@ Um dataframe contendo as classificações de matéria.
 Esta função realiza o scraping de uma página XML contendo informações sobre as classificações de matéria e extrai os dados relevantes.
 }
 \examples{
-# Extrair as classificações de matéria a partir da URL padrão
 df_classificacao_materias <- extrair_classificacoes_materia()
 }

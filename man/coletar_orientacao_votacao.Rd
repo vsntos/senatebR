@@ -16,8 +16,5 @@ Um data frame contendo os dados de votação, incluindo código de votação, da
 Esta função coleta os dados de votação do Senado Federal a partir de uma lista de datas de sessão.
 }
 \examples{
-\dontrun{
-# Exemplo de uso com vetor de datas de sessão
 dados_votacao <- coletar_orientacao_votacao(df_vot$data_sessao)
-}
 }

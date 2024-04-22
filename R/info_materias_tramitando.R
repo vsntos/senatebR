@@ -24,9 +24,7 @@
 #' @export
 #'
 #' @examples
-#' # Extrair informações das matérias em tramitação a partir da URL padrão
 #' extrair_materias_tramitando()
-#'
 extrair_materias_tramitando <- function(url = "https://legis.senado.leg.br/dadosabertos/materia/tramitando") {
   # Faça o download e analise o XML
   doc <- xml2::read_xml(url)

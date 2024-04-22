@@ -5,10 +5,7 @@
 #' @param data_sessao Um vetor contendo as datas das sessões no formato "AAAA-MM-DD".
 #' @return Um data frame contendo os dados de votação, incluindo código de votação, data e hora, partido e voto.
 #' @examples
-#' \dontrun{
-#' # Exemplo de uso com vetor de datas de sessão
 #' dados_votacao <- coletar_orientacao_votacao(df_vot$data_sessao)
-#' }
 #' @importFrom xml2 read_xml xml_text xml_find_all
 #' @importFrom dplyr bind_rows
 #' @export

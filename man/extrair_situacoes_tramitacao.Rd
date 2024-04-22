@@ -21,5 +21,4 @@ Esta função realiza o scraping de uma página XML contendo informações sobre
 # Extrair as situações da tramitação a partir da URL padrão
 extrair_situacoes_tramitacao()
 
-
 }

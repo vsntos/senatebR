@@ -33,7 +33,5 @@ O dataframe possui as seguintes colunas:
 Esta função realiza o scraping de uma página XML contendo informações sobre as matérias em tramitação e extrai os dados relevantes.
 }
 \examples{
-# Extrair informações das matérias em tramitação a partir da URL padrão
 extrair_materias_tramitando()
-
 }

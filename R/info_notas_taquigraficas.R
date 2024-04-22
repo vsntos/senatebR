@@ -8,11 +8,8 @@
 #' @return Um dataframe contendo os códigos de reunião e os respectivos conteúdos das páginas de notas, ou NULL se ocorrer um erro.
 #'
 #' @examples
-#' \dontrun{
 #' codigos <- c(12071, 12072, 12073)
 #' df_conteudos <- notas_taquigraficas(codigos)
-#' }
-#'
 #' @export
 notas_taquigraficas <- function(codigos_reuniao) {
   # Inicializa o dataframe vazio para armazenar os resultados

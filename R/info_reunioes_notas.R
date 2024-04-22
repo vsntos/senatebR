@@ -7,7 +7,6 @@
 #' @return Um dataframe contendo informações da reunião.
 #'
 #' @examples
-#' # Exemplo de uso
 #' codigo_reuniao <- df_reunioes$codigo
 #' df_final <- info_dados_reuniao(codigo_reuniao)
 #' print(df_final)

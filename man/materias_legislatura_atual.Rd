@@ -27,5 +27,4 @@ Os dados extraídos incluem o código da matéria, sigla e nome da casa legislat
 }
 \examples{
 df_materias <- materias_legislatura_atual()
-
 }

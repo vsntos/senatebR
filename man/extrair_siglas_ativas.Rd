@@ -15,6 +15,5 @@ Um dataframe contendo as siglas ativas de matérias.
 Esta função realiza o scraping de uma página XML contendo informações sobre as siglas ativas de matérias e extrai os dados relevantes.
 }
 \examples{
-# Extrair as siglas ativas de matérias a partir da URL padrão
 extrair_siglas_ativas()
 }

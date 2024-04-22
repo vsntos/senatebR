@@ -7,7 +7,7 @@
 #' @return Um dataframe contendo os dados das comissões que parlamentares são ou foram membros.
 #'
 #' @examples
-#' codigos_senadores <- df_parlamentares$CodigoParlamentar
+#' codigos_senadores <- c(5386, 5012)
 #' df_comissoes_parlamentares <- obter_dados_comissoes_parlamentares(codigos_senadores)
 #'
 #' @import httr

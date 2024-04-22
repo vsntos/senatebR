@@ -17,9 +17,6 @@ Esta função acessa uma página de notas taquigráficas do Senado Federal
 e extrai o conteúdo da mesma.
 }
 \examples{
-\dontrun{
 codigos <- c(12071, 12072, 12073)
 df_conteudos <- notas_taquigraficas(codigos)
-}
-
 }
