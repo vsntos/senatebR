@@ -16,5 +16,7 @@ Um data frame contendo os dados de votação, incluindo código de votação, da
 Esta função coleta os dados de votação do Senado Federal a partir de uma lista de datas de sessão.
 }
 \examples{
-dados_votacao <- coletar_orientacao_votacao(df_vot$data_sessao)
+anos <- c(2018, 2019, 2020)
+dados_votacoes <- extrair_votacoes_por_ano(anos)
+dados_votacao <- coletar_orientacao_votacao(head(dados_votacoes$data_sessao))
 }
