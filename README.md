@@ -64,4 +64,4 @@ The `{senatebR}` is an initiative dedicated to making the public data of the Bra
 
 # [Citation](#Citation)
 
-Santos, Vinicius (2024). senatebR: Activities of the Brazilian Federal Senate. R package. https://github.com/vsntos/senatebR
+Santos, Vinicius (2024). senatebR: Code for collect data from the Brazilian Senate. R package. https://github.com/vsntos/senatebR
