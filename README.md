@@ -1,5 +1,4 @@
-
-# senatebR <img src="inst/figures/img.png" align="right" width="150"/> 
+# senatebR <img src="inst/figures/img.png" align="right" width="150"/>
 
 ![License](https://img.shields.io/badge/license-MIT-blueviolet.svg?style=flat)
 
@@ -21,10 +20,10 @@ The `{senatebR}` package is a comprehensive tool designed to access information 
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [About](#about)
-- [Citation](#Citation)
+-   [Installation](#installation)
+-   [Usage](#usage)
+-   [About](#about)
+-   [Citation](#Citation)
 
 # :arrow_double_down: [Installation](#installation)
 
@@ -36,11 +35,12 @@ install.packages("remotes")
 remotes::install_github("vsntos/senatebR")
 
 ```
+
 # [Usage](#usage)
 
 Below is a quick-start guide to using the `{senatebR}` package.
 
-### Downloading veto details 
+### Downloading veto details
 
 ```{r, eval = FALSE, message=FALSE, warning=FALSE}
 # This function scraps a page containing information about vetoes.
@@ -50,7 +50,7 @@ vetos = extrair_detalhes_vetos(3)
 
 ```
 
-### Downloading party details 
+### Downloading party details
 
 ```{r, eval = FALSE, message=FALSE, warning=FALSE}
 
@@ -64,4 +64,4 @@ The `{senatebR}` is an initiative dedicated to making the public data of the Bra
 
 # [Citation](#Citation)
 
-Santos, Vinicius (2024). senatebR: Code for collect data from the Brazilian Senate. R package. https://github.com/vsntos/senatebR
+Santos, Vinicius (2024). senatebR: Code for collect data from the Brazilian Senate. R package. <https://github.com/vsntos/senatebR>
