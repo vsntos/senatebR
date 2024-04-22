@@ -25,6 +25,9 @@
     <loc>/reference/coletar_orientacao_votacao.html</loc>
   </url>
   <url>
+    <loc>/reference/dados_academicos.html</loc>
+  </url>
+  <url>
     <loc>/reference/dados_comissoes.html</loc>
   </url>
   <url>
@@ -113,6 +116,9 @@
   </url>
   <url>
     <loc>/reference/info_materia_temas.html</loc>
+  </url>
+  <url>
+    <loc>/reference/info_vetos.html</loc>
   </url>
   <url>
     <loc>/reference/materias_legislatura_atual.html</loc>

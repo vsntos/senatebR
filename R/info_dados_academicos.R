@@ -7,7 +7,7 @@
 #' @return Um dataframe com os dados acadêmicos.
 #'
 #' @examples
-#' codigos <- c(1234, 5678)
+#' codigos <- c(5386, 5012)
 #' dados <- info_dados_academicos(codigos)
 #'
 #' @import httr

@@ -1,6 +1,6 @@
 #' Obtém dados dos partidos dos senadores a partir da API do Senado
 #'
-#' Esta função realiza uma requisição à API do Senado para obter informações sobre os partidos dos senadores.
+#' Esta função realiza uma requisição à API do Senado para obter informações sobre os partidos.
 #'
 #' @return Um dataframe contendo dados dos partidos.
 #'

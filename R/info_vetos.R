@@ -7,14 +7,13 @@
 #' @return Um dataframe contendo os detalhes dos vetos.
 #'
 #' @examples
-#' dados_vetos <- extrair_detalhes_vetos(pages = 3)
-#'
+#' dados_vetos <- info_vetos(pages = 3)
 #' @import rvest
 #' @import dplyr
 #' @importFrom rvest read_html html_nodes html_text html_attr
 #' @importFrom dplyr %>%
 #' @export
-extrair_detalhes_vetos <- function(pages = 1) {
+info_vetos <- function(pages = 1) {
   # URL base contendo informações sobre vetos
   url_base <- "https://www.congressonacional.leg.br/materias/vetos/-/veto/encerradas/"
 

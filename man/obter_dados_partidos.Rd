@@ -10,7 +10,7 @@ obter_dados_partidos()
 Um dataframe contendo dados dos partidos.
 }
 \description{
-Esta função realiza uma requisição à API do Senado para obter informações sobre os partidos dos senadores.
+Esta função realiza uma requisição à API do Senado para obter informações sobre os partidos.
 }
 \examples{
 df_partidos <- obter_dados_partidos()
