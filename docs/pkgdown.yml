@@ -1,7 +1,6 @@
 pandoc: 2.17.1.1
 pkgdown: 2.0.7
 pkgdown_sha: ~
-articles:
-  senatebR: senatebR.html
-last_built: 2024-04-22T14:17Z
+articles: {}
+last_built: 2024-04-22T14:43Z
 
