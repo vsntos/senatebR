@@ -10,7 +10,6 @@
 #' @examples
 #' # Exemplo de uso
 #' df_relatorias <- relatorias_parlamentares(c(5386, 5012), anos = c(2022, 2023))
-#' print(df_relatorias)
 #'
 #' @import httr
 #' @import jsonlite
