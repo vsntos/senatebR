@@ -5,8 +5,6 @@
 \title{Função para extrair os dados de várias URLs}
 \usage{
 extrair_detalhes_vetos(pages = 1)
-
-extrair_detalhes_vetos(pages = 1)
 }
 \arguments{
 \item{pages}{O número de páginas a serem processadas.}
