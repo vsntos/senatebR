@@ -30,7 +30,7 @@ The `{senatebR}` package is a comprehensive tool designed to access information 
 
 You can install the current version of senatebR from GitHub:
 
-```{r, eval = FALSE}
+```{r, eval = FALSE, message=FALSE, warning=FALSE}}
 
 install.packages("remotes")
 remotes::install_github("vsntos/senatebR")
@@ -42,7 +42,7 @@ Below is a quick-start guide to using the `{senatebR}` package.
 
 ### Downloading veto details 
 
-```{r, message=FALSE, warning=FALSE}
+```{r, eval = FALSE, message=FALSE, warning=FALSE}
 # This function scraps a page containing information about vetoes.
 # The parameter is the number of pages to be processed
 
@@ -52,7 +52,7 @@ vetos = extrair_detalhes_vetos(3)
 
 ### Downloading party details 
 
-```{r, message=FALSE, warning=FALSE}
+```{r, eval = FALSE, message=FALSE, warning=FALSE}
 
 df_partidos <- obter_dados_partidos()
 
