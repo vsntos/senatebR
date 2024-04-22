@@ -17,7 +17,7 @@
 #' @import dplyr
 #'
 #' @export
-relatorias_parlamentares <- function(codigos_parlamentares, anos) {
+dados_relatorias_parlamentares <- function(codigos_parlamentares, anos) {
   # Inicializar uma lista para armazenar os dataframes individuais
   lista_dataframes <- list()
 

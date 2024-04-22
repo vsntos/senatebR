@@ -22,5 +22,4 @@ urls <- c("https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/16
           "https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/16049",
           "https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/16029")
 dados <- dados_vetos(urls)
-
 }
