@@ -1,9 +1,7 @@
 #' Lista de Assuntos
 #'
 #' Esta função realiza o scraping de um XML contendo informações sobre assuntos legislativos do Senado Federal do Brasil.
-#' Os dados extraídos incluem código do assunto, assunto geral, assunto específico, data de início e data de fim.
 #'
-#' @param url URL do XML contendo os dados dos assuntos. Por padrão, é usado o URL fornecido pelo Senado Federal.
 #' @return Um dataframe contendo os detalhes dos assuntos legislativos.
 #' O dataframe possui as seguintes colunas:
 #' \describe{

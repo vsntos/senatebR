@@ -1,11 +1,6 @@
 #' Lista de Matérias Atualizadas
 #'
-#' Esta função realiza o scraping de um XML contendo informações sobre matérias legislativas atualizadas recentemente no Senado Federal do Brasil.
-#' Os dados extraídos incluem código da matéria, sigla e nome da casa legislativa, tipo e descrição do subtipo da matéria, número e ano da matéria, descrição do objetivo do processo,
-#' descrição da matéria, indicador de tramitação, identificação do processo, ementa da matéria, indexação da matéria, indicador complementar, datas de apresentação e leitura da matéria,
-#' classificações da matéria (se disponível), e informações sobre atualizações recentes da matéria.
-#'
-#' @param url URL do XML contendo os dados das matérias atualizadas. Por padrão, é usado o URL fornecido pelo Senado Federal.
+#' Esta função realiza o scraping de informações sobre matérias legislativas atualizadas recentemente no Senado Federal do Brasil.
 #'
 #' @return Um dataframe contendo os detalhes das matérias legislativas atualizadas recentemente.
 #'

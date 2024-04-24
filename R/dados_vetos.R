@@ -1,7 +1,7 @@
 #' Função para extrair os dados de várias URLs
 #'
 #' Esta função realiza o scraping de várias páginas HTML contendo informações sobre vetos do Congresso Nacional
-#' e extrai os dados da tabela de partes vetadas.
+#' e extrai os dados dos itens vetados.
 #'
 #' @param urls Um vetor de URLs das páginas a serem analisadas.
 #' @return Um dataframe contendo os dados extraídos de todas as URLs fornecidas.

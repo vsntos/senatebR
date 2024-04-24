@@ -2,7 +2,6 @@
 #'
 #' Esta função realiza o scraping de uma página XML contendo informações sobre as situações da tramitação das matérias e extrai os dados relevantes.
 #'
-#' @param url A URL do XML contendo as situações da tramitação. Por padrão, é utilizada a URL "https://legis.senado.leg.br/dadosabertos/dados/ListaSituacoes.xml".
 #' @return Um dataframe contendo as situações da tramitação.
 #'
 #' @examples

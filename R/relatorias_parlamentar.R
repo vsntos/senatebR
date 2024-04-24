@@ -5,7 +5,7 @@
 #' @param codigos_parlamentares Vetor de códigos de parlamentares.
 #' @param anos Vetor de anos.
 #'
-#' @return Um dataframe consolidado com todas as relatorias.
+#' @return Um dataframe consolidado com todas as relatorias dos palamanetares escolhidos
 #'
 #' @examples
 #' # Exemplo de uso

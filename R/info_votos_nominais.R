@@ -1,7 +1,6 @@
 #' Extrai as informações das votações nominais por ano
 #'
-#' Esta função extrai as informações das votações nominais de um arquivo XML fornecido
-#' e retorna um data frame contendo essas informações.
+#' Esta função extrai as informações das votações nominais e retorna um data frame.
 #'
 #' @param anos Vetor contendo os anos das votações a serem extraídas
 #'
