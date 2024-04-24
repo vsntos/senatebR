@@ -9,7 +9,7 @@
 #'
 #' @examples
 #' # Exemplo de uso
-#' df_relatorias <- relatorias_parlamentares(c(5386, 5012), anos = c(2022, 2023))
+#' df_relatorias <- dados_relatorias_parlamentares(c(5386, 5012), anos = c(2022, 2023))
 #'
 #' @import httr
 #' @import jsonlite
