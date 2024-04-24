@@ -8,7 +8,7 @@
 #'
 #' @examples
 #' Executa a função para extrair as votações nominais
-#' anos = c(2022, 2023)
+#' anos = (2024)
 #' dados_votacoes <- extrair_votacoes_nominais_por_ano(anos)
 #'
 #' @import xml2
