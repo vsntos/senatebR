@@ -1,6 +1,6 @@
-#' Coletar dados de votação do Senado Federal
+#' Coletar dados de orientações de voto no Senado Federal
 #'
-#' Esta função coleta os dados de votação do Senado Federal a partir de uma lista de datas de sessão.
+#' Esta função coleta os dados de orientação das votação do Senado Federal a partir de uma lista de datas de sessão.
 #'
 #' @param data_sessao Um vetor contendo as datas das sessões no formato "AAAA-MM-DD".
 #' @return Um data frame contendo os dados de votação, incluindo código de votação, data e hora, partido e voto.

@@ -1,13 +1,13 @@
 #' Obter dados acadêmicos de senadores com base nos códigos parlamentares
 #'
-#' Esta função realiza requisições HTTP para obter informações acadêmicas de senadores
+#' Esta função realiza requisições para obter informações acadêmicas de senadores
 #' com base em códigos parlamentares fornecidos.
 #'
 #' @param codigos Vetor de códigos parlamentares.
 #' @return Um dataframe com os dados acadêmicos.
 #'
 #' @examples
-#' codigos <- c(5386, 5012)
+#' codigos <- c(5672, 5386)
 #' dados <- dados_academicos(codigos)
 #'
 #' @import httr
@@ -55,4 +55,3 @@ dados_academicos <- function(codigos) {
 
   return(dados_academicos)
 }
-
