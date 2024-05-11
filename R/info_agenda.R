@@ -1,23 +1,22 @@
-#' Raspar os dados da agenda para várias datas
+#' Extrair dados da agenda do Congresso Nacianal, do Senado federal e Câmara dos Deputados
 #'
-#' Esta função raspa os dados da agenda de uma página da web para várias datas e
-#' combina os resultados em um único dataframe.
+#' Esta função extrai dados da agenda do Congresso Nacional para os anos, meses e dias especificados.
 #'
-#' @param anos Vetor contendo os anos desejados.
-#' @param meses Vetor contendo os meses desejados.
-#' @param dias Vetor contendo os dias desejados.
-#' @return Um dataframe contendo os dados da agenda para as datas especificadas.
-#' @export
+#' @param anos Vetor de anos.
+#' @param meses Vetor de meses.
+#' @param dias Vetor de dias.
 #'
-#' @importFrom rvest read_html html_nodes html_node html_text
-#' @import dplyr
-#' @import readr
+#' @return Um dataframe contendo os dados da agenda do Congresso Nacional.
+#'
+#' @importFrom rvest read_html html_nodes html_text
 #'
 #' @examples
 #' resultado <- info_agenda(anos = c(2023, 2024), meses = c(1, 2), dias = 10:15)
+#'
 info_agenda <- function(anos, meses, dias) {
   url_base <- "https://www.congressonacional.leg.br/sessoes/agenda-do-congresso-senado-e-camara/-/agenda/"
   dados <- list()
+
   for (ano in anos) {
     for (mes in meses) {
       for (dia in dias) {
@@ -25,42 +24,40 @@ info_agenda <- function(anos, meses, dias) {
         url <- paste0(url_base, data)
         tryCatch({
           pagina <- read_html(url)
-          linhas <- pagina %>% html_nodes(".cn-agenda-casas-tabela-linha")
-          horas <- c()
-          orgaos <- c()
-          eventos <- c()
-          locais <- c()
-          status <- c()
-          for (linha in linhas) {
-            hora <- linha %>% html_node(".cn-agenda-casas-hora") %>% html_text() #%>% trimws()
-            horas <- c(horas, hora)
-            orgao <- linha %>% html_node(".cn-agenda-casas-orgao") %>% html_text() #%>% trimws()
-            orgaos <- c(orgaos, orgao)
-            evento <- linha %>% html_node("a") %>% html_text() #%>% trimws()
-            eventos <- c(eventos, evento)
-            local <- linha %>% html_nodes("em") %>% html_text() #%>% trimws()
-            locais <- c(locais, local)
-            estado <- linha %>% html_nodes(".cn-agenda-casas-tabela-celula") %>% html_text() #%>% trimws() %>% tail(1)
-            status <- c(status, estado)
+          eventos <- pagina %>% html_nodes(".cn-agenda-casas-tabela-linha")
+          if (length(eventos) == 0) {
+            cat("processando", data, "\n")
+            next
           }
-          dados[[data]] <- data.frame(Data = data,
-                                      Hora = horas,
-                                      Orgao = orgaos,
-                                      Evento = eventos,
-                                      Local = locais,
-                                      Status = status,
-                                      stringsAsFactors = FALSE)
+          for (evento in eventos) {
+            hora <- evento %>% html_node(".cn-agenda-casas-hora") %>% html_text()
+            orgao <- evento %>% html_node(".cn-agenda-casas-orgao") %>% html_text()
+            evento_desc <- evento %>% html_node("strong") %>% html_text()
+            local <- evento %>% html_node("em") %>% html_text()
+            status <- evento %>% html_nodes(".cn-agenda-casas-tabela-celula") %>% html_text() %>% tail(1)
+
+            dados[[length(dados) + 1]] <- data.frame(Data = data,
+                                                     Hora = hora,
+                                                     Orgao = orgao,
+                                                     Evento = evento_desc,
+                                                     Local = local,
+                                                     Status = status,
+                                                     stringsAsFactors = FALSE)
+          }
         }, error = function(e) {
           cat("Erro ao raspar dados para", data, ":", conditionMessage(e), "\n")
         })
       }
     }
   }
-  df_agenda <- do.call(rbind, dados)
-  df_agenda
+
+  if (length(dados) > 0) {
+    df_agenda <- do.call(rbind, dados)
+    return(df_agenda)
+  } else {
+    cat("Nenhum dado encontrado para os anos, meses e dias especificados.\n")
+    return(NULL)
+  }
 }
-
-
-
 
 
