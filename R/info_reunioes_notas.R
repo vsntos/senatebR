@@ -8,14 +8,14 @@
 #'
 #' @examples
 #' codigo_reuniao <- df_reunioes$codigo
-#' df_final <- info_dados_reuniao(codigo_reuniao)
+#' df_final <- info_dados_reuniao_nota(codigo_reuniao)
 #'
 #' @import httr
 #' @import xml2
 #' @import dplyr
 #'
 #' @export
-info_dados_reuniao <- function(codigo_reuniao) {
+info_dados_reuniao_nota <- function(codigo_reuniao) {
   # Inicialize um dataframe vazio para armazenar os resultados
   df_final <- data.frame(stringsAsFactors = FALSE)
 
