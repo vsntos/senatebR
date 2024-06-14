@@ -20,7 +20,6 @@
 #' @importFrom rvest read_html html_nodes html_node html_text html_attr
 #' @importFrom stringr str_trim
 #'
-#' @examples
 #'
 #'
 coletar_medidas_provisorias_em_tramitacao <- function() {
