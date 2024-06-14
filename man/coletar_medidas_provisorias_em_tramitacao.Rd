@@ -20,6 +20,3 @@ O dataframe possui as seguintes colunas:
 \description{
 Esta função coleta dados sobre medidas provisórias em tramitação do site do Congresso Nacional do Brasil.
 }
-\examples{
-mpv_em_tramitacao <- coletar_medidas_provisorias_em_tramitacao()
-}

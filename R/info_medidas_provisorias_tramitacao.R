@@ -21,8 +21,8 @@
 #' @importFrom stringr str_trim
 #'
 #' @examples
-#' mpv_em_tramitacao <- coletar_medidas_provisorias_em_tramitacao()
-
+#'
+#'
 coletar_medidas_provisorias_em_tramitacao <- function() {
   # Função para raspar os dados das matérias em tramitação
   raspar_dados_em_tramitacao <- function(url) {

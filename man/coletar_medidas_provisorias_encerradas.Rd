@@ -24,11 +24,6 @@ O dataframe possui as seguintes colunas:
 \description{
 Esta função coleta dados sobre medidas provisórias encerradas do site do Congresso Nacional do Brasil.
 }
-\examples{
-numero_ultima_pagina <- 364
-mpv_encerradas <- coletar_medidas_provisorias_encerradas(numero_ultima_pagina)
-
-}
 \references{
 Site do Congresso Nacional do Brasil: \url{https://www.congressonacional.leg.br}
 }

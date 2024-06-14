@@ -15,9 +15,6 @@
 #'   \item{Prazo de emendas}{Data limite para submissão de emendas.}
 #' }
 #'
-#' @examples
-#' numero_ultima_pagina <- 364
-#' mpv_encerradas <- coletar_medidas_provisorias_encerradas(numero_ultima_pagina)
 #'
 #' @import rvest
 #' @import dplyr
