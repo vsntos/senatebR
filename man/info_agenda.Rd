@@ -2,24 +2,24 @@
 % Please edit documentation in R/info_agenda.R
 \name{info_agenda}
 \alias{info_agenda}
-\title{Raspar os dados da agenda para várias datas}
+\title{Extrair dados da agenda do Congresso Nacianal, do Senado federal e Câmara dos Deputados}
 \usage{
 info_agenda(anos, meses, dias)
 }
 \arguments{
-\item{anos}{Vetor contendo os anos desejados.}
+\item{anos}{Vetor de anos.}
 
-\item{meses}{Vetor contendo os meses desejados.}
+\item{meses}{Vetor de meses.}
 
-\item{dias}{Vetor contendo os dias desejados.}
+\item{dias}{Vetor de dias.}
 }
 \value{
-Um dataframe contendo os dados da agenda para as datas especificadas.
+Um dataframe contendo os dados da agenda do Congresso Nacional.
 }
 \description{
-Esta função raspa os dados da agenda de uma página da web para várias datas e
-combina os resultados em um único dataframe.
+Esta função extrai dados da agenda do Congresso Nacional para os anos, meses e dias especificados.
 }
 \examples{
 resultado <- info_agenda(anos = c(2023, 2024), meses = c(1, 2), dias = 10:15)
+
 }

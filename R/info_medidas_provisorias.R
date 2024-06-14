@@ -25,7 +25,7 @@
 #' @importFrom stringr str_trim
 #'
 #' @examples
-#' mpv_data <- medidas_provisorias(1, 3)
+#' mpv_data <- medidas_provisorias(1, 364)
 
 medidas_provisorias <- function(inicio_pagina, fim_pagina) {
   # Função para raspar os dados das matérias

@@ -1,24 +1,27 @@
-#' Extrair dados das reuniões das comissões parlamentares
+#' Extrair dados de reuniões de comissões do Senado
 #'
-#' Esta função extrai dados das reuniões de uma comissão específica do Senado Federal.
+#' Esta função extrai dados de reuniões de comissões do Senado Federal
+#' com base nos códigos das comissões e no intervalo de datas fornecido.
 #'
-#' @param codcol Vetor de códigos das comissões.
-#' @param data_inicio Data de início do período desejado no formato "AAAA-MM-DD".
-#' @param data_fim Data de fim do período desejado no formato "AAAA-MM-DD".
-#'
-#' @return Um dataframe contendo as informações extraídas das notas taquigráficas das comissões.
-#'
+#' @param codcol Vetor contendo os códigos das comissões
+#' @param data_inicio Data de início no formato "YYYY-MM-DD"
+#' @param data_fim Data de fim no formato "YYYY-MM-DD"
+#' @return Um DataFrame com os dados das reuniões das comissões
 #' @importFrom rvest read_html html_elements html_text html_attr
 #' @importFrom dplyr %>%
 #' @importFrom glue glue
-#'
+#' @export
 #' @examples
 #' codcol <- c(54, 38, 2614, 34)
 #' data_inicio <- "2023-01-01"
 #' data_fim <- "2023-12-01"
 #' df_reunioes <- info_dados_reuniao_comissao(codcol, data_inicio, data_fim)
-#'
 info_dados_reuniao_comissao <- function(codcol, data_inicio, data_fim) {
+  # Carregar os pacotes necessários
+  library(rvest)
+  library(dplyr)
+  library(glue)
+
   all_data <- list()
 
   for (i in seq_along(codcol)) {
@@ -40,7 +43,6 @@ info_dados_reuniao_comissao <- function(codcol, data_inicio, data_fim) {
       unique()
 
     # demais informações
-
     link_video <- pagina %>% html_elements("span.glyphicon-facetime-video") %>% html_attr("title")
     horarios <- pagina %>% html_elements("h6.texto-com-reticencias strong span") %>% html_text()
     tipos_reunioes <- pagina %>% html_elements("div.f2") %>% html_text()
@@ -51,23 +53,30 @@ info_dados_reuniao_comissao <- function(codcol, data_inicio, data_fim) {
     max_length <- max(length(informacoes), length(links), length(link_video), length(horarios), length(tipos_reunioes), length(locais), length(status))
 
     # Preencha os vetores com as informações extraídas do HTML
-    informacoes <- informacoes %>% rep(NA, length.out = max_length)
-    links <- links %>% rep(NA, length.out = max_length)
-    link_video <- link_video %>% rep(NA, length.out = max_length)
-    horarios <- horarios %>% rep(NA, length.out = max_length)
-    tipos_reunioes <- tipos_reunioes %>% rep(NA, length.out = max_length)
-    locais <- locais %>% rep(NA, length.out = max_length)
-    status <- status %>% rep(NA, length.out = max_length)
+    informacoes <- rep(informacoes, length.out = max_length)
+    links <- rep(links, length.out = max_length)
+    link_video <- rep(link_video, length.out = max_length)
+    horarios <- rep(horarios, length.out = max_length)
+    tipos_reunioes <- rep(tipos_reunioes, length.out = max_length)
+    locais <- rep(locais, length.out = max_length)
+    status <- rep(status, length.out = max_length)
+
+    # Extrair códigos de reunião e comissão dos links
+    cod_reuniao <- gsub(".*reuniao=(\\d+).*", "\\1", links)
+    cod_comissao <- gsub(".*codcol=(\\d+).*", "\\1", links)
 
     # Combine os vetores em um dataframe
     comissao_data <- data.frame(
       Informacoes = informacoes,
       Link_reuniao = links,
+      Cod_reuniao = cod_reuniao,
+      Cod_comissao = cod_comissao,
       LinkVideo = link_video,
       Horarios = horarios,
       TipoReunioes = tipos_reunioes,
       Locais = locais,
-      Status = status)
+      Status = status, stringsAsFactors = FALSE
+    )
 
     # Armazene os dados na lista
     all_data[[i]] <- comissao_data
@@ -78,3 +87,4 @@ info_dados_reuniao_comissao <- function(codcol, data_inicio, data_fim) {
 
   return(data_comissao)
 }
+
