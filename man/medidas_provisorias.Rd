@@ -27,5 +27,5 @@ Esta função coleta dados sobre medidas provisórias em andamento e encerradas
 do site do Congresso Nacional do Brasil.
 }
 \examples{
-mpv_data <- medidas_provisorias(1, 3)
+mpv_data <- medidas_provisorias(1, 364)
 }
