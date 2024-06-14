@@ -16,8 +16,8 @@ Um data frame com as informações das votações nominais
 Esta função extrai as informações das votações nominais e retorna um data frame.
 }
 \examples{
-Executa a função para extrair as votações nominais
-anos = (2024)
+# Exemplo de uso
+anos <- c(2023, 2024)
 dados_votacoes <- extrair_votacoes_nominais_por_ano(anos)
 
 }

@@ -7,22 +7,16 @@
 #' @return Um data frame com as informações das votações nominais
 #'
 #' @examples
-#' Executa a função para extrair as votações nominais
-#' anos = (2024)
+#' # Exemplo de uso
+#' anos <- c(2023, 2024)
 #' dados_votacoes <- extrair_votacoes_nominais_por_ano(anos)
 #'
-#' @import xml2
-#' @import dplyr
-#' @import tidyr
+#' @importFrom xml2 read_xml xml_find_all xml_text xml_name xml_children xml_find_first
 #' @importFrom dplyr bind_rows
-#' @importFrom xml2 read_xml xml_find_all xml_text xml_name xml_find_first
+#' @importFrom tidyr unnest
 #'
 #' @export
 extrair_votacoes_nominais_por_ano <- function(anos) {
-  requireNamespace("xml2", quietly = TRUE)
-  requireNamespace("dplyr", quietly = TRUE)
-  requireNamespace("tidyr", quietly = TRUE)
-
   # Função interna para extrair informações de uma votação nominal
   extrair_info_votacao_nominal <- function(votacao_node) {
     # Extrai os nós filhos da votação
@@ -51,11 +45,10 @@ extrair_votacoes_nominais_por_ano <- function(anos) {
       # Loop pelos nós de votos
       for (voto_node in votos) {
         # Extrai informações do voto
-        info_voto <- xml2::xml_children(voto_node) %>%
-          xml2::xml_text(trim = TRUE)
+        info_voto <- sapply(xml2::xml_children(voto_node), xml2::xml_text, trim = TRUE)
 
         # Define os nomes das colunas
-        nomes_colunas_voto <- xml2::xml_name(xml2::xml_children(voto_node))
+        nomes_colunas_voto <- sapply(xml2::xml_children(voto_node), xml2::xml_name)
 
         # Define os nomes das colunas únicos
         nomes_colunas_voto <- make.unique(nomes_colunas_voto)
@@ -67,7 +60,7 @@ extrair_votacoes_nominais_por_ano <- function(anos) {
         info_voto$CodigoSessao <- xml2::xml_text(xml2::xml_find_first(votacao_node, ".//CodigoSessao"), trim = TRUE)
 
         # Adiciona o data frame do voto à lista
-        lista_votos[[length(lista_votos) + 1]] <- info_voto
+        lista_votos[[length(lista_votos) + 1]] <- as.data.frame(info_voto, stringsAsFactors = FALSE)
       }
 
       # Combina todos os data frames de votos em um único data frame
@@ -103,7 +96,7 @@ extrair_votacoes_nominais_por_ano <- function(anos) {
       info_votacao <- extrair_info_votacao_nominal(votacao_node)
 
       # Adiciona o data frame da votação à lista
-      lista_votacoes[[length(lista_votacoes) + 1]] <- info_votacao
+      lista_votacoes[[length(lista_votacoes) + 1]] <- as.data.frame(info_votacao, stringsAsFactors = FALSE)
     }
 
     # Combina todos os data frames das votações em um único data frame
@@ -122,6 +115,7 @@ extrair_votacoes_nominais_por_ano <- function(anos) {
   # Retorna o data frame final
   return(df_votacoes_nominais)
 }
+
 
 
 

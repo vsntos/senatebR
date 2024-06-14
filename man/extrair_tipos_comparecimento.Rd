@@ -8,6 +8,9 @@ extrair_tipos_comparecimento(
   url = "https://legis.senado.leg.br/dadosabertos/dados/ListaTiposComparecimento.xml"
 )
 }
+\arguments{
+\item{url}{A URL do XML que contém os tipos de comparecimento em votação.}
+}
 \value{
 Um dataframe contendo os tipos de comparecimento em votação.
 }

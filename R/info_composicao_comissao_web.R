@@ -95,11 +95,21 @@ extrair_dados_comissao_senador <- function(codigo_senador) {
   }
 
   # Combinar todos os dataframes em um único dataframe
-  dados_completos <- do.call(rbind, dados_totais)
+  if (length(dados_totais) > 0) {
+    dados_completos <- do.call(rbind, dados_totais)
+  } else {
+    # Se não houver dados, retorne um dataframe vazio
+    dados_completos <- data.frame(CodigoParlamentar = character(0),
+                                  Comissoes = character(0),
+                                  DataInicio = character(0),
+                                  DataFim = character(0),
+                                  Tipo = character(0))
+  }
 
   # Retornar o dataframe completo
   return(dados_completos)
 }
+
 
 
 

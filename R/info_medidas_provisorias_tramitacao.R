@@ -20,23 +20,21 @@
 #' @importFrom rvest read_html html_nodes html_node html_text html_attr
 #' @importFrom stringr str_trim
 #'
-#'
-#'
 coletar_medidas_provisorias_em_tramitacao <- function() {
-  # Função para raspar os dados das matérias em tramitação
+  # Função interna para raspar os dados das matérias em tramitação
   raspar_dados_em_tramitacao <- function(url) {
-    # Ler HTML
+    # Inicializar listas para armazenar os dados
+    links <- character(0)
+    materias <- character(0)
+    ementas <- character(0)
+    prazos <- character(0)
+
+    # Tenta acessar a página e extrair os dados
     tryCatch({
       pagina <- read_html(url)
 
       # Selecionar os elementos desejados
       resumos <- pagina %>% html_nodes(".sf-lista-resumos__resumo")
-
-      # Inicializar listas para armazenar os dados
-      links <- c()
-      materias <- c()
-      ementas <- c()
-      prazos <- c()
 
       # Iterar sobre os resumos para extrair os dados
       for (resumo in resumos) {
@@ -45,30 +43,34 @@ coletar_medidas_provisorias_em_tramitacao <- function() {
         links <- c(links, link)
 
         # Matéria
-        materia <- resumo %>% html_node("dt:contains('Matéria') + dd a") %>% html_text() %>% trimws()
+        materia <- resumo %>% html_node("dt:contains('Matéria') + dd a") %>% html_text() %>% str_trim()
         materias <- c(materias, materia)
 
         # Ementa
-        ementa <- resumo %>% html_node("dt:contains('Ementa') + dd") %>% html_text() %>% trimws()
+        ementa <- resumo %>% html_node("dt:contains('Ementa') + dd") %>% html_text() %>% str_trim()
         ementas <- c(ementas, ementa)
 
         # Prazo de 60 dias
-        prazo_60 <- resumo %>% html_node("dt:contains('Prazo de 60 dias') + dd") %>% html_text() %>% trimws()
+        prazo_60 <- resumo %>% html_node("dt:contains('Prazo de 60 dias') + dd") %>% html_text() %>% str_trim()
 
         # Prazo de 120 dias
-        prazo_120 <- resumo %>% html_node("dt:contains('Prazo de 120 dias') + dd") %>% html_text() %>% trimws()
+        prazo_120 <- resumo %>% html_node("dt:contains('Prazo de 120 dias') + dd") %>% html_text() %>% str_trim()
 
         prazos <- c(prazos, paste(prazo_60, prazo_120, sep = " - "))
       }
 
       # Criar dataframe com os dados
-      dados <- data.frame(Link = links,
-                          Matéria = materias,
-                          Ementa = ementas,
-                          Prazo = prazos) %>%
-        mutate(Status = "em tramitação")
+      dados <- data.frame(
+        Link = links,
+        Matéria = materias,
+        Ementa = ementas,
+        Prazo = prazos,
+        Status = "em tramitação",
+        stringsAsFactors = FALSE
+      )
 
       return(dados)
+
     }, error = function(e) {
       cat("Erro ao acessar a URL:", url, "\n")
       cat("Mensagem de erro:", conditionMessage(e), "\n")

@@ -20,10 +20,10 @@ dados_vetos <- function(urls) {
   # Iterar sobre as URLs e extrair os dados de cada uma
   for (url in urls) {
     # Realizar o scraping da página
-    pagina <- read_html(url)
+    pagina <- rvest::read_html(url)
 
     # Extrair a tabela de partes vetadas
-    tabela <- pagina %>% html_node(".cn-detalhe-veto--partes-vetadas") %>% html_table()
+    tabela <- pagina %>% rvest::html_node(".cn-detalhe-veto--partes-vetadas") %>% rvest::html_table()
 
     # Se houver tabela, converter para dataframe e adicionar o código do veto
     if (length(tabela) > 0) {
@@ -32,7 +32,7 @@ dados_vetos <- function(urls) {
       dados$Codigo_Veto <- codigo_veto
 
       # Adicionar os dados ao dataframe final
-      dados_finais <- rbind(dados_finais, dados)
+      dados_finais <- dplyr::bind_rows(dados_finais, dados)
     } else {
       # Se não houver tabela, imprimir mensagem de aviso
       cat("Nenhuma tabela encontrada para a URL:", url, "\n")

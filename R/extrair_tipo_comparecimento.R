@@ -2,6 +2,7 @@
 #'
 #' Esta função realiza o scraping de uma página XML contendo informações sobre os tipos de comparecimento em votação e extrai os dados relevantes.
 #'
+#' @param url A URL do XML que contém os tipos de comparecimento em votação.
 #' @return Um dataframe contendo os tipos de comparecimento em votação.
 #' @importFrom xml2 read_xml xml_find_all xml_text xml_find_first
 #' @export

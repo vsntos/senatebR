@@ -8,6 +8,12 @@ extrair_classificacoes_materia(
   url = "https://legis.senado.leg.br/dadosabertos/dados/ListaClassificacoesMateria.xml"
 )
 }
+\arguments{
+\item{url}{A URL do XML que contém as classificações de matéria.}
+}
+\value{
+Um dataframe contendo as classificações de matéria.
+}
 \description{
 Esta função realiza o scraping de uma página XML contendo informações sobre as classificações de matéria e extrai os dados relevantes.
 }

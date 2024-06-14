@@ -2,6 +2,7 @@
 #'
 #' Esta função realiza o scraping sobre os tipos de decisão e extrai os dados relevantes.
 #'
+#' @param url A URL do XML que contém os tipos de decisão.
 #' @return Um dataframe contendo os tipos de decisão.
 #' @importFrom xml2 read_xml xml_find_all xml_text xml_find_first
 #' @export
@@ -33,3 +34,4 @@ extrair_tipos_decisao <- function(url = "https://legis.senado.leg.br/dadosaberto
 
   return(dados)
 }
+

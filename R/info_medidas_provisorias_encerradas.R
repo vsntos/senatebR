@@ -79,10 +79,12 @@ coletar_medidas_provisorias_encerradas <- function(numero_ultima_pagina) {
         Título = titulos,
         Ementa = ementas,
         `Prazo de 60 dias` = prazo_60_dias,
-        `Prazo de emendas` = prazo_emendas
+        `Prazo de emendas` = prazo_emendas,
+        stringsAsFactors = FALSE
       )
 
       return(dados_pagina)
+
     }, error = function(e) {
       cat("Erro ao acessar a URL:", url_pagina, "\n")
       cat("Mensagem de erro:", conditionMessage(e), "\n")
@@ -101,7 +103,7 @@ coletar_medidas_provisorias_encerradas <- function(numero_ultima_pagina) {
     url_pagina <- paste0(url_base, i)
     dados_pagina <- raspar_dados_pagina(url_pagina)
 
-    # Adicionar dataframe à lista
+    # Adicionar dataframe à lista se não for NULL
     if (!is.null(dados_pagina)) {
       lista_dados[[i]] <- dados_pagina
     }

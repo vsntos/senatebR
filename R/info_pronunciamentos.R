@@ -17,6 +17,14 @@
 #' @import dplyr
 #' @export
 extrair_pronunciamentos_multi <- function(codigos_parlamentares, anos) {
+  # Verificação e carregamento dos pacotes necessários
+  if (!requireNamespace("rvest", quietly = TRUE)) {
+    stop("Pacote 'rvest' não está instalado. Por favor, instale-o usando install.packages('rvest').")
+  }
+  if (!requireNamespace("dplyr", quietly = TRUE)) {
+    stop("Pacote 'dplyr' não está instalado. Por favor, instale-o usando install.packages('dplyr').")
+  }
+
   # Lista para armazenar os dataframes de pronunciamentos de cada parlamentar
   lista_dados <- list()
 
@@ -32,33 +40,33 @@ extrair_pronunciamentos_multi <- function(codigos_parlamentares, anos) {
                     codigo, "/", ano)
 
       # Ler o HTML da página
-      pagina <- read_html(url)
+      pagina <- rvest::read_html(url)
 
       # Extrair os dados individualmente usando seletores CSS
       data_pronunciamento <- pagina %>%
-        html_nodes("table.table.table-striped tbody tr td:nth-child(1) a") %>%
-        html_text()
+        rvest::html_nodes("table.table.table-striped tbody tr td:nth-child(1) a") %>%
+        rvest::html_text()
 
       tipo_pronunciamento <- pagina %>%
-        html_nodes("table.table.table-striped tbody tr td:nth-child(2)") %>%
-        html_text()
+        rvest::html_nodes("table.table.table-striped tbody tr td:nth-child(2)") %>%
+        rvest::html_text()
 
       casa <- pagina %>%
-        html_nodes("table.table.table-striped tbody tr td:nth-child(3)") %>%
-        html_text()
+        rvest::html_nodes("table.table.table-striped tbody tr td:nth-child(3)") %>%
+        rvest::html_text()
 
       partido_uf <- pagina %>%
-        html_nodes("table.table.table-striped tbody tr td:nth-child(4)") %>%
-        html_text()
+        rvest::html_nodes("table.table.table-striped tbody tr td:nth-child(4)") %>%
+        rvest::html_text()
 
       resumo_pronunciamento <- pagina %>%
-        html_nodes("table.table.table-striped tbody tr td:nth-child(5)") %>%
-        html_text()
+        rvest::html_nodes("table.table.table-striped tbody tr td:nth-child(5)") %>%
+        rvest::html_text()
 
       # Extrair os links dos pronunciamentos
       links_pronunciamento <- pagina %>%
-        html_nodes("table.table.table-striped tbody tr td:nth-child(1) a") %>%
-        html_attr("href")
+        rvest::html_nodes("table.table.table-striped tbody tr td:nth-child(1) a") %>%
+        rvest::html_attr("href")
 
       # Verifica se há dados disponíveis antes de criar o dataframe
       if (length(data_pronunciamento) > 0) {
@@ -80,7 +88,7 @@ extrair_pronunciamentos_multi <- function(codigos_parlamentares, anos) {
 
     # Combinar os dataframes de pronunciamentos de diferentes anos em um único dataframe para o parlamentar atual
     if (length(dados_parlamentar) > 0) {
-      dados_completos_parlamentar <- bind_rows(dados_parlamentar)
+      dados_completos_parlamentar <- dplyr::bind_rows(dados_parlamentar)
 
       # Adiciona o dataframe completo do parlamentar à lista
       lista_dados[[as.character(codigo)]] <- dados_completos_parlamentar
@@ -90,7 +98,7 @@ extrair_pronunciamentos_multi <- function(codigos_parlamentares, anos) {
   # Verifica se há dados disponíveis antes de combinar os dataframes
   if (length(lista_dados) > 0) {
     # Combinar os dataframes de todos os parlamentares em um único dataframe
-    dados_completos <- bind_rows(lista_dados)
+    dados_completos <- dplyr::bind_rows(lista_dados)
 
     # Retorna o dataframe completo
     return(dados_completos)
@@ -99,3 +107,4 @@ extrair_pronunciamentos_multi <- function(codigos_parlamentares, anos) {
     return(NULL)
   }
 }
+

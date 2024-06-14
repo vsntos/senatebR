@@ -21,16 +21,16 @@ extrair_detalhes_vetos <- function(urls) {
   # Iterar sobre as URLs e extrair os dados de cada uma
   for (url in urls) {
     # Realizar o scraping da página
-    pagina <- read_html(url)
+    pagina <- rvest::read_html(url)
 
     # Tentar extrair a tabela de partes vetadas
-    tabela <- try(html_table(pagina %>% html_node(".cn-detalhe-veto--partes-vetadas")), silent = TRUE)
+    tabela <- try(rvest::html_table(pagina %>% rvest::html_node(".cn-detalhe-veto--partes-vetadas")), silent = TRUE)
 
     # Se a tabela foi extraída com sucesso, adicionar ao dataframe final
     if (!inherits(tabela, "try-error")) {
       codigo_veto <- gsub(".*\\/([0-9]+)$", "\\1", url)
       tabela$Codigo_Veto <- codigo_veto
-      dados_finais <- data.frame(dados_finais, tabela)
+      dados_finais <- dplyr::bind_rows(dados_finais, tabela)
     } else {
       # Se não houver tabela, imprimir mensagem de aviso
       cat("Nenhuma tabela encontrada para a URL:", url, "\n")
@@ -39,3 +39,4 @@ extrair_detalhes_vetos <- function(urls) {
 
   return(dados_finais)
 }
+

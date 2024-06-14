@@ -2,6 +2,8 @@
 #'
 #' Esta função realiza o scraping de uma página XML contendo informações sobre as classificações de matéria e extrai os dados relevantes.
 #'
+#' @param url A URL do XML que contém as classificações de matéria.
+#' @return Um dataframe contendo as classificações de matéria.
 #' @importFrom xml2 read_xml xml_find_all xml_text xml_find_first
 #' @export
 #' @examples
@@ -44,4 +46,5 @@ extrair_classificacoes_materia <- function(url = "https://legis.senado.leg.br/da
 
   return(dados)
 }
+
 

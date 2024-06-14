@@ -7,7 +7,7 @@
 info_vetos(pages = 1)
 }
 \arguments{
-\item{pages}{O número de páginas a serem processadas.}
+\item{pages}{O número de páginas a serem processadas. Padrão é 1.}
 }
 \value{
 Um dataframe contendo os detalhes dos vetos.
@@ -16,5 +16,7 @@ Um dataframe contendo os detalhes dos vetos.
 Esta função realiza scraping de uma página contendo informações sobre vetos e extrai detalhes como número do veto, link associado, ementa, data de sobresta, matéria vetada e norma gerada.
 }
 \examples{
+# Exemplo de uso
 dados_vetos <- info_vetos(pages = 3)
+
 }

@@ -2,15 +2,19 @@
 #'
 #' Esta função realiza o scraping de uma página XML contendo informações sobre as situações da tramitação das matérias e extrai os dados relevantes.
 #'
+#' @param url URL do arquivo XML que contém as informações das situações da tramitação. Padrão é "https://legis.senado.leg.br/dadosabertos/dados/ListaSituacoes.xml".
+#'
 #' @return Um dataframe contendo as situações da tramitação.
 #'
 #' @examples
 #' # Extrair as situações da tramitação a partir da URL padrão
-#' df_materias_tramitação = extrair_situacoes_tramitacao()
+#' df_materias_tramitacao <- extrair_situacoes_tramitacao()
 #'
 #' @importFrom xml2 read_xml xml_find_all xml_text xml_find_first
 #' @export
 extrair_situacoes_tramitacao <- function(url = "https://legis.senado.leg.br/dadosabertos/dados/ListaSituacoes.xml") {
+  requireNamespace("xml2", quietly = TRUE)
+
   # Faça o download e analise o XML
   doc <- xml2::read_xml(url)
 

@@ -33,11 +33,11 @@ obter_dados_comissoes_parlamentares <- function(codigos_parlamentares) {
       # Extraia os dados do parlamentar
       dados_id_senador <- json_data$MembroComissaoParlamentar$Parlamentar
 
-      # Extraia os dados das comissões
-      comissoes <- json_data$MembroComissaoParlamentar$Parlamentar$MembroComissoes$Comissao
-
       # Verifique se há dados de comissões disponíveis
-      if (length(comissoes) > 0) {
+      if (!is.null(json_data$MembroComissaoParlamentar$Parlamentar$MembroComissoes$Comissao)) {
+        # Extraia os dados das comissões
+        comissoes <- json_data$MembroComissaoParlamentar$Parlamentar$MembroComissoes$Comissao
+
         # Crie um dataframe com as informações das comissões
         df_senadores_comissao <- as.data.frame(comissoes, stringsAsFactors = FALSE)
 
@@ -51,7 +51,7 @@ obter_dados_comissoes_parlamentares <- function(codigos_parlamentares) {
         # Adicione os dados ao resultado
         resultados[[codigo]] <- df_senadores_comissao
       } else {
-        # Se não há dados, crie um dataframe vazio
+        # Se não há dados de comissões, crie um dataframe vazio
         df_senadores_comissao <- data.frame(CodigoParlamentar = dados_id_senador$Codigo, NomeParlamentar = dados_id_senador$Nome)
         warning(paste("Nao ha dados de comissoes disponiveis para o codigo:", codigo))
         resultados[[codigo]] <- df_senadores_comissao
@@ -67,5 +67,6 @@ obter_dados_comissoes_parlamentares <- function(codigos_parlamentares) {
   dados_comissoes_parlamentares <- dplyr::bind_rows(resultados)
   return(dados_comissoes_parlamentares)
 }
+
 
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/info_agenda.R
 \name{info_agenda}
 \alias{info_agenda}
-\title{Extrair dados da agenda do Congresso Nacianal, do Senado federal e Câmara dos Deputados}
+\title{Extrair dados da agenda do Congresso Nacional, do Senado Federal e Câmara dos Deputados}
 \usage{
 info_agenda(anos, meses, dias)
 }

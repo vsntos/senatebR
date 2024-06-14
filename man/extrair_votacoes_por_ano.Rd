@@ -16,6 +16,7 @@ Um dataframe contendo as informações de votações para todos os anos especifi
 Esta função extrai as informações de votações do plenário do Senado Federal para os anos especificados.
 }
 \examples{
+# Exemplo de uso
 anos <- c(2018, 2019, 2020)
 dados_votacoes <- extrair_votacoes_por_ano(anos)
 head(dados_votacoes)

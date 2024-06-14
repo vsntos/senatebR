@@ -1,6 +1,5 @@
 #' Coleta os dados dos Senadores afastados
 #'
-#'
 #' @return Um dataframe contendo os dados dos senadores afastados.
 #'
 #' @examples
@@ -20,10 +19,8 @@ get_afastados <- function() {
   # Verifique se a requisição foi bem-sucedida (código de status na faixa 2xx)
   if (httr::status_code(response) >= 200 && httr::status_code(response) < 300) {
     # Leia os dados JSON da resposta
-    json_data <- jsonlite::fromJSON(httr::content(response, "text"))
-
-    # Converte os dados JSON em um dataframe
-    df_afastados <- as.data.frame(json_data)
+    json_data <- httr::content(response, "text", encoding = "UTF-8")
+    df_afastados <- jsonlite::fromJSON(json_data, simplifyDataFrame = TRUE)
 
     # Retorna o dataframe
     return(df_afastados)

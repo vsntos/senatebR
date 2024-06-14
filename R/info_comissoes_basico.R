@@ -25,11 +25,10 @@ dados_comissoes <- function() {
   )
 
   dados_basicos <- dados_basicos %>%
-    tidyr::separate(Texto, c("sigla", "titulo_comissao"), "-") %>%
-    dplyr::mutate(link2 = Link) %>%
-    tidyr::separate(link2, c("x", "id_comissao"), "=") %>%
-    dplyr::select(!x) %>%
-    dplyr::filter(!titulo_comissao == "NA")
+    tidyr::separate(Texto, c("sigla", "titulo_comissao"), " - ") %>%
+    dplyr::mutate(id_comissao = sub(".+id=", "", Link)) %>%
+    dplyr::select(-Link)
 
   return(dados_basicos)
 }
+

@@ -5,15 +5,15 @@
 #' @param codigos_parlamentares Vetor de códigos de parlamentares.
 #' @param anos Vetor de anos.
 #'
-#' @return Um dataframe consolidado com todas as relatorias dos palamanetares escolhidos
+#' @return Um dataframe consolidado com todas as relatorias dos parlamentares escolhidos
 #'
 #' @examples
 #' # Exemplo de uso
 #' df_relatorias <- dados_relatorias_parlamentares(c(5386, 5012), anos = c(2022, 2023))
 #'
-#' @import httr
-#' @import jsonlite
-#' @import dplyr
+#' @importFrom httr GET add_headers status_code content
+#' @importFrom jsonlite fromJSON
+#' @importFrom dplyr bind_rows
 #'
 #' @export
 dados_relatorias_parlamentares <- function(codigos_parlamentares, anos) {
@@ -27,33 +27,40 @@ dados_relatorias_parlamentares <- function(codigos_parlamentares, anos) {
       url_api <- paste0("https://legis.senado.leg.br/dadosabertos/senador/",
                         codigo_parlamentar, "/relatorias?ano=", ano)
 
-      # Fazer a requisição GET
-      response <- GET(url_api, add_headers(accept = "application/json"))
+      # Fazer a requisição GET com tratamento de erros
+      response <- tryCatch({
+        httr::GET(url_api, httr::add_headers(accept = "application/json"))
+      }, error = function(e) {
+        warning("Falha na requisição para o parlamentar ", codigo_parlamentar, " no ano ", ano, ". Detalhes: ", e$message)
+        return(NULL)
+      })
 
-      # Verificar se a requisição foi bem-sucedida (código de status na faixa 2xx)
-      if (status_code(response) >= 200 && status_code(response) < 300) {
+      if (!is.null(response) && httr::status_code(response) >= 200 && httr::status_code(response) < 300) {
         # Ler os dados JSON da resposta
-        json_data <- fromJSON(content(response, "text"))
+        json_data <- jsonlite::fromJSON(httr::content(response, "text"))
 
-        # Extrair dados relevantes e criar um dataframe
-        parlamentar <- json_data$MateriasRelatoriaParlamentar$Parlamentar
-        relatorias <- parlamentar$Relatorias$Relatoria
+        # Verificar se os dados estão no formato esperado
+        if (!is.null(json_data$MateriasRelatoriaParlamentar$Parlamentar$Relatorias$Relatoria)) {
+          # Extrair dados relevantes e criar um dataframe
+          parlamentar <- json_data$MateriasRelatoriaParlamentar$Parlamentar
+          relatorias <- parlamentar$Relatorias$Relatoria
 
-        # Adicionar informações do parlamentar ao dataframe
-        relatorias$Nome <- parlamentar$Nome
-        relatorias$CodigoParlamentar <- parlamentar$Codigo
+          # Adicionar informações do parlamentar ao dataframe
+          relatorias$Nome <- parlamentar$Nome
+          relatorias$CodigoParlamentar <- parlamentar$Codigo
 
-        # Adicionar o dataframe à lista
-        lista_dataframes[[length(lista_dataframes) + 1]] <- relatorias
-      } else {
-        # Se a requisição falhar, imprimir uma mensagem de erro
-        stop("Falha na requisição. Código de status: ", status_code(response))
+          # Adicionar o dataframe à lista
+          lista_dataframes[[length(lista_dataframes) + 1]] <- relatorias
+        } else {
+          warning("Dados de relatorias não encontrados para o parlamentar ", codigo_parlamentar, " no ano ", ano)
+        }
       }
     }
   }
 
   # Retornar um único dataframe consolidado
-  df_final <- bind_rows(lista_dataframes)
+  df_final <- dplyr::bind_rows(lista_dataframes)
   return(df_final)
 }
+
 

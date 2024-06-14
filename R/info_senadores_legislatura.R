@@ -5,11 +5,11 @@
 #'
 #' @param legislatura_inicio Número da legislatura de início.
 #' @param legislatura_fim Número da legislatura de fim.
+#'
 #' @return Um dataframe com os dados dos senadores.
-#' @export
 #'
 #' @examples
-#'df_senadores_legislatura <- obter_dados_senadores_legislatura(47, 56)
+#' df_senadores_legislatura <- obter_dados_senadores_legislatura(47, 56)
 #'
 #' @import httr
 #' @importFrom jsonlite fromJSON
@@ -19,7 +19,11 @@
 #'
 #' @keywords senador legislatura API
 #'
+#' @export
 obter_dados_senadores_legislatura <- function(legislatura_inicio, legislatura_fim) {
+  requireNamespace("httr", quietly = TRUE)
+  requireNamespace("jsonlite", quietly = TRUE)
+
   # Construa a URL com base nas legislaturas fornecidas
   url <- paste0("https://legis.senado.leg.br/dadosabertos/senador/lista/legislatura/", legislatura_inicio, "/", legislatura_fim)
 
@@ -51,4 +55,5 @@ obter_dados_senadores_legislatura <- function(legislatura_inicio, legislatura_fi
   # Retorne o dataframe com os dados dos senadores
   return(df_senadores)
 }
+
 

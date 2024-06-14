@@ -6,21 +6,23 @@
 #' @param codcol Vetor contendo os códigos das comissões
 #' @param data_inicio Data de início no formato "YYYY-MM-DD"
 #' @param data_fim Data de fim no formato "YYYY-MM-DD"
+#'
 #' @return Um DataFrame com os dados das reuniões das comissões
-#' @importFrom rvest read_html html_elements html_text html_attr
-#' @importFrom dplyr %>%
-#' @importFrom glue glue
-#' @export
+#'
 #' @examples
 #' codcol <- c(54, 38, 2614, 34)
 #' data_inicio <- "2023-01-01"
 #' data_fim <- "2023-12-01"
 #' df_reunioes <- info_dados_reuniao_comissao(codcol, data_inicio, data_fim)
+#'
+#' @import rvest
+#' @import dplyr
+#' @importFrom glue glue
+#' @export
 info_dados_reuniao_comissao <- function(codcol, data_inicio, data_fim) {
-  # Carregar os pacotes necessários
-  library(rvest)
-  library(dplyr)
-  library(glue)
+  requireNamespace("rvest", quietly = TRUE)
+  requireNamespace("dplyr", quietly = TRUE)
+  requireNamespace("glue", quietly = TRUE)
 
   all_data <- list()
 
@@ -29,25 +31,25 @@ info_dados_reuniao_comissao <- function(codcol, data_inicio, data_fim) {
     url <- glue::glue("https://legis.senado.leg.br/comissoes/comissao?codcol={codcol[i]}&data1={data_inicio}&data2={data_fim}")
 
     # Ler o conteúdo da página
-    pagina <- read_html(as.character(url))
+    pagina <- rvest::read_html(as.character(url))
 
     # Extrair informações do código HTML
     informacoes <- pagina %>%
-      html_elements("div.ajuste-resultado-agenda") %>%
-      html_text()
+      rvest::html_elements("div.ajuste-resultado-agenda") %>%
+      rvest::html_text()
 
     # link da reuniao e comissao
     links <- pagina %>%
-      html_elements("div.ajuste-resultado-agenda > div > h6 > strong > a") %>%
-      html_attr("href") %>%
+      rvest::html_elements("div.ajuste-resultado-agenda > div > h6 > strong > a") %>%
+      rvest::html_attr("href") %>%
       unique()
 
     # demais informações
-    link_video <- pagina %>% html_elements("span.glyphicon-facetime-video") %>% html_attr("title")
-    horarios <- pagina %>% html_elements("h6.texto-com-reticencias strong span") %>% html_text()
-    tipos_reunioes <- pagina %>% html_elements("div.f2") %>% html_text()
-    locais <- pagina %>% html_elements("div.f0") %>% html_text()
-    status <- pagina %>% html_elements("div.status-comissao span.situacao-realizada") %>% html_text()
+    link_video <- pagina %>% rvest::html_elements("span.glyphicon-facetime-video") %>% rvest::html_attr("title")
+    horarios <- pagina %>% rvest::html_elements("h6.texto-com-reticencias strong span") %>% rvest::html_text()
+    tipos_reunioes <- pagina %>% rvest::html_elements("div.f2") %>% rvest::html_text()
+    locais <- pagina %>% rvest::html_elements("div.f0") %>% rvest::html_text()
+    status <- pagina %>% rvest::html_elements("div.status-comissao span.situacao-realizada") %>% rvest::html_text()
 
     # Determine o comprimento máximo
     max_length <- max(length(informacoes), length(links), length(link_video), length(horarios), length(tipos_reunioes), length(locais), length(status))
@@ -83,8 +85,9 @@ info_dados_reuniao_comissao <- function(codcol, data_inicio, data_fim) {
   }
 
   # Combine todos os dataframes em um único dataframe
-  data_comissao <- do.call(rbind, all_data)
+  data_comissao <- dplyr::bind_rows(all_data)
 
   return(data_comissao)
 }
+
 

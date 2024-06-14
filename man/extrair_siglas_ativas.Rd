@@ -8,6 +8,9 @@ extrair_siglas_ativas(
   url = "https://legis.senado.leg.br/dadosabertos/dados/ListaSiglas.xml"
 )
 }
+\arguments{
+\item{url}{A URL do XML que contém as siglas ativas de matérias.}
+}
 \value{
 Um dataframe contendo as siglas ativas de matérias.
 }

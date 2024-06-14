@@ -37,6 +37,12 @@ extrair_notas_taquigraficas <- function(codigos_reuniao) {
       # Encontrar todas as tags <div> com class="principalStyle"
       divs <- pagina %>% rvest::html_nodes(".principalStyle")
 
+      # Verificar se há conteúdo na página
+      if (length(divs) == 0) {
+        cat("Nenhuma nota taquigráfica encontrada para o código de reunião:", codigo_reuniao, "\n")
+        next
+      }
+
       # Extrair o texto de cada tag <div> com class="principalStyle"
       textos <- divs %>% rvest::html_text()
 
@@ -66,3 +72,4 @@ extrair_notas_taquigraficas <- function(codigos_reuniao) {
 
   return(df_conteudos)
 }
+

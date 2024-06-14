@@ -2,6 +2,7 @@
 #'
 #' Esta função realiza o scraping de uma página XML contendo informações sobre as siglas ativas de matérias e extrai os dados relevantes.
 #'
+#' @param url A URL do XML que contém as siglas ativas de matérias.
 #' @return Um dataframe contendo as siglas ativas de matérias.
 #' @importFrom xml2 read_xml xml_find_all xml_text xml_find_first
 #' @export
@@ -39,4 +40,5 @@ extrair_siglas_ativas <- function(url = "https://legis.senado.leg.br/dadosaberto
 
   return(dados)
 }
+
 

@@ -23,6 +23,6 @@ O dataframe possui as seguintes colunas:
 Esta função realiza o scraping de um XML contendo informações sobre assuntos legislativos do Senado Federal do Brasil.
 }
 \examples{
-df_assuntos = info_materia_temas()
+df_assuntos <- info_materia_temas()
 
 }

@@ -16,7 +16,7 @@ Um dataframe contendo informações da reunião.
 Esta função extrai dados de uma reunião com base no código fornecido.
 }
 \examples{
-codigo_reuniao <- df_reunioes$codigo
-df_final <- info_dados_reuniao_nota(codigo_reuniao)
+df_reunioes <- data.frame(codigo = 1:10, outra_coluna = letters[1:10])
+info_dados_reuniao_nota(df_reunioes)
 
 }

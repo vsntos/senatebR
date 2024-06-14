@@ -12,7 +12,7 @@ dados_relatorias_parlamentares(codigos_parlamentares, anos)
 \item{anos}{Vetor de anos.}
 }
 \value{
-Um dataframe consolidado com todas as relatorias dos palamanetares escolhidos
+Um dataframe consolidado com todas as relatorias dos parlamentares escolhidos
 }
 \description{
 Esta função obtém as relatorias de parlamentares com base nos códigos e anos fornecidos.

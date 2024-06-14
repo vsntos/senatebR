@@ -8,6 +8,9 @@ extrair_tipos_decisao(
   url = "https://legis.senado.leg.br/dadosabertos/dados/ListaTiposDecisao.xml"
 )
 }
+\arguments{
+\item{url}{A URL do XML que contém os tipos de decisão.}
+}
 \value{
 Um dataframe contendo os tipos de decisão.
 }

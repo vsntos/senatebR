@@ -7,8 +7,8 @@
 #' @return Um dataframe contendo informações da reunião.
 #'
 #' @examples
-#' codigo_reuniao <- df_reunioes$codigo
-#' df_final <- info_dados_reuniao_nota(codigo_reuniao)
+#' df_reunioes <- data.frame(codigo = 1:10, outra_coluna = letters[1:10])
+#' info_dados_reuniao_nota(df_reunioes)
 #'
 #' @import httr
 #' @import xml2
@@ -16,10 +16,13 @@
 #'
 #' @export
 info_dados_reuniao_nota <- function(codigo_reuniao) {
+  requireNamespace("httr", quietly = TRUE)
+  requireNamespace("xml2", quietly = TRUE)
+  requireNamespace("dplyr", quietly = TRUE)
+
   # Inicialize um dataframe vazio para armazenar os resultados
   df_final <- data.frame(stringsAsFactors = FALSE)
 
-  # Itere sobre cada código de reunião
   for (codigo in codigo_reuniao) {
     # URL do XML
     url_nota_taquigrafica <- paste0("https://legis.senado.leg.br/dadosabertos/taquigrafia/notas/reuniao/", codigo)
@@ -32,14 +35,10 @@ info_dados_reuniao_nota <- function(codigo_reuniao) {
       # Lendo o XML
       xml_file <- xml2::read_xml(httr::content(response_xml, "text"))
 
-      # Verifique se o XML foi lido corretamente
-      if (length(xml_file) == 0) {
-        warning(paste("Erro ao ler o XML para o código", codigo, ". O conteúdo está vazio ou o XML não está no formato esperado."))
-      } else {
-        # Extraindo as informações
-        dados_reuniao <- xml2::xml_find_first(xml_file, ".//dadosReuniao")
+      # Extraindo as informações principais da reunião
+      dados_reuniao <- xml2::xml_find_first(xml_file, ".//dadosReuniao")
 
-        # Extraindo elementos e atributos individualmente
+      if (!is.null(dados_reuniao)) {
         nomesComissoes <- xml2::xml_text(xml2::xml_find_first(dados_reuniao, ".//nomesComissoes"))
         numeroCom <- xml2::xml_text(xml2::xml_find_first(dados_reuniao, ".//numeroCom"))
         siglasComissoes <- xml2::xml_text(xml2::xml_find_first(dados_reuniao, ".//siglasComissoes"))
@@ -55,32 +54,25 @@ info_dados_reuniao_nota <- function(codigo_reuniao) {
           stringsAsFactors = FALSE
         )
 
-        # Extraindo informações da seção "quartos" como antes
+        # Extraindo informações detalhadas da seção "quartos"
         dados_xml <- xml2::xml_find_all(xml_file, ".//quartos") %>%
-          purrr::map_df(~{
-            # Adicionando verificações para lidar com nós vazios
-            codigo <- xml2::xml_text(xml2::xml_find_first(.x, ".//codigo"))
-            dataInicio <- xml2::xml_text(xml2::xml_find_first(.x, ".//dataInicio"))
-            dataFim <- xml2::xml_text(xml2::xml_find_first(.x, ".//dataFim"))
-            sequencia <- xml2::xml_text(xml2::xml_find_first(.x, ".//sequencia"))
-            etapa <- xml2::xml_text(xml2::xml_find_first(.x, ".//etapa"))
-            texto <- xml2::xml_text(xml2::xml_find_first(.x, ".//texto"))
-            linkAudio <- xml2::xml_text(xml2::xml_find_first(.x, ".//linkAudio"))
-
+          purrr::map_df(~ {
             data.frame(
-              codigo = codigo,
-              dataInicio = dataInicio,
-              dataFim = dataFim,
-              sequencia = sequencia,
-              etapa = etapa,
-              texto = texto,
-              linkAudio = linkAudio,
+              codigo = xml2::xml_text(xml2::xml_find_first(.x, ".//codigo")),
+              dataInicio = xml2::xml_text(xml2::xml_find_first(.x, ".//dataInicio")),
+              dataFim = xml2::xml_text(xml2::xml_find_first(.x, ".//dataFim")),
+              sequencia = xml2::xml_text(xml2::xml_find_first(.x, ".//sequencia")),
+              etapa = xml2::xml_text(xml2::xml_find_first(.x, ".//etapa")),
+              texto = xml2::xml_text(xml2::xml_find_first(.x, ".//texto")),
+              linkAudio = xml2::xml_text(xml2::xml_find_first(.x, ".//linkAudio")),
               stringsAsFactors = FALSE
             )
           })
 
         # Mesclando os dataframes
         df_final <- dplyr::bind_rows(df_final, dados_reuniao_df, dados_xml)
+      } else {
+        warning(paste("Dados de reunião não encontrados para o código", codigo))
       }
     } else {
       # Se a requisição falhar, imprima uma mensagem de erro
@@ -91,3 +83,4 @@ info_dados_reuniao_nota <- function(codigo_reuniao) {
   # Retornando o dataframe final
   return(df_final)
 }
+
