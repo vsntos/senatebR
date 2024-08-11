@@ -22,6 +22,12 @@
     <loc>/news/index.html</loc>
   </url>
   <url>
+    <loc>/reference/coletar_medidas_provisorias_em_tramitacao.html</loc>
+  </url>
+  <url>
+    <loc>/reference/coletar_medidas_provisorias_encerradas.html</loc>
+  </url>
+  <url>
     <loc>/reference/coletar_orientacao_votacao.html</loc>
   </url>
   <url>
@@ -70,6 +76,9 @@
     <loc>/reference/extrair_votacoes_por_ano.html</loc>
   </url>
   <url>
+    <loc>/reference/get_afastados.html</loc>
+  </url>
+  <url>
     <loc>/reference/index.html</loc>
   </url>
   <url>
@@ -80,6 +89,12 @@
   </url>
   <url>
     <loc>/reference/info_dados_reuniao.html</loc>
+  </url>
+  <url>
+    <loc>/reference/info_dados_reuniao_comissao.html</loc>
+  </url>
+  <url>
+    <loc>/reference/info_dados_reuniao_nota.html</loc>
   </url>
   <url>
     <loc>/reference/info_materia_temas.html</loc>
