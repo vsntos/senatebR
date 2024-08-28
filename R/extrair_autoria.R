@@ -51,5 +51,3 @@ coletar_dados_autorias <- function(codigos_senadores) {
 
   return(dados_total)
 }
-
-df_autoria_senadores <- coletar_dados_autorias(df_senadores_atuais$CodigoParlamentar)

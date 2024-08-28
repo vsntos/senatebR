@@ -22,6 +22,12 @@
     <loc>/news/index.html</loc>
   </url>
   <url>
+    <loc>/reference/coletar_dados_autorias.html</loc>
+  </url>
+  <url>
+    <loc>/reference/coletar_dados_varios_parlamentares.html</loc>
+  </url>
+  <url>
     <loc>/reference/coletar_medidas_provisorias_em_tramitacao.html</loc>
   </url>
   <url>
@@ -116,5 +122,17 @@
   </url>
   <url>
     <loc>/reference/obter_dados_senadores_legislatura.html</loc>
+  </url>
+  <url>
+    <loc>/reference/processar_xml_apartes.html</loc>
+  </url>
+  <url>
+    <loc>/reference/processar_xml_liderancas.html</loc>
+  </url>
+  <url>
+    <loc>/reference/processar_xml_mandatos.html</loc>
+  </url>
+  <url>
+    <loc>/reference/processar_xml_profissoes.html</loc>
   </url>
 </urlset>
