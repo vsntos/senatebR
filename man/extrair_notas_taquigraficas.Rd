@@ -2,19 +2,19 @@
 % Please edit documentation in R/info_notas_taquigraficas.R
 \name{extrair_notas_taquigraficas}
 \alias{extrair_notas_taquigraficas}
-\title{Extrai o conteúdo de uma página de notas taquigráficas.}
+\title{Extrai o conte\u00fado de uma p\u00e1gina de notas taquigr\u00e1ficas.}
 \usage{
 extrair_notas_taquigraficas(codigos_reuniao)
 }
 \arguments{
-\item{codigos_reuniao}{Vetor de códigos das reuniões para acessar as páginas de notas.}
+\item{codigos_reuniao}{Vetor de c\u00f3digos das reuni\u00f5es para acessar as p\u00e1ginas de notas.}
 }
 \value{
-Um dataframe contendo os códigos de reunião e os respectivos conteúdos das páginas de notas, ou NULL se ocorrer um erro.
+Um dataframe contendo os c\u00f3digos de reuni\u00e3o e os respectivos conte\u00fados das p\u00e1ginas de notas, ou NULL se ocorrer um erro.
 }
 \description{
-Esta função acessa uma página de notas taquigráficas do Senado Federal
-e extrai o conteúdo da mesma.
+Esta fun\u00e7\u00e3o acessa uma p\u00e1gina de notas taquigr\u00e1ficas do Senado Federal
+e extrai o conte\u00fado da mesma.
 }
 \examples{
 codigos <- c(12071, 12072, 12073)

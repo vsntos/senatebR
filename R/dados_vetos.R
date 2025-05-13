@@ -1,11 +1,11 @@
-#' Função para extrair os dados de várias URLs
+#' Fun\u00e7\u00e3o para extrair os dados de v\u00e1rias URLs
 #'
-#' Esta função realiza o scraping de várias páginas HTML contendo informações sobre vetos do Congresso Nacional
+#' Esta fun\u00e7\u00e3o realiza o scraping de v\u00e1rias p\u00e1ginas HTML contendo informa\u00e7\u00f5es sobre vetos do Congresso Nacional
 #' e extrai os dados dos itens vetados.
 #'
-#' @param urls Um vetor de URLs das páginas a serem analisadas.
-#' @return Um dataframe contendo os dados extraídos de todas as URLs fornecidas.
-#' Se não houver tabela em alguma das páginas, retorna uma mensagem de aviso.
+#' @param urls Um vetor de URLs das p\u00e1ginas a serem analisadas.
+#' @return Um dataframe contendo os dados extra\u00eddos de todas as URLs fornecidas.
+#' Se n\u00e3o houver tabela em alguma das p\u00e1ginas, retorna uma mensagem de aviso.
 #' @export
 #'
 #' @examples
@@ -19,13 +19,13 @@ dados_vetos <- function(urls) {
 
   # Iterar sobre as URLs e extrair os dados de cada uma
   for (url in urls) {
-    # Realizar o scraping da página
+    # Realizar o scraping da p\u00e1gina
     pagina <- rvest::read_html(url)
 
     # Extrair a tabela de partes vetadas
     tabela <- pagina %>% rvest::html_node(".cn-detalhe-veto--partes-vetadas") %>% rvest::html_table()
 
-    # Se houver tabela, converter para dataframe e adicionar o código do veto
+    # Se houver tabela, converter para dataframe e adicionar o c\u00f3digo do veto
     if (length(tabela) > 0) {
       dados <- data.frame(tabela)
       codigo_veto <- gsub(".*\\/([0-9]+)$", "\\1", url)
@@ -34,7 +34,7 @@ dados_vetos <- function(urls) {
       # Adicionar os dados ao dataframe final
       dados_finais <- dplyr::bind_rows(dados_finais, dados)
     } else {
-      # Se não houver tabela, imprimir mensagem de aviso
+      # Se n\u00e3o houver tabela, imprimir mensagem de aviso
       cat("Nenhuma tabela encontrada para a URL:", url, "\n")
     }
   }

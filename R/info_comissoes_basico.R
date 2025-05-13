@@ -1,8 +1,8 @@
-#' Coleta dados básicos das comissões permanentes
+#' Coleta dados b\u00e1sicos das comiss\u00f5es permanentes
 #'
-#' Esta função realiza a raspagem de dados básicos das comissões permanentes do site do Senado.
+#' Esta fun\u00e7\u00e3o realiza a raspagem de dados b\u00e1sicos das comiss\u00f5es permanentes do site do Senado.
 #'
-#' @return Um dataframe contendo dados básicos das comissões permanentes.
+#' @return Um dataframe contendo dados b\u00e1sicos das comiss\u00f5es permanentes.
 #'
 #' @examples
 #' dados_comissoes <- dados_comissoes()

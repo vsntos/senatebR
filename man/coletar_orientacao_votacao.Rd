@@ -2,18 +2,18 @@
 % Please edit documentation in R/info_orientacao_votacao.R
 \name{coletar_orientacao_votacao}
 \alias{coletar_orientacao_votacao}
-\title{Coletar dados de orientações de voto no Senado Federal}
+\title{Coletar dados de orienta\u00e7\u00f5es de voto no Senado Federal}
 \usage{
 coletar_orientacao_votacao(data_sessao)
 }
 \arguments{
-\item{data_sessao}{Um vetor contendo as datas das sessões no formato "AAAA-MM-DD".}
+\item{data_sessao}{Um vetor contendo as datas das sess\u00f5es no formato "AAAA-MM-DD".}
 }
 \value{
-Um data frame contendo os dados de votação, incluindo código de votação, data e hora, partido e voto.
+Um data frame contendo os dados de vota\u00e7\u00e3o, incluindo c\u00f3digo de vota\u00e7\u00e3o, data e hora, partido e voto.
 }
 \description{
-Esta função coleta os dados de orientação das votações do Senado Federal a partir de uma lista de datas de sessão.
+Esta fun\u00e7\u00e3o coleta os dados de orienta\u00e7\u00e3o das vota\u00e7\u00f5es do Senado Federal a partir de uma lista de datas de sess\u00e3o.
 }
 \examples{
 anos <- c(2022, 2023)

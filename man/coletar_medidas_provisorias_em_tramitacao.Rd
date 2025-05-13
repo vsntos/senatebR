@@ -2,21 +2,21 @@
 % Please edit documentation in R/info_medidas_provisorias_tramitacao.R
 \name{coletar_medidas_provisorias_em_tramitacao}
 \alias{coletar_medidas_provisorias_em_tramitacao}
-\title{Coletar Medidas Provisórias em Tramitação}
+\title{Coletar Medidas Provis\u00f3rias em Tramita\u00e7\u00e3o}
 \usage{
 coletar_medidas_provisorias_em_tramitacao()
 }
 \value{
-Um dataframe contendo informações sobre medidas provisórias em tramitação.
+Um dataframe contendo informa\u00e7\u00f5es sobre medidas provis\u00f3rias em tramita\u00e7\u00e3o.
 O dataframe possui as seguintes colunas:
 \describe{
-  \item{Link}{Link para acessar mais informações sobre a medida provisória.}
-  \item{Matéria}{Título da medida provisória.}
-  \item{Ementa}{Resumo ou descrição da medida provisória.}
-  \item{Prazo}{Prazo de vigência da medida provisória, especificando os prazos de 60 e 120 dias.}
-  \item{Status}{Status da medida provisória, indicando se está em tramitação.}
+  \item{Link}{Link para acessar mais informa\u00e7\u00f5es sobre a medida provis\u00f3ria.}
+  \item{Mat\u00e9ria}{T\u00edtulo da medida provis\u00f3ria.}
+  \item{Ementa}{Resumo ou descri\u00e7\u00e3o da medida provis\u00f3ria.}
+  \item{Prazo}{Prazo de vig\u00eancia da medida provis\u00f3ria, especificando os prazos de 60 e 120 dias.}
+  \item{Status}{Status da medida provis\u00f3ria, indicando se est\u00e1 em tramita\u00e7\u00e3o.}
 }
 }
 \description{
-Esta função coleta dados sobre medidas provisórias em tramitação do site do Congresso Nacional do Brasil.
+Esta fun\u00e7\u00e3o coleta dados sobre medidas provis\u00f3rias em tramita\u00e7\u00e3o do site do Congresso Nacional do Brasil.
 }

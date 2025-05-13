@@ -2,18 +2,18 @@
 % Please edit documentation in R/info_vetos.R
 \name{info_vetos}
 \alias{info_vetos}
-\title{Extrair detalhes de vetos a partir da URL específica contendo informações sobre vetos}
+\title{Extrair detalhes de vetos a partir da URL espec\u00edfica contendo informa\u00e7\u00f5es sobre vetos}
 \usage{
 info_vetos(pages = 1)
 }
 \arguments{
-\item{pages}{O número de páginas a serem processadas. Padrão é 1.}
+\item{pages}{O n\u00famero de p\u00e1ginas a serem processadas. Padr\u00e3o \u00e9 1.}
 }
 \value{
 Um dataframe contendo os detalhes dos vetos.
 }
 \description{
-Esta função realiza scraping de uma página contendo informações sobre vetos e extrai detalhes como número do veto, link associado, ementa, data de sobresta, matéria vetada e norma gerada.
+Esta fun\u00e7\u00e3o realiza scraping de uma p\u00e1gina contendo informa\u00e7\u00f5es sobre vetos e extrai detalhes como n\u00famero do veto, link associado, ementa, data de sobresta, mat\u00e9ria vetada e norma gerada.
 }
 \examples{
 # Exemplo de uso

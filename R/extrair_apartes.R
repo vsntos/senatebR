@@ -1,18 +1,18 @@
 #' Processa XML de Apartes de Senadores
 #'
-#' Esta função acessa a URL da API do Senado para cada código de parlamentar fornecido,
+#' Esta fun\u00e7\u00e3o acessa a URL da API do Senado para cada c\u00f3digo de parlamentar fornecido,
 #' extrai e processa os dados dos apartes associados a cada parlamentar.
-#' Retorna um dataframe com informações sobre os apartes, incluindo dados do
+#' Retorna um dataframe com informa\u00e7\u00f5es sobre os apartes, incluindo dados do
 #' parlamentar e detalhes dos apartes.
 #'
-#' @param codigos Um vetor de códigos de parlamentares para os quais os dados de
-#' apartes serão extraídos.
+#' @param codigos Um vetor de c\u00f3digos de parlamentares para os quais os dados de
+#' apartes ser\u00e3o extra\u00eddos.
 #'
 #' @return Um dataframe contendo os dados dos apartes, com as seguintes colunas:
 #' \describe{
-#'   \item{CodigoParlamentar}{Código do parlamentar}
+#'   \item{CodigoParlamentar}{C\u00f3digo do parlamentar}
 #'   \item{NomeParlamentar}{Nome do parlamentar}
-#'   \item{CodigoPronunciamento}{Código do pronunciamento}
+#'   \item{CodigoPronunciamento}{C\u00f3digo do pronunciamento}
 #'   \item{TipoUsoPalavra}{Tipo de uso da palavra}
 #'   \item{DataPronunciamento}{Data do pronunciamento}
 #'   \item{SiglaPartidoParlamentarNaData}{Sigla do partido do parlamentar na data}
@@ -20,22 +20,22 @@
 #'   \item{SiglaCasaPronunciamento}{Sigla da casa do pronunciamento}
 #'   \item{NomeCasaPronunciamento}{Nome da casa do pronunciamento}
 #'   \item{TextoResumo}{Resumo do texto do pronunciamento}
-#'   \item{Indexacao}{Indexação do pronunciamento}
+#'   \item{Indexacao}{Indexa\u00e7\u00e3o do pronunciamento}
 #'   \item{UrlTexto}{URL do texto do pronunciamento}
-#'   \item{UrlTextoBinario}{URL do texto binário do pronunciamento}
-#'   \item{CodigoSessao}{Código da sessão plenária}
-#'   \item{NomeCasaSessao}{Nome da casa da sessão}
-#'   \item{DataSessao}{Data da sessão}
-#'   \item{HoraInicioSessao}{Hora de início da sessão}
-#'   \item{OradorCodigo}{Código do orador}
+#'   \item{UrlTextoBinario}{URL do texto bin\u00e1rio do pronunciamento}
+#'   \item{CodigoSessao}{C\u00f3digo da sess\u00e3o plen\u00e1ria}
+#'   \item{NomeCasaSessao}{Nome da casa da sess\u00e3o}
+#'   \item{DataSessao}{Data da sess\u00e3o}
+#'   \item{HoraInicioSessao}{Hora de in\u00edcio da sess\u00e3o}
+#'   \item{OradorCodigo}{C\u00f3digo do orador}
 #'   \item{OradorNome}{Nome do orador}
-#'   \item{PublicacaoData}{Data da publicação}
-#'   \item{PublicacaoUrl}{URL da publicação}
+#'   \item{PublicacaoData}{Data da publica\u00e7\u00e3o}
+#'   \item{PublicacaoUrl}{URL da publica\u00e7\u00e3o}
 #' }
 #'
 #' @examples
 #' \dontrun{
-#' # Exemplo de uso com códigos fictícios
+#' # Exemplo de uso com c\u00f3digos fict\u00edcios
 #' codigos <- c("4763", "1234")
 #' df_apartes <- processar_xml_apartes(codigos)
 #' }
@@ -49,9 +49,9 @@ processar_xml_apartes <- function(codigos) {
   for (codigo in codigos) {
     url <- paste0("https://legis.senado.leg.br/dadosabertos/senador/", codigo, "/apartes")
 
-    # Verificar se o código é numérico e não muito longo
+    # Verificar se o c\u00f3digo \u00e9 num\u00e9rico e n\u00e3o muito longo
     if (!is.numeric(codigo) || nchar(codigo) > 10) {
-      message("Código inválido ou muito longo: ", codigo)
+      message("C\u00f3digo inv\u00e1lido ou muito longo: ", codigo)
       next
     }
 
@@ -59,7 +59,7 @@ processar_xml_apartes <- function(codigos) {
     xml_data <- tryCatch({
       read_xml(url)
     }, error = function(e) {
-      message("Erro ao ler o XML para o código: ", codigo, " - ", e$message)
+      message("Erro ao ler o XML para o c\u00f3digo: ", codigo, " - ", e$message)
       return(NULL)
     })
 
@@ -67,13 +67,13 @@ processar_xml_apartes <- function(codigos) {
       next
     }
 
-    # Extrair informações do parlamentar
+    # Extrair informa\u00e7\u00f5es do parlamentar
     codigo_parlamentar <- xml_text(xml_find_first(xml_data, "//CodigoParlamentar"))
     nome_parlamentar <- xml_text(xml_find_first(xml_data, "//NomeParlamentar"))
 
-    # Verificar se os dados foram extraídos corretamente
+    # Verificar se os dados foram extra\u00eddos corretamente
     if (is.na(codigo_parlamentar) || is.na(nome_parlamentar)) {
-      message("Dados do parlamentar não encontrados para o código: ", codigo)
+      message("Dados do parlamentar n\u00e3o encontrados para o c\u00f3digo: ", codigo)
       next
     }
 
@@ -81,11 +81,11 @@ processar_xml_apartes <- function(codigos) {
     apartes_nodes <- xml_find_all(xml_data, "//Aparte")
 
     if (length(apartes_nodes) == 0) {
-      message("Nenhum aparte encontrado para o código: ", codigo)
+      message("Nenhum aparte encontrado para o c\u00f3digo: ", codigo)
       next
     }
 
-    # Função auxiliar para extrair dados de cada aparte
+    # Fun\u00e7\u00e3o auxiliar para extrair dados de cada aparte
     extrair_dados_aparte <- function(node) {
       list(
         CodigoParlamentar = codigo_parlamentar,
@@ -112,7 +112,7 @@ processar_xml_apartes <- function(codigos) {
       )
     }
 
-    # Aplicar a função auxiliar a todos os nós de aparte
+    # Aplicar a fun\u00e7\u00e3o auxiliar a todos os n\u00f3s de aparte
     apartes_list <- lapply(apartes_nodes, extrair_dados_aparte)
 
     # Criar o dataframe a partir da lista de apartes
@@ -121,7 +121,7 @@ processar_xml_apartes <- function(codigos) {
     resultados[[as.character(codigo)]] <- df_apartes
   }
 
-  # Combinar todos os dataframes em um único dataframe
+  # Combinar todos os dataframes em um \u00fanico dataframe
   df_resultado_final <- bind_rows(resultados)
 
   return(df_resultado_final)

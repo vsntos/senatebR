@@ -1,6 +1,6 @@
-#' Extrair dados da agenda do Congresso Nacional, do Senado Federal e Câmara dos Deputados
+#' Extrair dados da agenda do Congresso Nacional, do Senado Federal e C\u00e2mara dos Deputados
 #'
-#' Esta função extrai dados da agenda do Congresso Nacional para os anos, meses e dias especificados.
+#' Esta fun\u00e7\u00e3o extrai dados da agenda do Congresso Nacional para os anos, meses e dias especificados.
 #'
 #' @param anos Vetor de anos.
 #' @param meses Vetor de meses.
@@ -20,7 +20,7 @@ info_agenda <- function(anos, meses, dias) {
   # Lista para armazenar os dados
   dados <- list()
 
-  # Função para extrair os dados de uma data específica
+  # Fun\u00e7\u00e3o para extrair os dados de uma data espec\u00edfica
   extrair_dados <- function(data) {
     url <- paste0(url_base, data)
     tryCatch({

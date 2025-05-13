@@ -2,21 +2,20 @@
 % Please edit documentation in R/info_reunioes_notas.R
 \name{info_dados_reuniao_nota}
 \alias{info_dados_reuniao_nota}
-\title{Extração de Dados de Reunião}
+\title{Extra\u00e7\u00e3o de Dados de Reuni\u00e3o}
 \usage{
 info_dados_reuniao_nota(codigo_reuniao)
 }
 \arguments{
-\item{codigo_reuniao}{Vetor de códigos de reunião.}
+\item{codigo_reuniao}{Vetor de c\u00f3digos de reuni\u00e3o (num\u00e9rico ou character).}
 }
 \value{
-Um dataframe contendo informações da reunião.
+Um dataframe contendo informa\u00e7\u00f5es das reuni\u00f5es e respectivas notas taquigr\u00e1ficas.
 }
 \description{
-Esta função extrai dados de uma reunião com base no código fornecido.
+Esta fun\u00e7\u00e3o extrai dados de uma ou mais reuni\u00f5es com base nos c\u00f3digos fornecidos.
 }
 \examples{
-df_reunioes <- data.frame(codigo = 1:10, outra_coluna = letters[1:10])
-info_dados_reuniao_nota(df_reunioes)
+info_dados_reuniao_nota(c(1, 2, 3))
 
 }

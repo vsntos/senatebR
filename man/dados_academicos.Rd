@@ -2,19 +2,19 @@
 % Please edit documentation in R/info_dados_academicos.R
 \name{dados_academicos}
 \alias{dados_academicos}
-\title{Obter dados acadêmicos de senadores com base nos códigos parlamentares}
+\title{Obter dados acad\u00eamicos de senadores com base nos c\u00f3digos parlamentares}
 \usage{
 dados_academicos(codigos)
 }
 \arguments{
-\item{codigos}{Vetor de códigos parlamentares.}
+\item{codigos}{Vetor de c\u00f3digos parlamentares.}
 }
 \value{
-Um dataframe com os dados acadêmicos.
+Um dataframe com os dados acad\u00eamicos.
 }
 \description{
-Esta função realiza requisições para obter informações acadêmicas de senadores
-com base em códigos parlamentares fornecidos.
+Esta fun\u00e7\u00e3o realiza requisi\u00e7\u00f5es para obter informa\u00e7\u00f5es acad\u00eamicas de senadores
+com base em c\u00f3digos parlamentares fornecidos.
 }
 \examples{
 codigos <- c(5672, 5386)
@@ -22,12 +22,12 @@ dados <- dados_academicos(codigos)
 
 }
 \references{
-Informações sobre os senadores são obtidas da API de dados abertos do Senado Brasileiro.
+Informa\u00e7\u00f5es sobre os senadores s\u00e3o obtidas da API de dados abertos do Senado Brasileiro.
 }
 \seealso{
 \code{\link{obter_dados_senadores_legislatura}}
 }
 \keyword{API}
-\keyword{acadêmicos}
+\keyword{acad\u00eamicos}
 \keyword{dados}
 \keyword{senador}

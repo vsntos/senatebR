@@ -2,27 +2,27 @@
 % Please edit documentation in R/info_medidas_provisorias_encerradas.R
 \name{coletar_medidas_provisorias_encerradas}
 \alias{coletar_medidas_provisorias_encerradas}
-\title{Coletar Medidas Provisórias Encerradas}
+\title{Coletar Medidas Provis\u00f3rias Encerradas}
 \usage{
 coletar_medidas_provisorias_encerradas(numero_ultima_pagina)
 }
 \arguments{
-\item{numero_ultima_pagina}{Número da última página a ser coletada.}
+\item{numero_ultima_pagina}{N\u00famero da \u00faltima p\u00e1gina a ser coletada.}
 }
 \value{
-Um dataframe contendo informações sobre medidas provisórias encerradas.
+Um dataframe contendo informa\u00e7\u00f5es sobre medidas provis\u00f3rias encerradas.
 O dataframe possui as seguintes colunas:
 \describe{
-  \item{Link}{Link para acessar mais informações sobre a medida provisória.}
-  \item{MPV}{Número da medida provisória.}
-  \item{Título}{Título da medida provisória.}
-  \item{Ementa}{Resumo ou descrição da medida provisória.}
-  \item{Prazo de 60 dias}{Data limite para validade da medida provisória.}
-  \item{Prazo de emendas}{Data limite para submissão de emendas.}
+  \item{Link}{Link para acessar mais informa\u00e7\u00f5es sobre a medida provis\u00f3ria.}
+  \item{MPV}{N\u00famero da medida provis\u00f3ria.}
+  \item{T\u00edtulo}{T\u00edtulo da medida provis\u00f3ria.}
+  \item{Ementa}{Resumo ou descri\u00e7\u00e3o da medida provis\u00f3ria.}
+  \item{Prazo de 60 dias}{Data limite para validade da medida provis\u00f3ria.}
+  \item{Prazo de emendas}{Data limite para submiss\u00e3o de emendas.}
 }
 }
 \description{
-Esta função coleta dados sobre medidas provisórias encerradas do site do Congresso Nacional do Brasil.
+Esta fun\u00e7\u00e3o coleta dados sobre medidas provis\u00f3rias encerradas do site do Congresso Nacional do Brasil.
 }
 \references{
 Site do Congresso Nacional do Brasil: \url{https://www.congressonacional.leg.br}

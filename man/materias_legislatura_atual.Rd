@@ -2,28 +2,28 @@
 % Please edit documentation in R/info_materia_legislatura_atual.R
 \name{materias_legislatura_atual}
 \alias{materias_legislatura_atual}
-\title{Lista de Matérias da Legislatura Atual}
+\title{Lista de Mat\u00e9rias da Legislatura Atual}
 \usage{
 materias_legislatura_atual()
 }
 \value{
-Um dataframe contendo os detalhes das matérias legislativas.
+Um dataframe contendo os detalhes das mat\u00e9rias legislativas.
 O dataframe possui as seguintes colunas:
 \describe{
-  \item{CodigoMateria}{Código da matéria.}
-  \item{SiglaCasaIdentificacaoMateria}{Sigla da casa legislativa identificadora da matéria.}
-  \item{NomeCasaIdentificacaoMateria}{Nome da casa legislativa identificadora da matéria.}
-  \item{SiglaSubtipoMateria}{Sigla do subtipo da matéria.}
-  \item{NumeroMateria}{Número da matéria.}
-  \item{AnoMateria}{Ano da matéria.}
-  \item{DescricaoIdentificacaoMateria}{Descrição da identificação da matéria.}
-  \item{IndicadorTramitando}{Indicador de tramitação da matéria.}
-  \item{IdentificacaoProcesso}{Identificação do processo da matéria.}
+  \item{CodigoMateria}{C\u00f3digo da mat\u00e9ria.}
+  \item{SiglaCasaIdentificacaoMateria}{Sigla da casa legislativa identificadora da mat\u00e9ria.}
+  \item{NomeCasaIdentificacaoMateria}{Nome da casa legislativa identificadora da mat\u00e9ria.}
+  \item{SiglaSubtipoMateria}{Sigla do subtipo da mat\u00e9ria.}
+  \item{NumeroMateria}{N\u00famero da mat\u00e9ria.}
+  \item{AnoMateria}{Ano da mat\u00e9ria.}
+  \item{DescricaoIdentificacaoMateria}{Descri\u00e7\u00e3o da identifica\u00e7\u00e3o da mat\u00e9ria.}
+  \item{IndicadorTramitando}{Indicador de tramita\u00e7\u00e3o da mat\u00e9ria.}
+  \item{IdentificacaoProcesso}{Identifica\u00e7\u00e3o do processo da mat\u00e9ria.}
 }
 }
 \description{
-Esta função realiza o scraping de um XML contendo informações sobre matérias legislativas da legislatura atual do Senado Federal do Brasil.
-Os dados extraídos incluem o código da matéria, sigla e nome da casa legislativa, subtipo da matéria, número e ano, descrição, indicação de tramitação e identificação do processo.
+Esta fun\u00e7\u00e3o realiza o scraping de um XML contendo informa\u00e7\u00f5es sobre mat\u00e9rias legislativas da legislatura atual do Senado Federal do Brasil.
+Os dados extra\u00eddos incluem o c\u00f3digo da mat\u00e9ria, sigla e nome da casa legislativa, subtipo da mat\u00e9ria, n\u00famero e ano, descri\u00e7\u00e3o, indica\u00e7\u00e3o de tramita\u00e7\u00e3o e identifica\u00e7\u00e3o do processo.
 }
 \examples{
 df_materias <- materias_legislatura_atual()

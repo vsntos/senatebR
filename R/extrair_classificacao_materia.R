@@ -1,18 +1,18 @@
-#' Extrair as classificações de matéria de uma URL específica
+#' Extrair as classifica\u00e7\u00f5es de mat\u00e9ria de uma URL espec\u00edfica
 #'
-#' Esta função realiza o scraping de uma página XML contendo informações sobre as classificações de matéria e extrai os dados relevantes.
+#' Esta fun\u00e7\u00e3o realiza o scraping de uma p\u00e1gina XML contendo informa\u00e7\u00f5es sobre as classifica\u00e7\u00f5es de mat\u00e9ria e extrai os dados relevantes.
 #'
-#' @param url A URL do XML que contém as classificações de matéria.
-#' @return Um dataframe contendo as classificações de matéria.
+#' @param url A URL do XML que cont\u00e9m as classifica\u00e7\u00f5es de mat\u00e9ria.
+#' @return Um dataframe contendo as classifica\u00e7\u00f5es de mat\u00e9ria.
 #' @importFrom xml2 read_xml xml_find_all xml_text xml_find_first
 #' @export
 #' @examples
 #' df_classificacao_materias <- extrair_classificacoes_materia()
 extrair_classificacoes_materia <- function(url = "https://legis.senado.leg.br/dadosabertos/dados/ListaClassificacoesMateria.xml") {
-  # Faça o download e analise o XML
+  # Fa\u00e7a o download e analise o XML
   doc <- xml2::read_xml(url)
 
-  # Extrair os dados das classes de matéria
+  # Extrair os dados das classes de mat\u00e9ria
   classes <- xml2::xml_find_all(doc, ".//Classe")
 
   # Inicializar vetores para armazenar os dados

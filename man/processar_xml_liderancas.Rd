@@ -2,44 +2,44 @@
 % Please edit documentation in R/extrair_liderancas.R
 \name{processar_xml_liderancas}
 \alias{processar_xml_liderancas}
-\title{Processa XML de Lideranças de Senadores}
+\title{Processa XML de Lideran\u00e7as de Senadores}
 \usage{
 processar_xml_liderancas(codigos)
 }
 \arguments{
-\item{codigos}{Um vetor de códigos de parlamentares para os quais os dados de
-lideranças serão extraídos.}
+\item{codigos}{Um vetor de c\u00f3digos de parlamentares para os quais os dados de
+lideran\u00e7as ser\u00e3o extra\u00eddos.}
 }
 \value{
-Um dataframe contendo os dados das lideranças, com as seguintes colunas:
+Um dataframe contendo os dados das lideran\u00e7as, com as seguintes colunas:
 \describe{
-  \item{CodigoParlamentar}{Código do parlamentar}
+  \item{CodigoParlamentar}{C\u00f3digo do parlamentar}
   \item{NomeParlamentar}{Nome do parlamentar}
-  \item{UnidadeLideranca}{Unidade da liderança}
-  \item{CodigoPartido}{Código do partido}
+  \item{UnidadeLideranca}{Unidade da lideran\u00e7a}
+  \item{CodigoPartido}{C\u00f3digo do partido}
   \item{SiglaPartido}{Sigla do partido}
   \item{NomePartido}{Nome do partido}
-  \item{SiglaCasaLideranca}{Sigla da casa de liderança}
-  \item{NomeCasaLideranca}{Nome da casa de liderança}
-  \item{DescricaoTipoLideranca}{Descrição do tipo de liderança}
-  \item{DataDesignacao}{Data de designação}
-  \item{DataFim}{Data de término}
-  \item{CodigoBloco}{Código do bloco}
+  \item{SiglaCasaLideranca}{Sigla da casa de lideran\u00e7a}
+  \item{NomeCasaLideranca}{Nome da casa de lideran\u00e7a}
+  \item{DescricaoTipoLideranca}{Descri\u00e7\u00e3o do tipo de lideran\u00e7a}
+  \item{DataDesignacao}{Data de designa\u00e7\u00e3o}
+  \item{DataFim}{Data de t\u00e9rmino}
+  \item{CodigoBloco}{C\u00f3digo do bloco}
   \item{SiglaBloco}{Sigla do bloco}
   \item{NomeBloco}{Nome do bloco}
   \item{ApelidoBloco}{Apelido do bloco}
-  \item{NumeroOrdemViceLideranca}{Número de ordem da vice-liderança}
+  \item{NumeroOrdemViceLideranca}{N\u00famero de ordem da vice-lideran\u00e7a}
 }
 }
 \description{
-Esta função acessa a URL da API do Senado para cada código de parlamentar fornecido,
-extrai e processa os dados de lideranças associados a cada parlamentar.
-Retorna um dataframe com informações sobre as lideranças, incluindo dados do
-parlamentar e detalhes das lideranças.
+Esta fun\u00e7\u00e3o acessa a URL da API do Senado para cada c\u00f3digo de parlamentar fornecido,
+extrai e processa os dados de lideran\u00e7as associados a cada parlamentar.
+Retorna um dataframe com informa\u00e7\u00f5es sobre as lideran\u00e7as, incluindo dados do
+parlamentar e detalhes das lideran\u00e7as.
 }
 \examples{
 \dontrun{
-# Exemplo de uso com códigos fictícios
+# Exemplo de uso com c\u00f3digos fict\u00edcios
 codigos <- c("123456", "654321")
 df_liderancas <- processar_xml_liderancas(codigos)
 }

@@ -1,8 +1,8 @@
-#' Lista de Matérias Atualizadas
+#' Lista de Mat\u00e9rias Atualizadas
+#' @param url URL da API a ser consultada.
+#' Esta fun\u00e7\u00e3o realiza o scraping de informa\u00e7\u00f5es sobre mat\u00e9rias legislativas atualizadas recentemente no Senado Federal do Brasil.
 #'
-#' Esta função realiza o scraping de informações sobre matérias legislativas atualizadas recentemente no Senado Federal do Brasil.
-#'
-#' @return Um dataframe contendo os detalhes das matérias legislativas atualizadas recentemente.
+#' @return Um dataframe contendo os detalhes das mat\u00e9rias legislativas atualizadas recentemente.
 #' @examples
 #' df_materias_atualizacao <- info_atualizacao_materias()
 #'
@@ -10,16 +10,16 @@
 #' @export
 info_atualizacao_materias <- function(url = "https://legis.senado.leg.br/dadosabertos/materia/atualizadas") {
   tryCatch({
-    # Faça o download e analise o XML
+    # Fa\u00e7a o download e analise o XML
     doc <- xml2::read_xml(url)
 
-    # Extraia os dados das matérias
+    # Extraia os dados das mat\u00e9rias
     materias <- xml2::xml_find_all(doc, ".//Materia")
 
-    # Inicialize uma lista para armazenar os dados das matérias
+    # Inicialize uma lista para armazenar os dados das mat\u00e9rias
     dados <- list()
 
-    # Loop sobre as matérias para extrair os dados
+    # Loop sobre as mat\u00e9rias para extrair os dados
     for (materia in materias) {
       dados[[length(dados) + 1]] <- list(
         CodigoMateria = xml2::xml_text(xml2::xml_find_first(materia, ".//CodigoMateria")),
@@ -46,7 +46,7 @@ info_atualizacao_materias <- function(url = "https://legis.senado.leg.br/dadosab
 
     return(df_materias)
   }, error = function(e) {
-    warning(paste("Erro ao tentar extrair dados das matérias atualizadas:", conditionMessage(e)))
+    warning(paste("Erro ao tentar extrair dados das mat\u00e9rias atualizadas:", conditionMessage(e)))
     return(NULL)
   })
 }

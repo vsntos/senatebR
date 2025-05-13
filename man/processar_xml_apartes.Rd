@@ -7,15 +7,15 @@
 processar_xml_apartes(codigos)
 }
 \arguments{
-\item{codigos}{Um vetor de códigos de parlamentares para os quais os dados de
-apartes serão extraídos.}
+\item{codigos}{Um vetor de c\u00f3digos de parlamentares para os quais os dados de
+apartes ser\u00e3o extra\u00eddos.}
 }
 \value{
 Um dataframe contendo os dados dos apartes, com as seguintes colunas:
 \describe{
-  \item{CodigoParlamentar}{Código do parlamentar}
+  \item{CodigoParlamentar}{C\u00f3digo do parlamentar}
   \item{NomeParlamentar}{Nome do parlamentar}
-  \item{CodigoPronunciamento}{Código do pronunciamento}
+  \item{CodigoPronunciamento}{C\u00f3digo do pronunciamento}
   \item{TipoUsoPalavra}{Tipo de uso da palavra}
   \item{DataPronunciamento}{Data do pronunciamento}
   \item{SiglaPartidoParlamentarNaData}{Sigla do partido do parlamentar na data}
@@ -23,28 +23,28 @@ Um dataframe contendo os dados dos apartes, com as seguintes colunas:
   \item{SiglaCasaPronunciamento}{Sigla da casa do pronunciamento}
   \item{NomeCasaPronunciamento}{Nome da casa do pronunciamento}
   \item{TextoResumo}{Resumo do texto do pronunciamento}
-  \item{Indexacao}{Indexação do pronunciamento}
+  \item{Indexacao}{Indexa\u00e7\u00e3o do pronunciamento}
   \item{UrlTexto}{URL do texto do pronunciamento}
-  \item{UrlTextoBinario}{URL do texto binário do pronunciamento}
-  \item{CodigoSessao}{Código da sessão plenária}
-  \item{NomeCasaSessao}{Nome da casa da sessão}
-  \item{DataSessao}{Data da sessão}
-  \item{HoraInicioSessao}{Hora de início da sessão}
-  \item{OradorCodigo}{Código do orador}
+  \item{UrlTextoBinario}{URL do texto bin\u00e1rio do pronunciamento}
+  \item{CodigoSessao}{C\u00f3digo da sess\u00e3o plen\u00e1ria}
+  \item{NomeCasaSessao}{Nome da casa da sess\u00e3o}
+  \item{DataSessao}{Data da sess\u00e3o}
+  \item{HoraInicioSessao}{Hora de in\u00edcio da sess\u00e3o}
+  \item{OradorCodigo}{C\u00f3digo do orador}
   \item{OradorNome}{Nome do orador}
-  \item{PublicacaoData}{Data da publicação}
-  \item{PublicacaoUrl}{URL da publicação}
+  \item{PublicacaoData}{Data da publica\u00e7\u00e3o}
+  \item{PublicacaoUrl}{URL da publica\u00e7\u00e3o}
 }
 }
 \description{
-Esta função acessa a URL da API do Senado para cada código de parlamentar fornecido,
+Esta fun\u00e7\u00e3o acessa a URL da API do Senado para cada c\u00f3digo de parlamentar fornecido,
 extrai e processa os dados dos apartes associados a cada parlamentar.
-Retorna um dataframe com informações sobre os apartes, incluindo dados do
+Retorna um dataframe com informa\u00e7\u00f5es sobre os apartes, incluindo dados do
 parlamentar e detalhes dos apartes.
 }
 \examples{
 \dontrun{
-# Exemplo de uso com códigos fictícios
+# Exemplo de uso com c\u00f3digos fict\u00edcios
 codigos <- c("4763", "1234")
 df_apartes <- processar_xml_apartes(codigos)
 }

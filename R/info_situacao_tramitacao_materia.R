@@ -1,13 +1,13 @@
-#' Extrair as situações da tramitação
+#' Extrair as situa\u00e7\u00f5es da tramita\u00e7\u00e3o
 #'
-#' Esta função realiza o scraping de uma página XML contendo informações sobre as situações da tramitação das matérias e extrai os dados relevantes.
+#' Esta fun\u00e7\u00e3o realiza o scraping de uma p\u00e1gina XML contendo informa\u00e7\u00f5es sobre as situa\u00e7\u00f5es da tramita\u00e7\u00e3o das mat\u00e9rias e extrai os dados relevantes.
 #'
-#' @param url URL do arquivo XML que contém as informações das situações da tramitação. Padrão é "https://legis.senado.leg.br/dadosabertos/dados/ListaSituacoes.xml".
+#' @param url URL do arquivo XML que cont\u00e9m as informa\u00e7\u00f5es das situa\u00e7\u00f5es da tramita\u00e7\u00e3o. Padr\u00e3o \u00e9 "https://legis.senado.leg.br/dadosabertos/dados/ListaSituacoes.xml".
 #'
-#' @return Um dataframe contendo as situações da tramitação.
+#' @return Um dataframe contendo as situa\u00e7\u00f5es da tramita\u00e7\u00e3o.
 #'
 #' @examples
-#' # Extrair as situações da tramitação a partir da URL padrão
+#' # Extrair as situa\u00e7\u00f5es da tramita\u00e7\u00e3o a partir da URL padr\u00e3o
 #' df_materias_tramitacao <- extrair_situacoes_tramitacao()
 #'
 #' @importFrom xml2 read_xml xml_find_all xml_text xml_find_first
@@ -15,10 +15,10 @@
 extrair_situacoes_tramitacao <- function(url = "https://legis.senado.leg.br/dadosabertos/dados/ListaSituacoes.xml") {
   requireNamespace("xml2", quietly = TRUE)
 
-  # Faça o download e analise o XML
+  # Fa\u00e7a o download e analise o XML
   doc <- xml2::read_xml(url)
 
-  # Extrair os dados das situações da tramitação
+  # Extrair os dados das situa\u00e7\u00f5es da tramita\u00e7\u00e3o
   situacoes <- xml2::xml_find_all(doc, ".//Situacao")
 
   # Inicializar vetores para armazenar os dados
@@ -27,7 +27,7 @@ extrair_situacoes_tramitacao <- function(url = "https://legis.senado.leg.br/dado
   descricao <- character()
   data_criacao <- character()
 
-  # Loop sobre as situações da tramitação para extrair os dados
+  # Loop sobre as situa\u00e7\u00f5es da tramita\u00e7\u00e3o para extrair os dados
   for (situacao in situacoes) {
     codigo <- c(codigo, xml2::xml_text(xml2::xml_find_first(situacao, ".//Codigo")))
     sigla <- c(sigla, xml2::xml_text(xml2::xml_find_first(situacao, ".//Sigla")))

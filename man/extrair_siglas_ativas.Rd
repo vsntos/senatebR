@@ -2,20 +2,20 @@
 % Please edit documentation in R/extrair_siglas_ativas.R
 \name{extrair_siglas_ativas}
 \alias{extrair_siglas_ativas}
-\title{Extrair as siglas ativas de matérias de uma URL específica}
+\title{Extrair as siglas ativas de mat\u00e9rias de uma URL espec\u00edfica}
 \usage{
 extrair_siglas_ativas(
   url = "https://legis.senado.leg.br/dadosabertos/dados/ListaSiglas.xml"
 )
 }
 \arguments{
-\item{url}{A URL do XML que contém as siglas ativas de matérias.}
+\item{url}{A URL do XML que cont\u00e9m as siglas ativas de mat\u00e9rias.}
 }
 \value{
-Um dataframe contendo as siglas ativas de matérias.
+Um dataframe contendo as siglas ativas de mat\u00e9rias.
 }
 \description{
-Esta função realiza o scraping de uma página XML contendo informações sobre as siglas ativas de matérias e extrai os dados relevantes.
+Esta fun\u00e7\u00e3o realiza o scraping de uma p\u00e1gina XML contendo informa\u00e7\u00f5es sobre as siglas ativas de mat\u00e9rias e extrai os dados relevantes.
 }
 \examples{
 extrair_siglas_ativas()

@@ -2,20 +2,20 @@
 % Please edit documentation in R/extrair_tipo_decisao_materia.R
 \name{extrair_tipos_decisao}
 \alias{extrair_tipos_decisao}
-\title{Extrair os tipos de decisão de uma URL específica}
+\title{Extrair os tipos de decis\u00e3o de uma URL espec\u00edfica}
 \usage{
 extrair_tipos_decisao(
   url = "https://legis.senado.leg.br/dadosabertos/dados/ListaTiposDecisao.xml"
 )
 }
 \arguments{
-\item{url}{A URL do XML que contém os tipos de decisão.}
+\item{url}{A URL do XML que cont\u00e9m os tipos de decis\u00e3o.}
 }
 \value{
-Um dataframe contendo os tipos de decisão.
+Um dataframe contendo os tipos de decis\u00e3o.
 }
 \description{
-Esta função realiza o scraping sobre os tipos de decisão e extrai os dados relevantes.
+Esta fun\u00e7\u00e3o realiza o scraping sobre os tipos de decis\u00e3o e extrai os dados relevantes.
 }
 \examples{
 df_tipos_decisao <- extrair_tipos_decisao()

@@ -2,20 +2,20 @@
 % Please edit documentation in R/extrair_tipo_comparecimento.R
 \name{extrair_tipos_comparecimento}
 \alias{extrair_tipos_comparecimento}
-\title{Extrair os tipos de comparecimento em votação de uma URL específica}
+\title{Extrair os tipos de comparecimento em vota\u00e7\u00e3o de uma URL espec\u00edfica}
 \usage{
 extrair_tipos_comparecimento(
   url = "https://legis.senado.leg.br/dadosabertos/dados/ListaTiposComparecimento.xml"
 )
 }
 \arguments{
-\item{url}{A URL do XML que contém os tipos de comparecimento em votação.}
+\item{url}{A URL do XML que cont\u00e9m os tipos de comparecimento em vota\u00e7\u00e3o.}
 }
 \value{
-Um dataframe contendo os tipos de comparecimento em votação.
+Um dataframe contendo os tipos de comparecimento em vota\u00e7\u00e3o.
 }
 \description{
-Esta função realiza o scraping de uma página XML contendo informações sobre os tipos de comparecimento em votação e extrai os dados relevantes.
+Esta fun\u00e7\u00e3o realiza o scraping de uma p\u00e1gina XML contendo informa\u00e7\u00f5es sobre os tipos de comparecimento em vota\u00e7\u00e3o e extrai os dados relevantes.
 }
 \examples{
 df_tipos_comparecimento <- extrair_tipos_comparecimento()

@@ -2,17 +2,21 @@
 % Please edit documentation in R/info_atualizacao_materias.R
 \name{info_atualizacao_materias}
 \alias{info_atualizacao_materias}
-\title{Lista de Matérias Atualizadas}
+\title{Lista de Mat\u00e9rias Atualizadas}
 \usage{
 info_atualizacao_materias(
   url = "https://legis.senado.leg.br/dadosabertos/materia/atualizadas"
 )
 }
+\arguments{
+\item{url}{URL da API a ser consultada.
+Esta fun\u00e7\u00e3o realiza o scraping de informa\u00e7\u00f5es sobre mat\u00e9rias legislativas atualizadas recentemente no Senado Federal do Brasil.}
+}
 \value{
-Um dataframe contendo os detalhes das matérias legislativas atualizadas recentemente.
+Um dataframe contendo os detalhes das mat\u00e9rias legislativas atualizadas recentemente.
 }
 \description{
-Esta função realiza o scraping de informações sobre matérias legislativas atualizadas recentemente no Senado Federal do Brasil.
+Lista de Mat\u00e9rias Atualizadas
 }
 \examples{
 df_materias_atualizacao <- info_atualizacao_materias()

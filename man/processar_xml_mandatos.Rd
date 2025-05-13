@@ -7,17 +7,17 @@
 processar_xml_mandatos(codigos)
 }
 \arguments{
-\item{codigos}{Um vetor de códigos de senadores para os quais os dados de mandatos serão obtidos.}
+\item{codigos}{Um vetor de c\u00f3digos de senadores para os quais os dados de mandatos ser\u00e3o obtidos.}
 }
 \value{
 Um dataframe contendo os dados dos mandatos dos senadores especificados. Cada linha do dataframe
-        representa um mandato e inclui informações como o código do mandato, a unidade federativa, e as datas
-        de início e fim das legislaturas.
+        representa um mandato e inclui informa\u00e7\u00f5es como o c\u00f3digo do mandato, a unidade federativa, e as datas
+        de in\u00edcio e fim das legislaturas.
 }
 \description{
-Esta função processa os XMLs disponíveis na URL do Senado para obter dados dos mandatos de múltiplos senadores.
-Para cada código de senador fornecido, a função faz o download e a análise do XML correspondente,
-extraindo informações sobre os mandatos do senador e combinando-os em um único dataframe.
+Esta fun\u00e7\u00e3o processa os XMLs dispon\u00edveis na URL do Senado para obter dados dos mandatos de m\u00faltiplos senadores.
+Para cada c\u00f3digo de senador fornecido, a fun\u00e7\u00e3o faz o download e a an\u00e1lise do XML correspondente,
+extraindo informa\u00e7\u00f5es sobre os mandatos do senador e combinando-os em um \u00fanico dataframe.
 }
 \examples{
 \dontrun{

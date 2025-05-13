@@ -7,15 +7,15 @@
 obter_dados_senadores_legislatura(legislatura_inicio, legislatura_fim)
 }
 \arguments{
-\item{legislatura_inicio}{Número da legislatura de início.}
+\item{legislatura_inicio}{N\u00famero da legislatura de in\u00edcio.}
 
-\item{legislatura_fim}{Número da legislatura de fim.}
+\item{legislatura_fim}{N\u00famero da legislatura de fim.}
 }
 \value{
 Um dataframe com os dados dos senadores.
 }
 \description{
-Esta função realiza requisições HTTP para obter informações dos senadores
+Esta fun\u00e7\u00e3o realiza requisi\u00e7\u00f5es HTTP para obter informa\u00e7\u00f5es dos senadores
 com base nas legislaturas fornecidas.
 }
 \examples{
@@ -23,7 +23,7 @@ df_senadores_legislatura <- obter_dados_senadores_legislatura(47, 56)
 
 }
 \references{
-Informações sobre os senadores são obtidas da API de dados abertos do Senado Brasileiro.
+Informa\u00e7\u00f5es sobre os senadores s\u00e3o obtidas da API de dados abertos do Senado Brasileiro.
 }
 \keyword{API}
 \keyword{legislatura}

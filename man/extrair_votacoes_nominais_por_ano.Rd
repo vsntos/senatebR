@@ -2,18 +2,18 @@
 % Please edit documentation in R/info_votos_nominais.R
 \name{extrair_votacoes_nominais_por_ano}
 \alias{extrair_votacoes_nominais_por_ano}
-\title{Extrai as informações das votações nominais por ano}
+\title{Extrai as informa\u00e7\u00f5es das vota\u00e7\u00f5es nominais por ano}
 \usage{
 extrair_votacoes_nominais_por_ano(anos)
 }
 \arguments{
-\item{anos}{Vetor contendo os anos das votações a serem extraídas}
+\item{anos}{Vetor contendo os anos das vota\u00e7\u00f5es a serem extra\u00eddas}
 }
 \value{
-Um data frame com as informações das votações nominais
+Um data frame com as informa\u00e7\u00f5es das vota\u00e7\u00f5es nominais
 }
 \description{
-Esta função extrai as informações das votações nominais e retorna um data frame.
+Esta fun\u00e7\u00e3o extrai as informa\u00e7\u00f5es das vota\u00e7\u00f5es nominais e retorna um data frame.
 }
 \examples{
 # Exemplo de uso

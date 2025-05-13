@@ -2,7 +2,7 @@
 % Please edit documentation in R/info_agenda.R
 \name{info_agenda}
 \alias{info_agenda}
-\title{Extrair dados da agenda do Congresso Nacional, do Senado Federal e Câmara dos Deputados}
+\title{Extrair dados da agenda do Congresso Nacional, do Senado Federal e C\u00e2mara dos Deputados}
 \usage{
 info_agenda(anos, meses, dias)
 }
@@ -17,7 +17,7 @@ info_agenda(anos, meses, dias)
 Um dataframe contendo os dados da agenda do Congresso Nacional.
 }
 \description{
-Esta função extrai dados da agenda do Congresso Nacional para os anos, meses e dias especificados.
+Esta fun\u00e7\u00e3o extrai dados da agenda do Congresso Nacional para os anos, meses e dias especificados.
 }
 \examples{
 resultado <- info_agenda(anos = c(2023, 2024), meses = c(1, 2), dias = 10:15)

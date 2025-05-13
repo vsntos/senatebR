@@ -1,10 +1,10 @@
-#' Extrair informações de votações do plenário do Senado Federal por ano
+#' Extrair informa\u00e7\u00f5es de vota\u00e7\u00f5es do plen\u00e1rio do Senado Federal por ano
 #'
-#' Esta função extrai as informações de votações do plenário do Senado Federal para os anos especificados.
+#' Esta fun\u00e7\u00e3o extrai as informa\u00e7\u00f5es de vota\u00e7\u00f5es do plen\u00e1rio do Senado Federal para os anos especificados.
 #'
-#' @param anos Um vetor contendo os anos para os quais se deseja extrair as informações de votações.
+#' @param anos Um vetor contendo os anos para os quais se deseja extrair as informa\u00e7\u00f5es de vota\u00e7\u00f5es.
 #'
-#' @return Um dataframe contendo as informações de votações para todos os anos especificados, incluindo a variável 'ano'.
+#' @return Um dataframe contendo as informa\u00e7\u00f5es de vota\u00e7\u00f5es para todos os anos especificados, incluindo a vari\u00e1vel 'ano'.
 #'
 #' @examples
 #' # Exemplo de uso
@@ -26,13 +26,13 @@ extrair_votacoes_por_ano <- function(anos) {
   # Iterar sobre cada ano fornecido
   for (ano in anos) {
     tryCatch({
-      # Construir a URL para acessar os dados de votações do ano especificado
+      # Construir a URL para acessar os dados de vota\u00e7\u00f5es do ano especificado
       url <- paste0("https://legis.senado.leg.br/dadosabertos/dados/ListaVotacoes", ano, ".xml")
 
       # Extrair XML da URL
       xml <- xml2::read_xml(url)
 
-      # Extrair os dados de votações
+      # Extrair os dados de vota\u00e7\u00f5es
       votacoes <- xml2::xml_find_all(xml, ".//Votacao")
       dados <- lapply(votacoes, function(votacao) {
         data.frame(
@@ -61,7 +61,7 @@ extrair_votacoes_por_ano <- function(anos) {
         )
       })
 
-      # Converter a lista de dataframes em um único dataframe
+      # Converter a lista de dataframes em um \u00fanico dataframe
       dados <- dplyr::bind_rows(dados)
 
       # Adicionar os dados do ano atual ao dataframe total

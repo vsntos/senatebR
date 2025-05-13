@@ -2,18 +2,18 @@
 % Please edit documentation in R/info_composicao_comissao_web.R
 \name{extrair_dados_comissao_senador}
 \alias{extrair_dados_comissao_senador}
-\title{Extrai dados das comissões de um senador}
+\title{Extrai dados das comiss\u00f5es de um senador}
 \usage{
 extrair_dados_comissao_senador(codigo_senador)
 }
 \arguments{
-\item{codigo_senador}{O código do senador.}
+\item{codigo_senador}{O c\u00f3digo do senador.}
 }
 \value{
-Um data frame contendo os dados das comissões do senador.
+Um data frame contendo os dados das comiss\u00f5es do senador.
 }
 \description{
-Esta função extrai os dados das comissões de um senador com base no seu código parlamentar.
+Esta fun\u00e7\u00e3o extrai os dados das comiss\u00f5es de um senador com base no seu c\u00f3digo parlamentar.
 }
 \examples{
 codigo_senador <- "5008"

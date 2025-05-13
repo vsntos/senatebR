@@ -2,18 +2,18 @@
 % Please edit documentation in R/info_composicao_comissoes_api.R
 \name{obter_dados_comissoes_parlamentares}
 \alias{obter_dados_comissoes_parlamentares}
-\title{Obter dados das comissões de parlamentares}
+\title{Obter dados das comiss\u00f5es de parlamentares}
 \usage{
 obter_dados_comissoes_parlamentares(codigos_parlamentares)
 }
 \arguments{
-\item{codigos_parlamentares}{Vetor contendo os códigos dos parlamentares.}
+\item{codigos_parlamentares}{Vetor contendo os c\u00f3digos dos parlamentares.}
 }
 \value{
-Um dataframe contendo os dados das comissões que parlamentares são ou foram membros.
+Um dataframe contendo os dados das comiss\u00f5es que parlamentares s\u00e3o ou foram membros.
 }
 \description{
-Esta função obtém dados das comissões de parlamentares com base em seus códigos.
+Esta fun\u00e7\u00e3o obt\u00e9m dados das comiss\u00f5es de parlamentares com base em seus c\u00f3digos.
 }
 \examples{
 codigos_senadores <- c(5386, 5012)

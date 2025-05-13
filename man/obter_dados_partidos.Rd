@@ -2,7 +2,7 @@
 % Please edit documentation in R/info_partidos.R
 \name{obter_dados_partidos}
 \alias{obter_dados_partidos}
-\title{Obtém dados dos partidos dos senadores a partir da API do Senado}
+\title{Obt\u00e9m dados dos partidos dos senadores a partir da API do Senado}
 \usage{
 obter_dados_partidos()
 }
@@ -10,7 +10,7 @@ obter_dados_partidos()
 Um dataframe contendo dados dos partidos.
 }
 \description{
-Esta função realiza uma requisição à API do Senado para obter informações sobre os partidos.
+Esta fun\u00e7\u00e3o realiza uma requisi\u00e7\u00e3o \u00e0 API do Senado para obter informa\u00e7\u00f5es sobre os partidos.
 }
 \examples{
 df_partidos <- obter_dados_partidos()

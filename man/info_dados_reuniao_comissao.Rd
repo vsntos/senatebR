@@ -2,23 +2,23 @@
 % Please edit documentation in R/info_reunioes.R
 \name{info_dados_reuniao_comissao}
 \alias{info_dados_reuniao_comissao}
-\title{Extrair dados de reuniões de comissões do Senado}
+\title{Extrair dados de reuni\u00f5es de comiss\u00f5es do Senado}
 \usage{
 info_dados_reuniao_comissao(codcol, data_inicio, data_fim)
 }
 \arguments{
-\item{codcol}{Vetor contendo os códigos das comissões}
+\item{codcol}{Vetor contendo os c\u00f3digos das comiss\u00f5es}
 
-\item{data_inicio}{Data de início no formato "YYYY-MM-DD"}
+\item{data_inicio}{Data de in\u00edcio no formato "YYYY-MM-DD"}
 
 \item{data_fim}{Data de fim no formato "YYYY-MM-DD"}
 }
 \value{
-Um DataFrame com os dados das reuniões das comissões
+Um DataFrame com os dados das reuni\u00f5es das comiss\u00f5es
 }
 \description{
-Esta função extrai dados de reuniões de comissões do Senado Federal
-com base nos códigos das comissões e no intervalo de datas fornecido.
+Esta fun\u00e7\u00e3o extrai dados de reuni\u00f5es de comiss\u00f5es do Senado Federal
+com base nos c\u00f3digos das comiss\u00f5es e no intervalo de datas fornecido.
 }
 \examples{
 codcol <- c(54, 38, 2614, 34)

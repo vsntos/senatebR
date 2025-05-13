@@ -2,18 +2,18 @@
 % Please edit documentation in R/info_votacoes.R
 \name{extrair_votacoes_por_ano}
 \alias{extrair_votacoes_por_ano}
-\title{Extrair informações de votações do plenário do Senado Federal por ano}
+\title{Extrair informa\u00e7\u00f5es de vota\u00e7\u00f5es do plen\u00e1rio do Senado Federal por ano}
 \usage{
 extrair_votacoes_por_ano(anos)
 }
 \arguments{
-\item{anos}{Um vetor contendo os anos para os quais se deseja extrair as informações de votações.}
+\item{anos}{Um vetor contendo os anos para os quais se deseja extrair as informa\u00e7\u00f5es de vota\u00e7\u00f5es.}
 }
 \value{
-Um dataframe contendo as informações de votações para todos os anos especificados, incluindo a variável 'ano'.
+Um dataframe contendo as informa\u00e7\u00f5es de vota\u00e7\u00f5es para todos os anos especificados, incluindo a vari\u00e1vel 'ano'.
 }
 \description{
-Esta função extrai as informações de votações do plenário do Senado Federal para os anos especificados.
+Esta fun\u00e7\u00e3o extrai as informa\u00e7\u00f5es de vota\u00e7\u00f5es do plen\u00e1rio do Senado Federal para os anos especificados.
 }
 \examples{
 # Exemplo de uso

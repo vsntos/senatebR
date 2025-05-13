@@ -1,18 +1,18 @@
-#' Coletar Medidas Provisórias Encerradas
+#' Coletar Medidas Provis\u00f3rias Encerradas
 #'
-#' Esta função coleta dados sobre medidas provisórias encerradas do site do Congresso Nacional do Brasil.
+#' Esta fun\u00e7\u00e3o coleta dados sobre medidas provis\u00f3rias encerradas do site do Congresso Nacional do Brasil.
 #'
-#' @param numero_ultima_pagina Número da última página a ser coletada.
+#' @param numero_ultima_pagina N\u00famero da \u00faltima p\u00e1gina a ser coletada.
 #'
-#' @return Um dataframe contendo informações sobre medidas provisórias encerradas.
+#' @return Um dataframe contendo informa\u00e7\u00f5es sobre medidas provis\u00f3rias encerradas.
 #' O dataframe possui as seguintes colunas:
 #' \describe{
-#'   \item{Link}{Link para acessar mais informações sobre a medida provisória.}
-#'   \item{MPV}{Número da medida provisória.}
-#'   \item{Título}{Título da medida provisória.}
-#'   \item{Ementa}{Resumo ou descrição da medida provisória.}
-#'   \item{Prazo de 60 dias}{Data limite para validade da medida provisória.}
-#'   \item{Prazo de emendas}{Data limite para submissão de emendas.}
+#'   \item{Link}{Link para acessar mais informa\u00e7\u00f5es sobre a medida provis\u00f3ria.}
+#'   \item{MPV}{N\u00famero da medida provis\u00f3ria.}
+#'   \item{T\u00edtulo}{T\u00edtulo da medida provis\u00f3ria.}
+#'   \item{Ementa}{Resumo ou descri\u00e7\u00e3o da medida provis\u00f3ria.}
+#'   \item{Prazo de 60 dias}{Data limite para validade da medida provis\u00f3ria.}
+#'   \item{Prazo de emendas}{Data limite para submiss\u00e3o de emendas.}
 #' }
 #'
 #'
@@ -32,7 +32,7 @@
 #'
 coletar_medidas_provisorias_encerradas <- function(numero_ultima_pagina) {
 
-  # Função para raspar os dados de uma página específica
+  # Fun\u00e7\u00e3o para raspar os dados de uma p\u00e1gina espec\u00edfica
   raspar_dados_pagina <- function(url_pagina) {
     tryCatch({
       pagina <- read_html(url_pagina)
@@ -50,13 +50,13 @@ coletar_medidas_provisorias_encerradas <- function(numero_ultima_pagina) {
 
       # Iterar sobre os resumos para extrair os dados
       for (resumo in resumos) {
-        # Número da MPV
+        # N\u00famero da MPV
         numero <- resumo %>% html_node("dd a") %>% html_text()
         links <- c(links, resumo %>% html_node("dd a") %>% html_attr("href"))
         numeros <- c(numeros, numero)
 
-        # Título
-        titulo <- resumo %>% html_node(xpath=".//dd[span[text()='Título']]/following-sibling::dd[1]") %>% html_text()
+        # T\u00edtulo
+        titulo <- resumo %>% html_node(xpath=".//dd[span[text()='T\u00edtulo']]/following-sibling::dd[1]") %>% html_text()
         titulos <- c(titulos, titulo)
 
         # Ementa
@@ -95,21 +95,21 @@ coletar_medidas_provisorias_encerradas <- function(numero_ultima_pagina) {
   # URL base para as MPs encerradas
   url_base <- "https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/encerradas/"
 
-  # Inicializar lista para armazenar os dataframes de cada página
+  # Inicializar lista para armazenar os dataframes de cada p\u00e1gina
   lista_dados <- list()
 
-  # Iterar sobre as páginas e raspar os dados
+  # Iterar sobre as p\u00e1ginas e raspar os dados
   for (i in 1:numero_ultima_pagina) {
     url_pagina <- paste0(url_base, i)
     dados_pagina <- raspar_dados_pagina(url_pagina)
 
-    # Adicionar dataframe à lista se não for NULL
+    # Adicionar dataframe \u00e0 lista se n\u00e3o for NULL
     if (!is.null(dados_pagina)) {
       lista_dados[[i]] <- dados_pagina
     }
   }
 
-  # Combinar todos os dataframes em um único dataframe
+  # Combinar todos os dataframes em um \u00fanico dataframe
   dados_finais <- dplyr::bind_rows(lista_dados)
 
   return(dados_finais)

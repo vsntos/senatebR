@@ -2,20 +2,20 @@
 % Please edit documentation in R/extrair_classificacao_materia.R
 \name{extrair_classificacoes_materia}
 \alias{extrair_classificacoes_materia}
-\title{Extrair as classificações de matéria de uma URL específica}
+\title{Extrair as classifica\u00e7\u00f5es de mat\u00e9ria de uma URL espec\u00edfica}
 \usage{
 extrair_classificacoes_materia(
   url = "https://legis.senado.leg.br/dadosabertos/dados/ListaClassificacoesMateria.xml"
 )
 }
 \arguments{
-\item{url}{A URL do XML que contém as classificações de matéria.}
+\item{url}{A URL do XML que cont\u00e9m as classifica\u00e7\u00f5es de mat\u00e9ria.}
 }
 \value{
-Um dataframe contendo as classificações de matéria.
+Um dataframe contendo as classifica\u00e7\u00f5es de mat\u00e9ria.
 }
 \description{
-Esta função realiza o scraping de uma página XML contendo informações sobre as classificações de matéria e extrai os dados relevantes.
+Esta fun\u00e7\u00e3o realiza o scraping de uma p\u00e1gina XML contendo informa\u00e7\u00f5es sobre as classifica\u00e7\u00f5es de mat\u00e9ria e extrai os dados relevantes.
 }
 \examples{
 df_classificacao_materias <- extrair_classificacoes_materia()
