@@ -12,7 +12,7 @@
 #'
 #' }
 #' @import rvest
-#' @import magrittr
+#' @importFrom magrittr %>%
 #' @importFrom stringr str_trim
 #'
 #' @export

@@ -14,7 +14,7 @@
 #' }
 #' @import xml2
 #' @import dplyr
-#' @import purrr
+#' @importFrom purrr map
 #' @export
 processar_xml_mandatos <- function(codigos) {
   # Função para obter e processar o XML de um senador específico

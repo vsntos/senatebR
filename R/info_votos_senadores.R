@@ -6,9 +6,10 @@
 #' @return Um data frame com as votações de todos os senadores e anos especificados.
 #'
 #' @import httr
-#' @import jsonlite
+#' @importFrom jsonlite fromJSON
 #' @import dplyr
-#' @import purrr
+#' @importFrom purrr map2
+#' @importFrom tidyr expand_grid
 #' @export
 #'
 #' @examples

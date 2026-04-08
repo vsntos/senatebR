@@ -14,7 +14,6 @@
 #' }
 #' @import httr
 #' @importFrom jsonlite fromJSON
-#' @import tidyr
 #' @import dplyr
 #' @import lubridate
 #'

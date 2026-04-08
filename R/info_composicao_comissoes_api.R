@@ -13,7 +13,7 @@
 #'
 #' }
 #' @import httr
-#' @import jsonlite
+#' @importFrom jsonlite fromJSON
 #'
 #' @export
 obter_dados_comissoes_parlamentares <- function(codigos_parlamentares) {
