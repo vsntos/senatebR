@@ -1,6 +1,10 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>/404.html</loc></url>
+<url><loc>/CONTRIBUTING.html</loc></url>
 <url><loc>/LICENSE-text.html</loc></url>
+<url><loc>/LICENSE.html</loc></url>
+<url><loc>/articles/index.html</loc></url>
+<url><loc>/articles/senatebR-introducao.html</loc></url>
 <url><loc>/authors.html</loc></url>
 <url><loc>/index.html</loc></url>
 <url><loc>/news/index.html</loc></url>
@@ -41,5 +45,6 @@
 <url><loc>/reference/processar_xml_liderancas.html</loc></url>
 <url><loc>/reference/processar_xml_mandatos.html</loc></url>
 <url><loc>/reference/processar_xml_profissoes.html</loc></url>
+<url><loc>/reference/senatebR-package.html</loc></url>
 </urlset>
 

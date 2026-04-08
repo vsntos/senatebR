@@ -16,6 +16,10 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/senatebR-introducao.html">senatebR: coletando dados do Senado Federal brasileiro</a></li>
+  </ul></li>
 <li class="active nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
@@ -33,9 +37,103 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="senatebr-010">senatebR 0.1.0<a class="anchor" aria-label="anchor" href="#senatebr-010"></a></h2>
-<ul><li>Release</li>
+<p>Primeira versão do pacote. Inclui 36 funções para coleta de dados do Senado Federal via API pública e web scraping.</p>
+<div class="section level3">
+<h3 id="senadores-e-mandatos-0-1-0">Senadores e mandatos<a class="anchor" aria-label="anchor" href="#senadores-e-mandatos-0-1-0"></a></h3>
+<ul><li>
+<code><a href="../reference/obter_dados_senadores_legislatura.html">obter_dados_senadores_legislatura()</a></code> — lista senadores por legislatura</li>
+<li>
+<code><a href="../reference/get_afastados.html">get_afastados()</a></code> — senadores afastados</li>
+<li>
+<code><a href="../reference/dados_academicos.html">dados_academicos()</a></code> — formação acadêmica dos senadores</li>
+<li>
+<code><a href="../reference/processar_xml_mandatos.html">processar_xml_mandatos()</a></code> — dados de mandato via XML</li>
+<li>
+<code><a href="../reference/processar_xml_profissoes.html">processar_xml_profissoes()</a></code> — profissões declaradas via XML</li>
+<li>
+<code><a href="../reference/processar_xml_liderancas.html">processar_xml_liderancas()</a></code> — lideranças parlamentares via XML</li>
+<li>
+<code><a href="../reference/processar_xml_apartes.html">processar_xml_apartes()</a></code> — apartes parlamentares via XML</li>
 </ul></div>
-  </main></div>
+<div class="section level3">
+<h3 id="votações-0-1-0">Votações<a class="anchor" aria-label="anchor" href="#vota%C3%A7%C3%B5es-0-1-0"></a></h3>
+<ul><li>
+<code><a href="../reference/extrair_votacoes_por_ano.html">extrair_votacoes_por_ano()</a></code> — votações do plenário por ano</li>
+<li>
+<code><a href="../reference/extrair_votacoes_nominais_por_ano.html">extrair_votacoes_nominais_por_ano()</a></code> — votos nominais detalhados por ano</li>
+<li>
+<code><a href="../reference/coletar_votacoes_multiplos.html">coletar_votacoes_multiplos()</a></code> — votos de múltiplos senadores em múltiplos anos</li>
+<li>
+<code><a href="../reference/coletar_orientacao_votacao.html">coletar_orientacao_votacao()</a></code> — orientação de bancada por sessão</li>
+</ul></div>
+<div class="section level3">
+<h3 id="pronunciamentos-e-discursos-0-1-0">Pronunciamentos e discursos<a class="anchor" aria-label="anchor" href="#pronunciamentos-e-discursos-0-1-0"></a></h3>
+<ul><li>
+<code><a href="../reference/extrair_discursos.html">extrair_discursos()</a></code> — discursos no plenário por senador</li>
+<li>
+<code><a href="../reference/extrair_pronunciamentos_multi.html">extrair_pronunciamentos_multi()</a></code> — pronunciamentos de múltiplos senadores por intervalo de ano</li>
+<li>
+<code><a href="../reference/extrair_notas_taquigraficas.html">extrair_notas_taquigraficas()</a></code> — notas taquigráficas de reuniões</li>
+</ul></div>
+<div class="section level3">
+<h3 id="comissões-0-1-0">Comissões<a class="anchor" aria-label="anchor" href="#comiss%C3%B5es-0-1-0"></a></h3>
+<ul><li>
+<code><a href="../reference/dados_comissoes.html">dados_comissoes()</a></code> — lista básica de comissões permanentes (web scraping)</li>
+<li>
+<code><a href="../reference/obter_dados_comissoes_parlamentares.html">obter_dados_comissoes_parlamentares()</a></code> — composição de comissões via API</li>
+<li>
+<code><a href="../reference/extrair_dados_comissao_senador.html">extrair_dados_comissao_senador()</a></code> — participação de um senador por comissão</li>
+<li>
+<code><a href="../reference/info_dados_reuniao_comissao.html">info_dados_reuniao_comissao()</a></code> — reuniões de comissão por período</li>
+<li>
+<code><a href="../reference/info_dados_reuniao_nota.html">info_dados_reuniao_nota()</a></code> — notas de reuniões de comissão</li>
+</ul></div>
+<div class="section level3">
+<h3 id="matérias-legislativas-0-1-0">Matérias legislativas<a class="anchor" aria-label="anchor" href="#mat%C3%A9rias-legislativas-0-1-0"></a></h3>
+<ul><li>
+<code><a href="../reference/materias_legislatura_atual.html">materias_legislatura_atual()</a></code> — matérias em tramitação na legislatura atual</li>
+<li>
+<code><a href="../reference/info_materia_temas.html">info_materia_temas()</a></code> — temas e assuntos legislativos</li>
+<li>
+<code><a href="../reference/info_atualizacao_materias.html">info_atualizacao_materias()</a></code> — últimas atualizações de matérias</li>
+<li>
+<code><a href="../reference/extrair_situacoes_tramitacao.html">extrair_situacoes_tramitacao()</a></code> — situações de tramitação disponíveis</li>
+<li>
+<code><a href="../reference/extrair_classificacoes_materia.html">extrair_classificacoes_materia()</a></code> — classificações de matéria</li>
+<li>
+<code><a href="../reference/coletar_autorias_parlamentares.html">coletar_autorias_parlamentares()</a></code> — autorias de matérias por parlamentar</li>
+<li>
+<code><a href="../reference/dados_relatorias_parlamentares.html">dados_relatorias_parlamentares()</a></code> — relatorias de matérias por parlamentar</li>
+</ul></div>
+<div class="section level3">
+<h3 id="vetos-e-medidas-provisórias-0-1-0">Vetos e Medidas Provisórias<a class="anchor" aria-label="anchor" href="#vetos-e-medidas-provis%C3%B3rias-0-1-0"></a></h3>
+<ul><li>
+<code><a href="../reference/info_vetos.html">info_vetos()</a></code> — lista de vetos encerrados (web scraping)</li>
+<li>
+<code><a href="../reference/dados_vetos.html">dados_vetos()</a></code> — partes vetadas por URL de veto</li>
+<li>
+<code><a href="../reference/extrair_detalhes_vetos.html">extrair_detalhes_vetos()</a></code> — detalhes de vetos por URL</li>
+<li>
+<code><a href="../reference/coletar_medidas_provisorias_em_tramitacao.html">coletar_medidas_provisorias_em_tramitacao()</a></code> — MPs em tramitação</li>
+<li>
+<code><a href="../reference/coletar_medidas_provisorias_encerradas.html">coletar_medidas_provisorias_encerradas()</a></code> — MPs encerradas por número de páginas</li>
+</ul></div>
+<div class="section level3">
+<h3 id="referências-e-metadados-0-1-0">Referências e metadados<a class="anchor" aria-label="anchor" href="#refer%C3%AAncias-e-metadados-0-1-0"></a></h3>
+<ul><li>
+<code><a href="../reference/info_agenda.html">info_agenda()</a></code> — agenda do Congresso Nacional</li>
+<li>
+<code><a href="../reference/obter_dados_partidos.html">obter_dados_partidos()</a></code> — partidos políticos registrados</li>
+<li>
+<code><a href="../reference/extrair_siglas_ativas.html">extrair_siglas_ativas()</a></code> — siglas de matérias ativas</li>
+<li>
+<code><a href="../reference/extrair_tipos_comparecimento.html">extrair_tipos_comparecimento()</a></code> — tipos de comparecimento em votação</li>
+<li>
+<code><a href="../reference/extrair_tipos_decisao.html">extrair_tipos_decisao()</a></code> — tipos de decisão de matéria</li>
+</ul></div>
+</div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">
@@ -43,7 +141,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.2.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>
