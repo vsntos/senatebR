@@ -1,10 +1,10 @@
 #' Obter dados dos senadores por legislatura
 #'
-#' Esta fun\u00e7\u00e3o realiza requisi\u00e7\u00f5es HTTP para obter informa\u00e7\u00f5es dos senadores
+#' Esta função realiza requisições HTTP para obter informações dos senadores
 #' com base nas legislaturas fornecidas.
 #'
-#' @param legislatura_inicio N\u00famero da legislatura de in\u00edcio.
-#' @param legislatura_fim N\u00famero da legislatura de fim.
+#' @param legislatura_inicio Número da legislatura de início.
+#' @param legislatura_fim Número da legislatura de fim.
 #'
 #' @return Um dataframe com os dados dos senadores.
 #'
@@ -15,7 +15,7 @@
 #' @importFrom jsonlite fromJSON
 #'
 #' @references
-#' Informa\u00e7\u00f5es sobre os senadores s\u00e3o obtidas da API de dados abertos do Senado Brasileiro.
+#' Informações sobre os senadores são obtidas da API de dados abertos do Senado Brasileiro.
 #'
 #' @keywords senador legislatura API
 #'
@@ -27,10 +27,10 @@ obter_dados_senadores_legislatura <- function(legislatura_inicio, legislatura_fi
   # Construa a URL com base nas legislaturas fornecidas
   url <- paste0("https://legis.senado.leg.br/dadosabertos/senador/lista/legislatura/", legislatura_inicio, "/", legislatura_fim)
 
-  # Fa\u00e7a a requisi\u00e7\u00e3o GET
+  # Faça a requisição GET
   response <- httr::GET(url, httr::add_headers(accept = "application/json"))
 
-  # Verifique se a requisi\u00e7\u00e3o foi bem-sucedida (c\u00f3digo de status na faixa 2xx)
+  # Verifique se a requisição foi bem-sucedida (código de status na faixa 2xx)
   if (httr::status_code(response) >= 200 && httr::status_code(response) < 300) {
     # Leia os dados JSON da resposta
     json_data <- jsonlite::fromJSON(httr::content(response, "text"), flatten = TRUE)
@@ -38,17 +38,17 @@ obter_dados_senadores_legislatura <- function(legislatura_inicio, legislatura_fi
     # Acesse os dados dos parlamentares
     df_parlamentares <- json_data$ListaParlamentarLegislatura$Parlamentares$Parlamentar
 
-    # Verifique se h\u00e1 dados dispon\u00edveis
+    # Verifique se há dados disponíveis
     if (length(df_parlamentares) > 0) {
-      # Crie um dataframe com as informa\u00e7\u00f5es dos senadores
+      # Crie um dataframe com as informações dos senadores
       df_senadores <- data.frame(df_parlamentares, stringsAsFactors = FALSE)
     } else {
-      # Se n\u00e3o h\u00e1 dados, crie um dataframe vazio
+      # Se não há dados, crie um dataframe vazio
       df_senadores <- data.frame()
       warning("N\u00e3o h\u00e1 dados de senadores dispon\u00edveis para as legislaturas fornecidas.")
     }
   } else {
-    # Se a requisi\u00e7\u00e3o falhar, imprima uma mensagem de erro
+    # Se a requisição falhar, imprima uma mensagem de erro
     stop("Falha na requisi\u00e7\u00e3o. C\u00f3digo de status: ", httr::status_code(response))
   }
 

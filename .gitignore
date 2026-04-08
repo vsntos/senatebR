@@ -8,3 +8,5 @@ inst/doc
 .DS_Store
 .quarto
 docs
+..Rcheck/
+*.Rcheck/

@@ -2,32 +2,32 @@
 % Please edit documentation in R/extrair_profissoes.R
 \name{processar_xml_profissoes}
 \alias{processar_xml_profissoes}
-\title{Processa XML de Profiss\u00f5es de Senadores}
+\title{Processa XML de Profissões de Senadores}
 \usage{
 processar_xml_profissoes(codigos)
 }
 \arguments{
-\item{codigos}{Um vetor de c\u00f3digos de parlamentares para os quais os dados de
-profiss\u00f5es ser\u00e3o extra\u00eddos.}
+\item{codigos}{Um vetor de códigos de parlamentares para os quais os dados de
+profissões serão extraídos.}
 }
 \value{
-Um dataframe contendo os dados das profiss\u00f5es, com as seguintes colunas:
+Um dataframe contendo os dados das profissões, com as seguintes colunas:
 \describe{
-  \item{CodigoParlamentar}{C\u00f3digo do parlamentar}
+  \item{CodigoParlamentar}{Código do parlamentar}
   \item{NomeParlamentar}{Nome do parlamentar}
-  \item{NomeProfissao}{Nome da profiss\u00e3o}
-  \item{IndicadorAtividadePrincipal}{Indicador se a profiss\u00e3o \u00e9 a atividade principal}
+  \item{NomeProfissao}{Nome da profissão}
+  \item{IndicadorAtividadePrincipal}{Indicador se a profissão é a atividade principal}
 }
 }
 \description{
-Esta fun\u00e7\u00e3o acessa a URL da API do Senado para cada c\u00f3digo de parlamentar fornecido,
-extrai e processa os dados de profiss\u00f5es associados a cada parlamentar.
-Retorna um dataframe com informa\u00e7\u00f5es sobre as profiss\u00f5es, incluindo dados do
-parlamentar e detalhes das profiss\u00f5es.
+Esta função acessa a URL da API do Senado para cada código de parlamentar fornecido,
+extrai e processa os dados de profissões associados a cada parlamentar.
+Retorna um dataframe com informações sobre as profissões, incluindo dados do
+parlamentar e detalhes das profissões.
 }
 \examples{
 \dontrun{
-# Exemplo de uso com c\u00f3digos fict\u00edcios
+# Exemplo de uso com códigos fictícios
 codigos <- c("4981", "1234")
 df_profissoes <- processar_xml_profissoes(codigos)
 }

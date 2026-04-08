@@ -2,27 +2,27 @@
 % Please edit documentation in R/info_pronunciamentos.R
 \name{extrair_pronunciamentos_multi}
 \alias{extrair_pronunciamentos_multi}
-\title{Extrai dados de pronunciamentos de m\u00faltiplos parlamentares em diferentes anos}
+\title{Extrai dados de pronunciamentos de múltiplos parlamentares em diferentes anos}
 \usage{
 extrair_pronunciamentos_multi(codigos_parlamentares, anos)
 }
 \arguments{
-\item{codigos_parlamentares}{Um vetor de c\u00f3digos dos parlamentares (n\u00fameros inteiros).}
+\item{codigos_parlamentares}{Um vetor de códigos dos parlamentares (números inteiros).}
 
-\item{anos}{Um vetor de anos (n\u00fameros inteiros) para os quais os pronunciamentos ser\u00e3o extra\u00eddos.}
+\item{anos}{Um vetor de anos (números inteiros) para os quais os pronunciamentos serão extraídos.}
 }
 \value{
-Um dataframe contendo os dados de pronunciamentos de m\u00faltiplos parlamentares.
-Se nenhum dado estiver dispon\u00edvel, retorna NULL.
+Um dataframe contendo os dados de pronunciamentos de múltiplos parlamentares.
+Se nenhum dado estiver disponível, retorna NULL.
 }
 \description{
-Esta fun\u00e7\u00e3o extrai dados de pronunciamentos de m\u00faltiplos parlamentares para os anos fornecidos.
-Os dados s\u00e3o extra\u00eddos da p\u00e1gina do Senado Federal do Brasil.
+Esta função extrai dados de pronunciamentos de múltiplos parlamentares para os anos fornecidos.
+Os dados são extraídos da página do Senado Federal do Brasil.
 }
 \details{
-A fun\u00e7\u00e3o acessa as p\u00e1ginas do Senado para coletar informa\u00e7\u00f5es sobre
+A função acessa as páginas do Senado para coletar informações sobre
 pronunciamentos, incluindo data, tipo, casa, partido/UF, resumo e links dos pronunciamentos.
-A fun\u00e7\u00e3o percorre v\u00e1rias p\u00e1ginas para cada parlamentar e ano, com um limite m\u00e1ximo de 100 p\u00e1ginas.
+A função percorre várias páginas para cada parlamentar e ano, com um limite máximo de 100 páginas.
 }
 \examples{
 \dontrun{

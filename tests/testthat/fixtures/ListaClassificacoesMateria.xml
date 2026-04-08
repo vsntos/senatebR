@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListaClassificacoes>
+  <Classe>
+    <codigo>1</codigo>
+    <nome>Projetos de Lei</nome>
+    <codigoClassePai></codigoClassePai>
+    <nivel>1</nivel>
+    <tree>1</tree>
+    <path>/1</path>
+  </Classe>
+  <Classe>
+    <codigo>2</codigo>
+    <nome>Projetos de Lei Complementar</nome>
+    <codigoClassePai>1</codigoClassePai>
+    <nivel>2</nivel>
+    <tree>1.2</tree>
+    <path>/1/2</path>
+  </Classe>
+</ListaClassificacoes>

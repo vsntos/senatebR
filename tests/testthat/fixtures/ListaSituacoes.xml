@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListaSituacoes>
+  <Situacao>
+    <Codigo>1</Codigo>
+    <Sigla>APRE</Sigla>
+    <Descricao>Apresentada</Descricao>
+    <DataCriacao>20010101</DataCriacao>
+  </Situacao>
+  <Situacao>
+    <Codigo>2</Codigo>
+    <Sigla>DISP</Sigla>
+    <Descricao>Disponível para Pauta</Descricao>
+    <DataCriacao>20010101</DataCriacao>
+  </Situacao>
+</ListaSituacoes>

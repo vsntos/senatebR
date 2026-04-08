@@ -2,15 +2,15 @@
 % Please edit documentation in R/info_comissoes_basico.R
 \name{dados_comissoes}
 \alias{dados_comissoes}
-\title{Coleta dados b\u00e1sicos das comiss\u00f5es permanentes}
+\title{Coleta dados básicos das comissões permanentes}
 \usage{
 dados_comissoes()
 }
 \value{
-Um dataframe contendo dados b\u00e1sicos das comiss\u00f5es permanentes.
+Um dataframe contendo dados básicos das comissões permanentes.
 }
 \description{
-Esta fun\u00e7\u00e3o realiza a raspagem de dados b\u00e1sicos das comiss\u00f5es permanentes do site do Senado.
+Esta função realiza a raspagem de dados básicos das comissões permanentes do site do Senado.
 }
 \examples{
 dados_comissoes <- dados_comissoes()

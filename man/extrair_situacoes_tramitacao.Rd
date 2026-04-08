@@ -2,23 +2,23 @@
 % Please edit documentation in R/info_situacao_tramitacao_materia.R
 \name{extrair_situacoes_tramitacao}
 \alias{extrair_situacoes_tramitacao}
-\title{Extrair as situa\u00e7\u00f5es da tramita\u00e7\u00e3o}
+\title{Extrair as situações da tramitação}
 \usage{
 extrair_situacoes_tramitacao(
   url = "https://legis.senado.leg.br/dadosabertos/dados/ListaSituacoes.xml"
 )
 }
 \arguments{
-\item{url}{URL do arquivo XML que cont\u00e9m as informa\u00e7\u00f5es das situa\u00e7\u00f5es da tramita\u00e7\u00e3o. Padr\u00e3o \u00e9 "https://legis.senado.leg.br/dadosabertos/dados/ListaSituacoes.xml".}
+\item{url}{URL do arquivo XML que contém as informações das situações da tramitação. Padrão é "https://legis.senado.leg.br/dadosabertos/dados/ListaSituacoes.xml".}
 }
 \value{
-Um dataframe contendo as situa\u00e7\u00f5es da tramita\u00e7\u00e3o.
+Um dataframe contendo as situações da tramitação.
 }
 \description{
-Esta fun\u00e7\u00e3o realiza o scraping de uma p\u00e1gina XML contendo informa\u00e7\u00f5es sobre as situa\u00e7\u00f5es da tramita\u00e7\u00e3o das mat\u00e9rias e extrai os dados relevantes.
+Esta função realiza o scraping de uma página XML contendo informações sobre as situações da tramitação das matérias e extrai os dados relevantes.
 }
 \examples{
-# Extrair as situa\u00e7\u00f5es da tramita\u00e7\u00e3o a partir da URL padr\u00e3o
+# Extrair as situações da tramitação a partir da URL padrão
 df_materias_tramitacao <- extrair_situacoes_tramitacao()
 
 }

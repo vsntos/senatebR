@@ -7,19 +7,23 @@
 extrair_discursos(codigo_senador, data_inicio, data_fim)
 }
 \arguments{
-\item{codigo_senador}{Um vetor de c\u00f3digos de senadores. Exemplo: c("5529", "1234").}
+\item{codigo_senador}{Um vetor de códigos de senadores. Exemplo: c("5529", "1234").}
 
-\item{data_inicio}{A data de in\u00edcio do intervalo, no formato "YYYY-MM-DD". Exemplo: "2024-01-01".}
+\item{data_inicio}{A data de início do intervalo, no formato "YYYY-MM-DD". Exemplo: "2024-01-01".}
 
 \item{data_fim}{A data de fim do intervalo, no formato "YYYY-MM-DD". Exemplo: "2024-06-30".}
 }
 \value{
-Um dataframe com os discursos parlamentares, contendo informa\u00e7\u00f5es como c\u00f3digo do discurso, data, partido, UF, e resumo.
+Um dataframe com os discursos parlamentares, contendo informações como código do discurso, data, partido, UF, e resumo.
 }
 \description{
-Esta fun\u00e7\u00e3o extrai os discursos parlamentares de um ou mais senadores em um intervalo de datas fornecido a partir da API do Senado.
+Esta função extrai os discursos parlamentares de um ou mais senadores em um intervalo de datas fornecido a partir da API do Senado.
 }
 \examples{
 # Exemplo de uso
-discursos_df <- extrair_discursos(codigo_senador = c("5529"), data_inicio = "2024-01-01", data_fim = "2024-06-30")
+discursos_df <- extrair_discursos(
+  codigo_senador = c("5529"),
+  data_inicio = "2024-01-01",
+  data_fim = "2024-06-30"
+)
 }

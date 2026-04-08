@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListaTiposComparecimento>
+  <TipoComparecimento>
+    <Sigla>P</Sigla>
+    <Descricao>Presente</Descricao>
+  </TipoComparecimento>
+  <TipoComparecimento>
+    <Sigla>A</Sigla>
+    <Descricao>Ausente</Descricao>
+  </TipoComparecimento>
+  <TipoComparecimento>
+    <Sigla>F</Sigla>
+    <Descricao>Faltou</Descricao>
+  </TipoComparecimento>
+</ListaTiposComparecimento>

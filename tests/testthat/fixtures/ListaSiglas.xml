@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListaSiglas>
+  <Siglas>
+    <Sigla>PL</Sigla>
+    <Descricao>Projeto de Lei</Descricao>
+    <DataInicio>19900101</DataInicio>
+    <DataFim></DataFim>
+  </Siglas>
+  <Siglas>
+    <Sigla>PEC</Sigla>
+    <Descricao>Proposta de Emenda à Constituição</Descricao>
+    <DataInicio>19881005</DataInicio>
+    <DataFim></DataFim>
+  </Siglas>
+</ListaSiglas>

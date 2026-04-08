@@ -2,20 +2,20 @@
 % Please edit documentation in R/info_votos_senadores.R
 \name{coletar_votacoes_multiplos}
 \alias{coletar_votacoes_multiplos}
-\title{Coleta dados de vota\u00e7\u00f5es de m\u00faltiplos senadores em m\u00faltiplos anos}
+\title{Coleta dados de votações de múltiplos senadores em múltiplos anos}
 \usage{
 coletar_votacoes_multiplos(codigos_senadores, anos)
 }
 \arguments{
-\item{codigos_senadores}{Vetor de c\u00f3digos de senadores.}
+\item{codigos_senadores}{Vetor de códigos de senadores.}
 
-\item{anos}{Vetor de anos para a coleta de vota\u00e7\u00f5es.}
+\item{anos}{Vetor de anos para a coleta de votações.}
 }
 \value{
-Um data frame com as vota\u00e7\u00f5es de todos os senadores e anos especificados.
+Um data frame com as votações de todos os senadores e anos especificados.
 }
 \description{
-Coleta dados de vota\u00e7\u00f5es de m\u00faltiplos senadores em m\u00faltiplos anos
+Coleta dados de votações de múltiplos senadores em múltiplos anos
 }
 \examples{
 codigos_senadores <- c("5386", "1234", "5678")

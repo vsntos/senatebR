@@ -5,24 +5,31 @@ Version: 0.1.0
 Author: Vinicius Santos
 Maintainer: Vinicius Santos <santos.vinicius18@gmail.com>
 Description: The senatebR package provides access to information related to the functioning and activities of the Brazilian Federal Senate. It includes functions for data collection, analysis, and visualization.
-License: MIT
+License: MIT + file LICENSE
 LazyData: false
 Encoding: UTF-8
 Imports:
     glue (>= 1.6.2),
-    readr (>= 2.1.4),
     lubridate (>= 1.9.3),
     jsonlite (>= 1.8.8),
     xml2 (>= 1.3.6),
     magrittr (>= 2.0.3),
-    pacman (>= 0.5.1),
-    curl (>= 5.1.0),
     httr (>= 1.4.7),
     rvest (>= 1.0.0),
     dplyr (>= 1.1.2),
     tidyr (>= 1.3.0),
     purrr (>= 1.0.2),
-    stringr (>= 1.5.1),
+    stringr (>= 1.5.1)
+RoxygenNote: 7.3.2
+Suggests:
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0),
+    withr,
+    ggplot2,
+    readr (>= 2.1.4),
+    pacman (>= 0.5.1),
+    curl (>= 5.1.0),
     spacyr (>= 1.2.1),
     quanteda (>= 3.3.1),
     quanteda.textstats (>= 0.96.3),
@@ -33,13 +40,7 @@ Imports:
     stm (>= 1.3.6.1),
     ggrepel (>= 0.9.3),
     ggridges (>= 0.5.4)
-RoxygenNote: 7.3.2
-Suggests: 
-    knitr,
-    rmarkdown,
-    testthat (>= 3.0.0)
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 Depends: 
     R (>= 2.10)
-Additional_repositories: LICENSE

@@ -1,10 +1,10 @@
-#' Extra\u00e7\u00e3o de Dados de Reuni\u00e3o
+#' Extração de Dados de Reunião
 #'
-#' Esta fun\u00e7\u00e3o extrai dados de uma ou mais reuni\u00f5es com base nos c\u00f3digos fornecidos.
+#' Esta função extrai dados de uma ou mais reuniões com base nos códigos fornecidos.
 #'
-#' @param codigo_reuniao Vetor de c\u00f3digos de reuni\u00e3o (num\u00e9rico ou character).
+#' @param codigo_reuniao Vetor de códigos de reunião (numérico ou character).
 #'
-#' @return Um dataframe contendo informa\u00e7\u00f5es das reuni\u00f5es e respectivas notas taquigr\u00e1ficas.
+#' @return Um dataframe contendo informações das reuniões e respectivas notas taquigráficas.
 #'
 #' @examples
 #' info_dados_reuniao_nota(c(1, 2, 3))

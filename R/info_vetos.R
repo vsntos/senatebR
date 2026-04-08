@@ -1,8 +1,8 @@
-#' Extrair detalhes de vetos a partir da URL espec\u00edfica contendo informa\u00e7\u00f5es sobre vetos
+#' Extrair detalhes de vetos a partir da URL específica contendo informações sobre vetos
 #'
-#' Esta fun\u00e7\u00e3o realiza scraping de uma p\u00e1gina contendo informa\u00e7\u00f5es sobre vetos e extrai detalhes como n\u00famero do veto, link associado, ementa, data de sobresta, mat\u00e9ria vetada e norma gerada.
+#' Esta função realiza scraping de uma página contendo informações sobre vetos e extrai detalhes como número do veto, link associado, ementa, data de sobresta, matéria vetada e norma gerada.
 #'
-#' @param pages O n\u00famero de p\u00e1ginas a serem processadas. Padr\u00e3o \u00e9 1.
+#' @param pages O número de páginas a serem processadas. Padrão é 1.
 #'
 #' @return Um dataframe contendo os detalhes dos vetos.
 #'
@@ -20,19 +20,26 @@ info_vetos <- function(pages = 1) {
   requireNamespace("rvest", quietly = TRUE)
   requireNamespace("dplyr", quietly = TRUE)
 
-  # URL base contendo informa\u00e7\u00f5es sobre vetos
+  # URL base contendo informações sobre vetos
   url_base <- "https://www.congressonacional.leg.br/materias/vetos/-/veto/encerradas/"
 
   # Inicializar uma lista para armazenar os dataframes individuais
   lista_dataframes <- list()
 
-  # Iterar sobre as p\u00e1ginas
+  # Iterar sobre as páginas
   for (page in 1:pages) {
-    # Construir a URL da p\u00e1gina atual
+    # Construir a URL da página atual
     url_pagina <- paste0(url_base, page)
 
-    # Realizar o scraping da p\u00e1gina
-    pagina <- rvest::read_html(url_pagina)
+    # Realizar o scraping da página
+    pagina <- tryCatch(
+      rvest::read_html(url_pagina),
+      error = function(e) {
+        warning("Erro ao acessar p\u00e1gina ", page, " de vetos: ", conditionMessage(e))
+        return(NULL)
+      }
+    )
+    if (is.null(pagina)) next
 
     # Extrair os elementos da lista de resumos
     resumos <- pagina %>% rvest::html_nodes(".sf-lista-resumos__resumo")
@@ -46,7 +53,7 @@ info_vetos <- function(pages = 1) {
       materia_vetada <- resumo %>% rvest::html_node("dt:contains('Mat\u00e9ria vetada') + dd") %>% rvest::html_text() %>% trimws()
       norma_gerada <- resumo %>% rvest::html_node("dt:contains('Norma gerada') + dd") %>% rvest::html_text() %>% trimws()
 
-      # Adicionar os dados a um dataframe tempor\u00e1rio e armazenar na lista
+      # Adicionar os dados a um dataframe temporário e armazenar na lista
       dados_temp <- data.frame(
         Veto = veto,
         Link = link,
@@ -60,7 +67,7 @@ info_vetos <- function(pages = 1) {
     }
   }
 
-  # Combinar todos os dataframes da lista em um \u00fanico dataframe
+  # Combinar todos os dataframes da lista em um único dataframe
   df_vetos <- dplyr::bind_rows(lista_dataframes)
 
   return(df_vetos)

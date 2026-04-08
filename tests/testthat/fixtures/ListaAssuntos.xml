@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListaAssuntos>
+  <Assunto>
+    <Codigo>101</Codigo>
+    <AssuntoGeral>Economia</AssuntoGeral>
+    <AssuntoEspecifico>Política Fiscal</AssuntoEspecifico>
+    <DataInicio>20000101</DataInicio>
+    <DataFim></DataFim>
+  </Assunto>
+  <Assunto>
+    <Codigo>102</Codigo>
+    <AssuntoGeral>Saúde</AssuntoGeral>
+    <AssuntoEspecifico>Sistema Único de Saúde</AssuntoEspecifico>
+    <DataInicio>20000101</DataInicio>
+    <DataFim></DataFim>
+  </Assunto>
+</ListaAssuntos>

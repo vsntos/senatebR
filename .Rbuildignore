@@ -4,3 +4,9 @@
 ^docs$
 ^pkgdown$
 ^\.github$
+^CONTRIBUTING\.md$
+^Texto$
+^senatebR_hex_logo_final\.png$
+^LICENSE\.md$
+^\.\.\Rcheck$
+^senatebR\.Rcheck$

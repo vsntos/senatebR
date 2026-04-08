@@ -7,7 +7,7 @@
 dados_relatorias_parlamentares(codigos_parlamentares, anos)
 }
 \arguments{
-\item{codigos_parlamentares}{Vetor de c\u00f3digos de parlamentares.}
+\item{codigos_parlamentares}{Vetor de códigos de parlamentares.}
 
 \item{anos}{Vetor de anos.}
 }
@@ -15,7 +15,7 @@ dados_relatorias_parlamentares(codigos_parlamentares, anos)
 Um dataframe consolidado com todas as relatorias dos parlamentares escolhidos
 }
 \description{
-Esta fun\u00e7\u00e3o obt\u00e9m as relatorias de parlamentares com base nos c\u00f3digos e anos fornecidos.
+Esta função obtém as relatorias de parlamentares com base nos códigos e anos fornecidos.
 }
 \examples{
 # Exemplo de uso

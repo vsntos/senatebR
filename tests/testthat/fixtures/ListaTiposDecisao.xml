@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListaTiposDecisao>
+  <TipoDecisao>
+    <Sigla>AP</Sigla>
+    <Descricao>Aprovado</Descricao>
+  </TipoDecisao>
+  <TipoDecisao>
+    <Sigla>RE</Sigla>
+    <Descricao>Rejeitado</Descricao>
+  </TipoDecisao>
+</ListaTiposDecisao>

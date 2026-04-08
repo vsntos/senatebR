@@ -1,10 +1,10 @@
-#' Obter dados acad\u00eamicos de senadores com base nos c\u00f3digos parlamentares
+#' Obter dados acadêmicos de senadores com base nos códigos parlamentares
 #'
-#' Esta fun\u00e7\u00e3o realiza requisi\u00e7\u00f5es para obter informa\u00e7\u00f5es acad\u00eamicas de senadores
-#' com base em c\u00f3digos parlamentares fornecidos.
+#' Esta função realiza requisições para obter informações acadêmicas de senadores
+#' com base em códigos parlamentares fornecidos.
 #'
-#' @param codigos Vetor de c\u00f3digos parlamentares.
-#' @return Um dataframe com os dados acad\u00eamicos.
+#' @param codigos Vetor de códigos parlamentares.
+#' @return Um dataframe com os dados acadêmicos.
 #'
 #' @examples
 #' codigos <- c(5672, 5386)
@@ -17,12 +17,12 @@
 #' @import lubridate
 #'
 #' @references
-#' Informa\u00e7\u00f5es sobre os senadores s\u00e3o obtidas da API de dados abertos do Senado Brasileiro.
+#' Informações sobre os senadores são obtidas da API de dados abertos do Senado Brasileiro.
 #'
 #' @seealso
 #' \code{\link{obter_dados_senadores_legislatura}}
 #'
-#' @keywords senador dados acad\u00eamicos API
+#' @keywords senador dados acadêmicos API
 #' @export
 dados_academicos <- function(codigos) {
   tryCatch({
@@ -57,7 +57,7 @@ dados_academicos <- function(codigos) {
     return(dados_academicos)
 
   }, error = function(e) {
-    cat("Erro ao obter dados acad\u00eamicos dos senadores.\n")
+    warning("Erro ao obter dados acad\u00eamicos dos senadores.")
     cat("Mensagem de erro:", conditionMessage(e), "\n")
     return(NULL)
   })

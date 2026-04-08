@@ -1,0 +1,138 @@
+---
+title: "senatebR: coletando dados do Senado Federal brasileiro"
+author: "Vinicius Santos"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{senatebR: coletando dados do Senado Federal brasileiro}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  eval = FALSE
+)
+```
+
+## Introdução
+
+No debate sobre governo aberto, a disponibilidade de dados é vista como basilar para o funcionamento transparente e eficaz de qualquer democracia. No caso do Senado brasileiro, esses dados não apenas fornecem insights sobre o processo legislativo, mas também permitem a análise das políticas públicas e do comportamento dos legisladores.
+
+O pacote **senatebR** foi criado com o propósito de simplificar a interação com as APIs e a obtenção de dados por meio de web scraping do Senado Federal / Congresso Nacional. O objetivo central é disponibilizar à comunidade acadêmica uma ferramenta que permita o acesso eficiente a dados legislativos.
+
+```{r}
+library(senatebR)
+```
+
+## Escopo e propósito
+
+O **senatebR** abrange cinco dimensões principais de dados:
+
+1. **Projetos e Matérias** — projetos de lei, propostas legislativas e matérias em tramitação, com título, autor, status e histórico.
+2. **Parlamentares** — perfis de senadores, biografias, filiações partidárias e histórico legislativo.
+3. **Composição** — distribuição partidária, unidades federativas, duração de mandatos e dados demográficos.
+4. **Comissões** — funções, membros, agendas e atividades das comissões.
+5. **Plenário** — pautas de votação, transcrições de debates, vetos, medidas provisórias e decisões.
+
+## Exemplos de uso
+
+### 1. Senadores por Legislatura
+
+A função `obter_dados_senadores_legislatura()` recebe como argumentos a legislatura inicial e final do intervalo desejado.
+
+```{r}
+df_senadores <- obter_dados_senadores_legislatura(47, 56)
+dplyr::glimpse(df_senadores)
+```
+
+### 2. Medidas Provisórias
+
+O pacote oferece duas funções para MPs: em tramitação e encerradas.
+
+```{r}
+# MPs em tramitação
+mpv_tramitacao <- coletar_medidas_provisorias_em_tramitacao()
+dplyr::glimpse(mpv_tramitacao)
+
+# MPs encerradas (todas as páginas)
+mpv_encerradas <- coletar_medidas_provisorias_encerradas(364)
+dplyr::glimpse(mpv_encerradas)
+```
+
+### 3. Vetos
+
+```{r}
+dados_vetos <- info_vetos(pages = 20)
+dplyr::glimpse(dados_vetos)
+```
+
+## Estudo de Caso: Pronunciamentos dos Parlamentares
+
+### Coleta de dados
+
+Coletando os senadores da 56ª legislatura e, em seguida, seus pronunciamentos entre 2020 e 2024:
+
+```{r}
+df_56 <- obter_dados_senadores_legislatura(56, 56)
+
+codigos <- df_56$IdentificacaoParlamentar.CodigoParlamentar
+
+dados_multi <- extrair_pronunciamentos_multi(
+  codigos_parlamentares = codigos,
+  anos = c(2020:2024)
+)
+```
+
+### Transformação dos dados
+
+Separando partido e UF em colunas distintas:
+
+```{r}
+dados_multi <- dados_multi |>
+  tidyr::separate(Partido_UF, into = c("Partido", "UF"), sep = "/")
+```
+
+### Análise temporal
+
+```{r}
+library(ggplot2)
+
+pronunciamentos_por_ano <- dplyr::count(dados_multi, Ano)
+
+ggplot(pronunciamentos_por_ano, aes(x = factor(Ano), y = n, fill = factor(Ano))) +
+  geom_bar(stat = "identity", show.legend = FALSE) +
+  geom_text(aes(label = n), vjust = -0.5, size = 3) +
+  scale_fill_brewer(palette = "Set3") +
+  theme_minimal() +
+  labs(
+    title = "Distribuição de Pronunciamentos por Ano",
+    x = "Ano",
+    y = "Número de Pronunciamentos"
+  )
+```
+
+### Distribuição por tipo de pronunciamento
+
+```{r}
+tipos <- dplyr::count(dados_multi, Tipo_Pronunciamento) |>
+  dplyr::arrange(n)
+
+ggplot(tipos, aes(x = reorder(Tipo_Pronunciamento, n), y = n)) +
+  geom_bar(stat = "identity", fill = "skyblue") +
+  coord_flip() +
+  theme_minimal() +
+  labs(
+    title = "Frequência de Tipos de Pronunciamento",
+    x = "Tipo",
+    y = "Número de Pronunciamentos"
+  )
+```
+
+## Referências
+
+- Wickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). *R for Data Science* (2nd ed.). O'Reilly.
+- Meireles, F., Silva, D., & Costa, E. (2016). congressbr: An R Package for Analysing Data from Brazil's Chamber of Deputies and Federal Senate.
+- Gherghina, S., & Katsanidou, A. (2013). Data Availability in Political Science Journals. *European Political Science*, 12(3), 333–349.

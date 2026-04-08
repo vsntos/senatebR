@@ -1,8 +1,8 @@
-#' Coleta dados b\u00e1sicos das comiss\u00f5es permanentes
+#' Coleta dados básicos das comissões permanentes
 #'
-#' Esta fun\u00e7\u00e3o realiza a raspagem de dados b\u00e1sicos das comiss\u00f5es permanentes do site do Senado.
+#' Esta função realiza a raspagem de dados básicos das comissões permanentes do site do Senado.
 #'
-#' @return Um dataframe contendo dados b\u00e1sicos das comiss\u00f5es permanentes.
+#' @return Um dataframe contendo dados básicos das comissões permanentes.
 #'
 #' @examples
 #' dados_comissoes <- dados_comissoes()
@@ -14,7 +14,14 @@
 #' @export
 dados_comissoes <- function() {
   url <- "https://legis.senado.leg.br/comissoes/"
-  pagina <- rvest::read_html(url)
+  pagina <- tryCatch(
+    rvest::read_html(url),
+    error = function(e) {
+      warning("Erro ao acessar a p\u00e1gina de comiss\u00f5es: ", conditionMessage(e))
+      return(NULL)
+    }
+  )
+  if (is.null(pagina)) return(NULL)
 
   elementos <- pagina %>%
     rvest::html_nodes("div p a.textos-links")
@@ -25,9 +32,9 @@ dados_comissoes <- function() {
   )
 
   dados_basicos <- dados_basicos %>%
-    tidyr::separate(Texto, c("sigla", "titulo_comissao"), " - ") %>%
-    dplyr::mutate(id_comissao = sub(".+id=", "", Link)) %>%
-    dplyr::select(-Link)
+    tidyr::separate("Texto", c("sigla", "titulo_comissao"), " - ") %>%
+    dplyr::mutate(id_comissao = sub(".+id=", "", .data$Link)) %>%
+    dplyr::select(-.data$Link)
 
   return(dados_basicos)
 }

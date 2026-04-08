@@ -7,29 +7,29 @@
 coletar_autorias_parlamentares(cod_parlamentares)
 }
 \arguments{
-\item{cod_parlamentares}{Um vetor de strings contendo os c\u00f3digos dos parlamentares para os quais os dados devem ser coletados.}
+\item{cod_parlamentares}{Um vetor de strings contendo os códigos dos parlamentares para os quais os dados devem ser coletados.}
 }
 \value{
-Um data frame contendo as informa\u00e7\u00f5es das comiss\u00f5es associadas a cada parlamentar, incluindo:
+Um data frame contendo as informações das comissões associadas a cada parlamentar, incluindo:
 \itemize{
-  \item \code{CodigoParlamentar}: C\u00f3digo do parlamentar.
-  \item \code{Sigla}: Sigla da comiss\u00e3o.
-  \item \code{Comissao}: Nome completo da comiss\u00e3o.
+  \item \code{CodigoParlamentar}: Código do parlamentar.
+  \item \code{Sigla}: Sigla da comissão.
+  \item \code{Comissao}: Nome completo da comissão.
   \item \code{Nome}: Nome do parlamentar.
-  \item \code{Codigo}: C\u00f3digo do parlamentar.
+  \item \code{Codigo}: Código do parlamentar.
   \item \code{SiglaPartido}: Sigla do partido ao qual o parlamentar pertence.
   \item \code{URL}: URL do perfil do parlamentar no site do Senado.
   \item \code{Foto}: URL da foto oficial do parlamentar.
   \item \code{Uf}: Unidade Federativa (UF) do parlamentar.
-  \item \code{Quantidade}: Quantidade de mat\u00e9rias atribu\u00eddas ao parlamentar na comiss\u00e3o.
+  \item \code{Quantidade}: Quantidade de matérias atribuídas ao parlamentar na comissão.
 }
 }
 \description{
-Esta fun\u00e7\u00e3o coleta dados de parlamentares no Senado Federal usando a API de dados abertos.
-Ela permite que voc\u00ea colete informa\u00e7\u00f5es sobre as comiss\u00f5es associadas a um ou mais parlamentares.
+Esta função coleta dados de parlamentares no Senado Federal usando a API de dados abertos.
+Ela permite que você colete informações sobre as comissões associadas a um ou mais parlamentares.
 }
 \examples{
-# Coletar dados de m\u00faltiplos parlamentares
+# Coletar dados de múltiplos parlamentares
 codigos_parlamentares <- c("5672", "1234", "5678")
 dados_resultantes <- coletar_autorias_parlamentares(codigos_parlamentares)
 print(dados_resultantes)

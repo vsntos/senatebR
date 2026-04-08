@@ -1,15 +1,15 @@
-#' Coletar Medidas Provis\u00f3rias em Tramita\u00e7\u00e3o
+#' Coletar Medidas Provisórias em Tramitação
 #'
-#' Esta fun\u00e7\u00e3o coleta dados sobre medidas provis\u00f3rias em tramita\u00e7\u00e3o do site do Congresso Nacional do Brasil.
+#' Esta função coleta dados sobre medidas provisórias em tramitação do site do Congresso Nacional do Brasil.
 #'
-#' @return Um dataframe contendo informa\u00e7\u00f5es sobre medidas provis\u00f3rias em tramita\u00e7\u00e3o.
+#' @return Um dataframe contendo informações sobre medidas provisórias em tramitação.
 #' O dataframe possui as seguintes colunas:
 #' \describe{
-#'   \item{Link}{Link para acessar mais informa\u00e7\u00f5es sobre a medida provis\u00f3ria.}
-#'   \item{Mat\u00e9ria}{T\u00edtulo da medida provis\u00f3ria.}
-#'   \item{Ementa}{Resumo ou descri\u00e7\u00e3o da medida provis\u00f3ria.}
-#'   \item{Prazo}{Prazo de vig\u00eancia da medida provis\u00f3ria, especificando os prazos de 60 e 120 dias.}
-#'   \item{Status}{Status da medida provis\u00f3ria, indicando se est\u00e1 em tramita\u00e7\u00e3o.}
+#'   \item{Link}{Link para acessar mais informações sobre a medida provisória.}
+#'   \item{Matéria}{Título da medida provisória.}
+#'   \item{Ementa}{Resumo ou descrição da medida provisória.}
+#'   \item{Prazo}{Prazo de vigência da medida provisória, especificando os prazos de 60 e 120 dias.}
+#'   \item{Status}{Status da medida provisória, indicando se está em tramitação.}
 #' }
 #'
 #' @export
@@ -21,7 +21,7 @@
 #' @importFrom stringr str_trim
 #'
 coletar_medidas_provisorias_em_tramitacao <- function() {
-  # Fun\u00e7\u00e3o interna para raspar os dados das mat\u00e9rias em tramita\u00e7\u00e3o
+  # Função interna para raspar os dados das matérias em tramitação
   raspar_dados_em_tramitacao <- function(url) {
     # Inicializar listas para armazenar os dados
     links <- character(0)
@@ -29,7 +29,7 @@ coletar_medidas_provisorias_em_tramitacao <- function() {
     ementas <- character(0)
     prazos <- character(0)
 
-    # Tenta acessar a p\u00e1gina e extrair os dados
+    # Tenta acessar a página e extrair os dados
     tryCatch({
       pagina <- read_html(url)
 
@@ -38,11 +38,11 @@ coletar_medidas_provisorias_em_tramitacao <- function() {
 
       # Iterar sobre os resumos para extrair os dados
       for (resumo in resumos) {
-        # Link da mat\u00e9ria
+        # Link da matéria
         link <- resumo %>% html_node("dt:contains('Mat\u00e9ria') + dd a") %>% html_attr("href")
         links <- c(links, link)
 
-        # Mat\u00e9ria
+        # Matéria
         materia <- resumo %>% html_node("dt:contains('Mat\u00e9ria') + dd a") %>% html_text() %>% str_trim()
         materias <- c(materias, materia)
 
@@ -62,7 +62,7 @@ coletar_medidas_provisorias_em_tramitacao <- function() {
       # Criar dataframe com os dados
       dados <- data.frame(
         Link = links,
-        Matéria = materias,
+        Materia = materias,
         Ementa = ementas,
         Prazo = prazos,
         Status = "em tramita\u00e7\u00e3o",
@@ -72,16 +72,15 @@ coletar_medidas_provisorias_em_tramitacao <- function() {
       return(dados)
 
     }, error = function(e) {
-      cat("Erro ao acessar a URL:", url, "\n")
-      cat("Mensagem de erro:", conditionMessage(e), "\n")
+      warning("Erro ao acessar a URL ", url, ": ", conditionMessage(e))
       return(NULL)
     })
   }
 
-  # URL para as MPs em tr\u00e2mite
+  # URL para as MPs em trâmite
   url_mpv_em_tramitacao <- "https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/"
 
-  # Raspar dados das MPs em tramita\u00e7\u00e3o
+  # Raspar dados das MPs em tramitação
   dados_mpv_em_tramitacao <- raspar_dados_em_tramitacao(url_mpv_em_tramitacao)
 
   return(dados_mpv_em_tramitacao)
