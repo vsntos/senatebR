@@ -12,12 +12,14 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' # Exemplo de uso
 #' discursos_df <- extrair_discursos(
 #'   codigo_senador = c("5529"),
 #'   data_inicio = "2024-01-01",
 #'   data_fim = "2024-06-30"
 #' )
+#' }
 extrair_discursos <- function(codigo_senador, data_inicio, data_fim) {
 
 

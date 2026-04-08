@@ -7,7 +7,9 @@
 #' @importFrom xml2 read_xml xml_find_all xml_text xml_find_first
 #' @export
 #' @examples
+#' \dontrun{
 #' extrair_siglas_ativas()
+#' }
 extrair_siglas_ativas <- function(url = "https://legis.senado.leg.br/dadosabertos/dados/ListaSiglas.xml") {
   # Faça o download e analise o XML
   doc <- tryCatch(

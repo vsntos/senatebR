@@ -3,8 +3,10 @@
 #' @return Um dataframe contendo os dados dos senadores afastados.
 #'
 #' @examples
+#' \dontrun{
 #' df_senadores_afastados <- get_afastados()
 #'
+#' }
 #' @import httr
 #' @importFrom jsonlite fromJSON
 #'

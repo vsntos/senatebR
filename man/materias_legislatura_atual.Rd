@@ -26,5 +26,7 @@ Esta função realiza o scraping de um XML contendo informações sobre matéria
 Os dados extraídos incluem o código da matéria, sigla e nome da casa legislativa, subtipo da matéria, número e ano, descrição, indicação de tramitação e identificação do processo.
 }
 \examples{
+\dontrun{
 df_materias <- materias_legislatura_atual()
+}
 }

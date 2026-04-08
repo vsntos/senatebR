@@ -13,6 +13,8 @@ Um dataframe contendo dados básicos das comissões permanentes.
 Esta função realiza a raspagem de dados básicos das comissões permanentes do site do Senado.
 }
 \examples{
+\dontrun{
 dados_comissoes <- dados_comissoes()
 
+}
 }

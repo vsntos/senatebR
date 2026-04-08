@@ -18,9 +18,11 @@ Esta função realiza o scraping de várias páginas HTML contendo informações
 e extrai os dados da tabela de partes vetadas.
 }
 \examples{
+\dontrun{
 urls <- c("https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/16110",
           "https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/16049",
           "https://www.congressonacional.leg.br/materias/vetos/-/veto/detalhe/16029")
 dados <- extrair_detalhes_vetos(urls)
 
+}
 }

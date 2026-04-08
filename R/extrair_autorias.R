@@ -20,11 +20,13 @@
 #' }
 #'
 #' @examples
+#' \dontrun{
 #' # Coletar dados de múltiplos parlamentares
 #' codigos_parlamentares <- c("5672", "1234", "5678")
 #' dados_resultantes <- coletar_autorias_parlamentares(codigos_parlamentares)
 #' print(dados_resultantes)
 #'
+#' }
 #' @export
 coletar_autorias_parlamentares <- function(cod_parlamentares) {
 

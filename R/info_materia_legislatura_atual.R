@@ -18,7 +18,9 @@
 #' }
 #'
 #' @examples
+#' \dontrun{
 #' df_materias <- materias_legislatura_atual()
+#' }
 #' @importFrom xml2 read_xml xml_find_all xml_text xml_find_first
 #' @importFrom dplyr %>%
 #' @export

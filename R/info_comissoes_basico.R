@@ -5,8 +5,10 @@
 #' @return Um dataframe contendo dados básicos das comissões permanentes.
 #'
 #' @examples
+#' \dontrun{
 #' dados_comissoes <- dados_comissoes()
 #'
+#' }
 #' @importFrom rvest read_html html_nodes html_text html_attr
 #' @importFrom tidyr separate
 #' @import dplyr

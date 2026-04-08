@@ -13,6 +13,8 @@ Um dataframe contendo os dados dos senadores afastados.
 Coleta os dados dos Senadores afastados
 }
 \examples{
+\dontrun{
 df_senadores_afastados <- get_afastados()
 
+}
 }

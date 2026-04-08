@@ -18,7 +18,9 @@ Um dataframe contendo as situações da tramitação.
 Esta função realiza o scraping de uma página XML contendo informações sobre as situações da tramitação das matérias e extrai os dados relevantes.
 }
 \examples{
+\dontrun{
 # Extrair as situações da tramitação a partir da URL padrão
 df_materias_tramitacao <- extrair_situacoes_tramitacao()
 
+}
 }

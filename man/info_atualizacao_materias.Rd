@@ -19,6 +19,8 @@ Um dataframe contendo os detalhes das matérias legislativas atualizadas recente
 Lista de Matérias Atualizadas
 }
 \examples{
+\dontrun{
 df_materias_atualizacao <- info_atualizacao_materias()
 
+}
 }

@@ -7,9 +7,11 @@
 #' @return Um dataframe contendo as situações da tramitação.
 #'
 #' @examples
+#' \dontrun{
 #' # Extrair as situações da tramitação a partir da URL padrão
 #' df_materias_tramitacao <- extrair_situacoes_tramitacao()
 #'
+#' }
 #' @importFrom xml2 read_xml xml_find_all xml_text xml_find_first
 #' @export
 extrair_situacoes_tramitacao <- function(url = "https://legis.senado.leg.br/dadosabertos/dados/ListaSituacoes.xml") {

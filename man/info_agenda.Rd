@@ -20,6 +20,8 @@ Um dataframe contendo os dados da agenda do Congresso Nacional.
 Esta função extrai dados da agenda do Congresso Nacional para os anos, meses e dias especificados.
 }
 \examples{
+\dontrun{
 resultado <- info_agenda(anos = c(2023, 2024), meses = c(1, 2), dias = 10:15)
 
+}
 }

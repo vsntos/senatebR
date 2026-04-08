@@ -21,9 +21,11 @@ Esta função extrai dados de reuniões de comissões do Senado Federal
 com base nos códigos das comissões e no intervalo de datas fornecido.
 }
 \examples{
+\dontrun{
 codcol <- c(54, 38, 2614, 34)
 data_inicio <- "2023-01-01"
 data_fim <- "2023-12-01"
 df_reunioes <- info_dados_reuniao_comissao(codcol, data_inicio, data_fim)
 
+}
 }

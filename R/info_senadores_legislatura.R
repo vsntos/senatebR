@@ -9,8 +9,10 @@
 #' @return Um dataframe com os dados dos senadores.
 #'
 #' @examples
+#' \dontrun{
 #' df_senadores_legislatura <- obter_dados_senadores_legislatura(47, 56)
 #'
+#' }
 #' @import httr
 #' @importFrom jsonlite fromJSON
 #'

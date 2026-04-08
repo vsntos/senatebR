@@ -29,9 +29,11 @@ Esta função coleta dados de parlamentares no Senado Federal usando a API de da
 Ela permite que você colete informações sobre as comissões associadas a um ou mais parlamentares.
 }
 \examples{
+\dontrun{
 # Coletar dados de múltiplos parlamentares
 codigos_parlamentares <- c("5672", "1234", "5678")
 dados_resultantes <- coletar_autorias_parlamentares(codigos_parlamentares)
 print(dados_resultantes)
 
+}
 }

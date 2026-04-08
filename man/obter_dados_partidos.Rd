@@ -13,6 +13,8 @@ Um dataframe contendo dados dos partidos.
 Esta função realiza uma requisição à API do Senado para obter informações sobre os partidos.
 }
 \examples{
+\dontrun{
 df_partidos <- obter_dados_partidos()
 
+}
 }

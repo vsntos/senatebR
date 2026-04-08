@@ -12,9 +12,11 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' codigos_senadores <- c("5386", "1234", "5678")
 #' anos <- c(2023, 2024)
 #' coletar_votacoes_multiplos(codigos_senadores, anos)
+#' }
 coletar_votacoes_multiplos <- function(codigos_senadores, anos) {
 
   # Função interna para coletar as votações de um senador em um ano

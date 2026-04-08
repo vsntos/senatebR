@@ -7,9 +7,11 @@
 #' @return Um dataframe contendo os detalhes dos vetos.
 #'
 #' @examples
+#' \dontrun{
 #' # Exemplo de uso
 #' dados_vetos <- info_vetos(pages = 3)
 #'
+#' }
 #' @import rvest
 #' @import dplyr
 #' @importFrom rvest read_html html_nodes html_text html_attr

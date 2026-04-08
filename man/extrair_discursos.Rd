@@ -20,10 +20,12 @@ Um dataframe com os discursos parlamentares, contendo informações como código
 Esta função extrai os discursos parlamentares de um ou mais senadores em um intervalo de datas fornecido a partir da API do Senado.
 }
 \examples{
+\dontrun{
 # Exemplo de uso
 discursos_df <- extrair_discursos(
   codigo_senador = c("5529"),
   data_inicio = "2024-01-01",
   data_fim = "2024-06-30"
 )
+}
 }

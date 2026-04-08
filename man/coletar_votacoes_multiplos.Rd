@@ -18,7 +18,9 @@ Um data frame com as votações de todos os senadores e anos especificados.
 Coleta dados de votações de múltiplos senadores em múltiplos anos
 }
 \examples{
+\dontrun{
 codigos_senadores <- c("5386", "1234", "5678")
 anos <- c(2023, 2024)
 coletar_votacoes_multiplos(codigos_senadores, anos)
+}
 }

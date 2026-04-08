@@ -13,8 +13,10 @@
 #' }
 #'
 #' @examples
+#' \dontrun{
 #' df_assuntos <- info_materia_temas()
 #'
+#' }
 #' @importFrom xml2 read_xml xml_find_all xml_text xml_find_first xml_missing
 #' @export
 

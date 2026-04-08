@@ -18,5 +18,7 @@ Um dataframe contendo os tipos de decisão.
 Esta função realiza o scraping sobre os tipos de decisão e extrai os dados relevantes.
 }
 \examples{
+\dontrun{
 df_tipos_decisao <- extrair_tipos_decisao()
+}
 }

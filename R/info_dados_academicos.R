@@ -7,9 +7,11 @@
 #' @return Um dataframe com os dados acadêmicos.
 #'
 #' @examples
+#' \dontrun{
 #' codigos <- c(5672, 5386)
 #' dados <- dados_academicos(codigos)
 #'
+#' }
 #' @import httr
 #' @importFrom jsonlite fromJSON
 #' @import tidyr

@@ -5,8 +5,10 @@
 #' @return Um dataframe contendo dados dos partidos.
 #'
 #' @examples
+#' \dontrun{
 #' df_partidos <- obter_dados_partidos()
 #'
+#' }
 #' @importFrom httr GET
 #' @importFrom jsonlite fromJSON
 #' @import dplyr

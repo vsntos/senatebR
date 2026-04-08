@@ -16,6 +16,8 @@ Um dataframe contendo informações das reuniões e respectivas notas taquigráf
 Esta função extrai dados de uma ou mais reuniões com base nos códigos fornecidos.
 }
 \examples{
+\dontrun{
 info_dados_reuniao_nota(c(1, 2, 3))
 
+}
 }

@@ -16,7 +16,9 @@ Um dataframe contendo os dados das comissões que parlamentares são ou foram me
 Esta função obtém dados das comissões de parlamentares com base em seus códigos.
 }
 \examples{
+\dontrun{
 codigos_senadores <- c(5386, 5012)
 df_comissoes_parlamentares <- obter_dados_comissoes_parlamentares(codigos_senadores)
 
+}
 }

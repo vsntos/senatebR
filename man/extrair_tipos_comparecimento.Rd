@@ -18,5 +18,7 @@ Um dataframe contendo os tipos de comparecimento em votação.
 Esta função realiza o scraping de uma página XML contendo informações sobre os tipos de comparecimento em votação e extrai os dados relevantes.
 }
 \examples{
+\dontrun{
 df_tipos_comparecimento <- extrair_tipos_comparecimento()
+}
 }

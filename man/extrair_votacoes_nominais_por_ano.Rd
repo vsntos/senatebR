@@ -16,8 +16,10 @@ Um data frame com as informações das votações nominais
 Esta função extrai as informações das votações nominais e retorna um data frame.
 }
 \examples{
+\dontrun{
 # Exemplo de uso
 anos <- c(2023, 2024)
 dados_votacoes <- extrair_votacoes_nominais_por_ano(anos)
 
+}
 }

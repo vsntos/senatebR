@@ -17,9 +17,11 @@ Esta função realiza requisições para obter informações acadêmicas de sena
 com base em códigos parlamentares fornecidos.
 }
 \examples{
+\dontrun{
 codigos <- c(5672, 5386)
 dados <- dados_academicos(codigos)
 
+}
 }
 \references{
 Informações sobre os senadores são obtidas da API de dados abertos do Senado Brasileiro.

@@ -4,8 +4,10 @@
 #'
 #' @return Um dataframe contendo os detalhes das matérias legislativas atualizadas recentemente.
 #' @examples
+#' \dontrun{
 #' df_materias_atualizacao <- info_atualizacao_materias()
 #'
+#' }
 #' @importFrom xml2 read_xml xml_find_all xml_text
 #' @export
 info_atualizacao_materias <- function(url = "https://legis.senado.leg.br/dadosabertos/materia/atualizadas") {

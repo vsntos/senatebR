@@ -27,6 +27,8 @@ O dataframe possui as seguintes colunas:
 Lista de Assuntos
 }
 \examples{
+\dontrun{
 df_assuntos <- info_materia_temas()
 
+}
 }

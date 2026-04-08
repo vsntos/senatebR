@@ -10,3 +10,4 @@
 ^LICENSE\.md$
 ^\.\.\Rcheck$
 ^senatebR\.Rcheck$
+^tests/testthat/fixtures$

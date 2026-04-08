@@ -19,8 +19,10 @@ Esta função realiza requisições HTTP para obter informações dos senadores
 com base nas legislaturas fornecidas.
 }
 \examples{
+\dontrun{
 df_senadores_legislatura <- obter_dados_senadores_legislatura(47, 56)
 
+}
 }
 \references{
 Informações sobre os senadores são obtidas da API de dados abertos do Senado Brasileiro.

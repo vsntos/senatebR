@@ -79,6 +79,14 @@ e dados biográficos dos senadores.
 }
 }
 
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/vsntos/senatebR}
+  \item Report bugs at \url{https://github.com/vsntos/senatebR/issues}
+}
+
+}
 \author{
 Vinicius Santos \email{santos.vinicius18@gmail.com}
 }

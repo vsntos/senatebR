@@ -7,11 +7,13 @@
 #' @return Um dataframe contendo as informações de votações para todos os anos especificados, incluindo a variável 'ano'.
 #'
 #' @examples
+#' \dontrun{
 #' # Exemplo de uso
 #' anos <- c(2018, 2019, 2020)
 #' dados_votacoes <- extrair_votacoes_por_ano(anos)
 #' head(dados_votacoes)
 #'
+#' }
 #' @importFrom xml2 read_xml xml_find_all xml_text xml_find_first
 #' @importFrom dplyr bind_rows
 #'

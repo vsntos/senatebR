@@ -18,5 +18,7 @@ Um dataframe contendo as classificações de matéria.
 Esta função realiza o scraping de uma página XML contendo informações sobre as classificações de matéria e extrai os dados relevantes.
 }
 \examples{
+\dontrun{
 df_classificacao_materias <- extrair_classificacoes_materia()
+}
 }

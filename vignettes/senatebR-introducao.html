@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Vinicius Santos" />
+
+<meta name="date" content="2026-04-08" />
+
+<title>senatebR: coletando dados do Senado Federal brasileiro</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">senatebR: coletando dados do Senado Federal
+brasileiro</h1>
+<h4 class="author">Vinicius Santos</h4>
+<h4 class="date">2026-04-08</h4>
+
+
+
+<div id="introdução" class="section level2">
+<h2>Introdução</h2>
+<p>No debate sobre governo aberto, a disponibilidade de dados é vista
+como basilar para o funcionamento transparente e eficaz de qualquer
+democracia. No caso do Senado brasileiro, esses dados não apenas
+fornecem insights sobre o processo legislativo, mas também permitem a
+análise das políticas públicas e do comportamento dos legisladores.</p>
+<p>O pacote <strong>senatebR</strong> foi criado com o propósito de
+simplificar a interação com as APIs e a obtenção de dados por meio de
+web scraping do Senado Federal / Congresso Nacional. O objetivo central
+é disponibilizar à comunidade acadêmica uma ferramenta que permita o
+acesso eficiente a dados legislativos.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(senatebR)</span></code></pre></div>
+</div>
+<div id="escopo-e-propósito" class="section level2">
+<h2>Escopo e propósito</h2>
+<p>O <strong>senatebR</strong> abrange cinco dimensões principais de
+dados:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Projetos e Matérias</strong> — projetos de lei, propostas
+legislativas e matérias em tramitação, com título, autor, status e
+histórico.</li>
+<li><strong>Parlamentares</strong> — perfis de senadores, biografias,
+filiações partidárias e histórico legislativo.</li>
+<li><strong>Composição</strong> — distribuição partidária, unidades
+federativas, duração de mandatos e dados demográficos.</li>
+<li><strong>Comissões</strong> — funções, membros, agendas e atividades
+das comissões.</li>
+<li><strong>Plenário</strong> — pautas de votação, transcrições de
+debates, vetos, medidas provisórias e decisões.</li>
+</ol>
+</div>
+<div id="exemplos-de-uso" class="section level2">
+<h2>Exemplos de uso</h2>
+<div id="senadores-por-legislatura" class="section level3">
+<h3>1. Senadores por Legislatura</h3>
+<p>A função <code>obter_dados_senadores_legislatura()</code> recebe como
+argumentos a legislatura inicial e final do intervalo desejado.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>df_senadores <span class="ot">&lt;-</span> <span class="fu">obter_dados_senadores_legislatura</span>(<span class="dv">47</span>, <span class="dv">56</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(df_senadores)</span></code></pre></div>
+</div>
+<div id="medidas-provisórias" class="section level3">
+<h3>2. Medidas Provisórias</h3>
+<p>O pacote oferece duas funções para MPs: em tramitação e
+encerradas.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># MPs em tramitação</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>mpv_tramitacao <span class="ot">&lt;-</span> <span class="fu">coletar_medidas_provisorias_em_tramitacao</span>()</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(mpv_tramitacao)</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co"># MPs encerradas (todas as páginas)</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>mpv_encerradas <span class="ot">&lt;-</span> <span class="fu">coletar_medidas_provisorias_encerradas</span>(<span class="dv">364</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(mpv_encerradas)</span></code></pre></div>
+</div>
+<div id="vetos" class="section level3">
+<h3>3. Vetos</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>dados_vetos <span class="ot">&lt;-</span> <span class="fu">info_vetos</span>(<span class="at">pages =</span> <span class="dv">20</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(dados_vetos)</span></code></pre></div>
+</div>
+</div>
+<div id="estudo-de-caso-pronunciamentos-dos-parlamentares" class="section level2">
+<h2>Estudo de Caso: Pronunciamentos dos Parlamentares</h2>
+<div id="coleta-de-dados" class="section level3">
+<h3>Coleta de dados</h3>
+<p>Coletando os senadores da 56ª legislatura e, em seguida, seus
+pronunciamentos entre 2020 e 2024:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>df_56 <span class="ot">&lt;-</span> <span class="fu">obter_dados_senadores_legislatura</span>(<span class="dv">56</span>, <span class="dv">56</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>codigos <span class="ot">&lt;-</span> df_56<span class="sc">$</span>IdentificacaoParlamentar.CodigoParlamentar</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>dados_multi <span class="ot">&lt;-</span> <span class="fu">extrair_pronunciamentos_multi</span>(</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>  <span class="at">codigos_parlamentares =</span> codigos,</span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>  <span class="at">anos =</span> <span class="fu">c</span>(<span class="dv">2020</span><span class="sc">:</span><span class="dv">2024</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="transformação-dos-dados" class="section level3">
+<h3>Transformação dos dados</h3>
+<p>Separando partido e UF em colunas distintas:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>dados_multi <span class="ot">&lt;-</span> dados_multi <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">separate</span>(Partido_UF, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;Partido&quot;</span>, <span class="st">&quot;UF&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;/&quot;</span>)</span></code></pre></div>
+</div>
+<div id="análise-temporal" class="section level3">
+<h3>Análise temporal</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>pronunciamentos_por_ano <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">count</span>(dados_multi, Ano)</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="fu">ggplot</span>(pronunciamentos_por_ano, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(Ano), <span class="at">y =</span> n, <span class="at">fill =</span> <span class="fu">factor</span>(Ano))) <span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> n), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Set3&quot;</span>) <span class="sc">+</span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Distribuição de Pronunciamentos por Ano&quot;</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Ano&quot;</span>,</span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Número de Pronunciamentos&quot;</span></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a>  )</span></code></pre></div>
+</div>
+<div id="distribuição-por-tipo-de-pronunciamento" class="section level3">
+<h3>Distribuição por tipo de pronunciamento</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>tipos <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">count</span>(dados_multi, Tipo_Pronunciamento) <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(n)</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="fu">ggplot</span>(tipos, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Tipo_Pronunciamento, n), <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;skyblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Frequência de Tipos de Pronunciamento&quot;</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Tipo&quot;</span>,</span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Número de Pronunciamentos&quot;</span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a>  )</span></code></pre></div>
+</div>
+</div>
+<div id="referências" class="section level2">
+<h2>Referências</h2>
+<ul>
+<li>Wickham, H., Çetinkaya-Rundel, M., &amp; Grolemund, G. (2023). <em>R
+for Data Science</em> (2nd ed.). O’Reilly.</li>
+<li>Meireles, F., Silva, D., &amp; Costa, E. (2016). congressbr: An R
+Package for Analysing Data from Brazil’s Chamber of Deputies and Federal
+Senate.</li>
+<li>Gherghina, S., &amp; Katsanidou, A. (2013). Data Availability in
+Political Science Journals. <em>European Political Science</em>, 12(3),
+333–349.</li>
+</ul>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

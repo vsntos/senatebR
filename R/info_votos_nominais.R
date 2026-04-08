@@ -7,10 +7,12 @@
 #' @return Um data frame com as informações das votações nominais
 #'
 #' @examples
+#' \dontrun{
 #' # Exemplo de uso
 #' anos <- c(2023, 2024)
 #' dados_votacoes <- extrair_votacoes_nominais_por_ano(anos)
 #'
+#' }
 #' @importFrom xml2 read_xml xml_find_all xml_text xml_name xml_children xml_find_first
 #' @importFrom dplyr bind_rows
 #' @importFrom tidyr unnest

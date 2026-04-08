@@ -16,7 +16,9 @@ Um dataframe contendo os detalhes dos vetos.
 Esta função realiza scraping de uma página contendo informações sobre vetos e extrai detalhes como número do veto, link associado, ementa, data de sobresta, matéria vetada e norma gerada.
 }
 \examples{
+\dontrun{
 # Exemplo de uso
 dados_vetos <- info_vetos(pages = 3)
 
+}
 }

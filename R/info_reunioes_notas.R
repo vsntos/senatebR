@@ -7,8 +7,10 @@
 #' @return Um dataframe contendo informações das reuniões e respectivas notas taquigráficas.
 #'
 #' @examples
+#' \dontrun{
 #' info_dados_reuniao_nota(c(1, 2, 3))
 #'
+#' }
 #' @import httr
 #' @import xml2
 #' @import dplyr

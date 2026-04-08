@@ -12,8 +12,10 @@
 #' @importFrom utils tail
 #'
 #' @examples
+#' \dontrun{
 #' resultado <- info_agenda(anos = c(2023, 2024), meses = c(1, 2), dias = 10:15)
 #'
+#' }
 #' @export
 info_agenda <- function(anos, meses, dias) {
   url_base <- "https://www.congressonacional.leg.br/sessoes/agenda-do-congresso-senado-e-camara/-/agenda/"

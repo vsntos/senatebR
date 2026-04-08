@@ -8,9 +8,11 @@
 #' @return Um dataframe consolidado com todas as relatorias dos parlamentares escolhidos
 #'
 #' @examples
+#' \dontrun{
 #' # Exemplo de uso
 #' df_relatorias <- dados_relatorias_parlamentares(c(5386, 5012), anos = c(2022, 2023))
 #'
+#' }
 #' @importFrom httr GET add_headers status_code content
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr bind_rows
