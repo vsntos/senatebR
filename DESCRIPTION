@@ -1,10 +1,11 @@
 Package: senatebR
 Type: Package
-Title: Collect Data from the Brazilian Federal Senate Open Data API
+Title: Collect Data from the 'Brazilian Federal Senate' Open Data API
 Version: 0.1.0
 Authors@R: person("Vinicius", "Santos", email = "santos.vinicius18@gmail.com", role = c("aut", "cre"))
-Description: Provides functions to access and collect data from the Brazilian
-    Federal Senate open data API and website. Covers senators, legislative
+Description: Provides functions to access and collect data from the
+    'Brazilian Federal Senate' open data 'API' and website
+    (<https://dadosabertos.senado.leg.br/>). Covers senators, legislative
     materials, committees, voting records, speeches, provisional measures,
     vetoes, and legislative agendas, returning results as tidy data frames
     ready for analysis.
